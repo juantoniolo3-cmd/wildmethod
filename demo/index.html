@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Wild Method Demo</title>
-<meta name="description" content="Take a 2-minute interactive tour of Wild Method, the training and nutrition platform for gyms and coaches. Based in Dubai, UAE.">
+<meta name="description" content="Take a 2-minute interactive tour of Wild Method, the training platform for personal trainers. Based in Dubai, UAE.">
 <meta property="og:title" content="Wild Method · Interactive demo">
-<meta property="og:description" content="Click through the coach dashboard and the member app. Training, nutrition, progress and add-ons in one platform.">
+<meta property="og:description" content="Click through the trainer dashboard and the client app. Programs, client profiles and assessments in one platform.">
 <meta property="og:image" content="../assets/og.png">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232453FF'/%3E%3Cpath d='M12 34 L31 76 L50 46 L69 76 L88 20' fill='none' stroke='white' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -166,6 +166,19 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .chip { display: inline-flex; align-items: center; gap: 4px; font-size: .72rem; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: var(--mist); color: var(--muted); }
 .chip.blue { background: var(--accent-mist); color: var(--accent); }
 .hide-s { }
+.quick-acc { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 16px; }
+.quick-acc button { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 14px; cursor: pointer; font-size: .9rem; transition: border-color .15s, transform .15s; }
+.quick-acc button:hover { border-color: var(--accent); transform: translateY(-1px); }
+.quick-acc .qi { width: 34px; height: 34px; border-radius: 10px; background: var(--accent-mist); color: var(--accent); display: grid; place-items: center; margin-bottom: 8px; }
+.quick-acc .qi svg { width: 18px; height: 18px; }
+.quick-acc button > span:last-child { font-size: .74rem; color: var(--muted); }
+@media (max-width: 760px) { .quick-acc { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.wk-list { display: flex; flex-direction: column; font-size: .74rem; }
+.wk-list div { display: flex; justify-content: space-between; padding: 6px 0; border-top: 1px solid var(--line); }
+.wk-list div span:last-child { color: var(--muted); }
+.wk-list .done span:last-child { color: var(--ok); font-weight: 600; }
+.wk-list .now { font-weight: 600; } .wk-list .now span:last-child { color: var(--accent); }
+.tabbar.two { grid-template-columns: repeat(2, 1fr); }
 /* program */
 .weeks { display: flex; gap: 6px; flex-wrap: wrap; }
 .weeks button { border: 1px solid var(--line); background: #fff; border-radius: 999px; padding: 5px 12px; font-size: .78rem; font-weight: 600; cursor: pointer; color: var(--muted); }
@@ -398,16 +411,16 @@ footer .meta { display: flex; flex-direction: column; gap: 2px; text-align: righ
       <div>
         <span class="eyebrow" style="color:var(--sky)">Interactive demo · 2 minutes</span>
         <h1 style="margin-top:14px">Try it <em class="s">before</em> you talk to us.</h1>
-        <p class="lead">Click through Wild Method the way your coaches and members would. Program a week, nudge a member, log a workout, track macros and see the add-ons, all with sample data.</p>
+        <p class="lead">Click through Wild Method the way a personal trainer and their clients would. Build a program, assign it, open a client profile with GPS, jump and ISAK data, and log a session, all with sample data.</p>
         <div class="hero-actions">
           <a class="btn btn-white" href="#demo" id="start-tour">Start the guided tour →</a>
           <a class="btn btn-ghost-light" href="#demo" id="explore">Explore freely</a>
         </div>
       </div>
       <div class="hero-facts">
-        <div class="fact"><i>1</i><div><b>Coach dashboard</b><span>Members, programs, nudges, add-ons</span></div></div>
-        <div class="fact"><i>2</i><div><b>Member app</b><span>Workouts, nutrition, progress, chat</span></div></div>
-        <div class="fact"><i>3</i><div><b>Your brand</b><span>Pick your color and see it live</span></div></div>
+        <div class="fact"><i>1</i><div><b>Trainer dashboard</b><span>Clients, programs, assessments</span></div></div>
+        <div class="fact"><i>2</i><div><b>Client app</b><span>Today's session, sets and loads</span></div></div>
+        <div class="fact"><i>3</i><div><b>Your brand</b><span>Your name and color, live</span></div></div>
       </div>
     </div>
   </section>
@@ -415,20 +428,20 @@ footer .meta { display: flex; flex-direction: column; gap: 2px; text-align: righ
   <section class="demo" id="demo">
     <div class="wrap">
       <div class="modes" role="tablist" aria-label="Demo view">
-        <button role="tab" data-mode="coach" class="on">Coach dashboard</button>
-        <button role="tab" data-mode="member">Member app</button>
+        <button role="tab" data-mode="coach" class="on">Trainer dashboard</button>
+        <button role="tab" data-mode="member">Client app</button>
       </div>
       <div class="demo-grid">
         <!-- TOUR PANEL -->
         <aside class="tour" id="tour" aria-live="polite">
-          <div class="stepno"><span id="t-no">Step 1 of 10</span><button class="skip" id="t-min">Hide tips</button></div>
+          <div class="stepno"><span id="t-no">Step 1 of 8</span><button class="skip" id="t-min">Hide tips</button></div>
           <div class="tbar"><i id="t-bar"></i></div>
-          <h3 id="t-title">Your whole gym at a glance</h3>
+          <h3 id="t-title">Your day, in one screen</h3>
           <p class="txt" id="t-text"></p>
           <div class="try" id="t-try"><b>Try it</b><span id="t-try-txt"></span></div>
           <div class="brandctl" id="t-brand" hidden>
             <div class="swatches" id="swatches" aria-label="Brand color"></div>
-            <label class="gymname" style="margin-top:10px">Gym name <input id="gym-input" value="North Coast Gym" maxlength="22"></label>
+            <label class="gymname" style="margin-top:10px">Your brand <input id="gym-input" value="Martín Coaching" maxlength="22"></label>
           </div>
           <div class="ctrl">
             <button class="btn btn-ghost btn-sm" id="t-prev">← Back</button>
@@ -445,14 +458,14 @@ footer .meta { display: flex; flex-direction: column; gap: 2px; text-align: righ
         <div class="stage">
           <!-- COACH -->
           <div class="browser" id="coach" data-spot="coach">
-            <div class="bbar"><span class="lights"><i></i><i></i><i></i></span><span class="url" id="c-url">app.wildmethod.app/northcoast/dashboard</span></div>
+            <div class="bbar"><span class="lights"><i></i><i></i><i></i></span><span class="url" id="c-url">app.wildmethod.app/martincoaching/dashboard</span></div>
             <div class="capp">
               <nav class="side" aria-label="Coach sections">
-                <div class="gym"><span class="gymlogo js-gyminit">NC</span><span class="js-gymname">North Coast Gym</span></div>
+                <div class="gym"><span class="gymlogo js-gyminit">MC</span><span class="js-gymname">Martín Coaching</span></div>
                 <button data-c="dash" class="on"><svg><use href="#i-home"/></svg>Dashboard</button>
-                <button data-c="members"><svg><use href="#i-users"/></svg>Members</button>
+                <button data-c="members"><svg><use href="#i-users"/></svg>Clients</button>
                 <button data-c="program"><svg><use href="#i-train"/></svg>Programs</button>
-                <button data-c="profile"><svg><use href="#i-clip"/></svg>Member profile</button>
+                <button data-c="profile"><svg><use href="#i-clip"/></svg>Client profile</button>
                 <button data-c="addons"><svg><use href="#i-plug"/></svg>Add-ons</button>
                 <span class="pw">Powered by Wild Method</span>
               </nav>
@@ -460,49 +473,37 @@ footer .meta { display: flex; flex-direction: column; gap: 2px; text-align: righ
 
                 <!-- Dashboard -->
                 <div class="cscreen" data-cs="dash">
-                  <div class="chead"><div><h2>Good morning, Martín</h2><p>Tuesday, week 3 · Here's what needs you today.</p></div><span class="chip blue">128 active members</span></div>
-                  <div class="kpis" data-spot="kpis" style="margin-top:16px">
-                    <div class="card kpi"><div class="k">Workouts logged this week</div><div class="v">412</div><div class="d">↑ 14% vs last week</div></div>
-                    <div class="card kpi"><div class="k">Avg. adherence</div><div class="v">86%</div><div class="d">↑ 5 pts this month</div></div>
-                    <div class="card kpi"><div class="k">Nutrition check-ins</div><div class="v">74%</div><div class="d">↑ 9 pts this month</div></div>
-                    <div class="card kpi alert"><div class="k">Need a nudge</div><div class="v" id="nudge-count">3</div><div class="d" style="color:var(--muted)">No activity or off target</div></div>
+                  <div class="chead"><div><h2>Good morning, Martín</h2><p>Tuesday · Here's what needs you today.</p></div><span class="chip blue">24 active clients</span></div>
+                  <div class="quick-acc" data-spot="quick">
+                    <button data-q="members"><span class="qi"><svg class="ico"><use href="#i-users"/></svg></span><b>Clients</b><span>24 active</span></button>
+                    <button data-q="program"><span class="qi"><svg class="ico"><use href="#i-train"/></svg></span><b>Programs</b><span>Build &amp; assign</span></button>
+                    <button data-q="profile"><span class="qi"><svg class="ico"><use href="#i-clip"/></svg></span><b>Assessments</b><span>3 due this week</span></button>
+                    <button data-q="addons"><span class="qi"><svg class="ico"><use href="#i-plug"/></svg></span><b>Add-ons</b><span>GPS · Jump · ISAK</span></button>
                   </div>
-                  <div class="two" style="margin-top:12px">
-                    <div class="card" data-spot="attention">
-                      <h4>Needs attention <span class="chip">Auto-detected</span></h4>
-                      <div class="att">
-                        <div class="row"><span class="av">TR</span><div class="who"><b>Tom Reyes</b><span>No check-in for 6 days</span></div><button class="nudge" data-name="Tom">Send nudge</button></div>
-                        <div class="row"><span class="av">AK</span><div class="who"><b>Aisha Khan</b><span>Missed 2 workouts this week</span></div><button class="nudge" data-name="Aisha">Send nudge</button></div>
-                        <div class="row"><span class="av">DM</span><div class="who"><b>Diego Morales</b><span>Protein 35% under target, 4 days</span></div><button class="nudge" data-name="Diego">Send nudge</button></div>
-                      </div>
-                    </div>
-                    <div class="card">
-                      <h4>Live activity</h4>
-                      <ul class="feed">
-                        <li><span><b>Lucy Park</b> finished Lower body A · new squat PR</span><span class="t">8 min</span></li>
-                        <li><span><b>Omar Haddad</b> logged lunch · on target</span><span class="t">21 min</span></li>
-                        <li><span><b>Sara Ruiz</b> sent a form-check video</span><span class="t">34 min</span></li>
-                        <li><span><b>Ben Carter</b> completed ISAK assessment</span><span class="t">1 h</span></li>
-                        <li><span><b>Mia Chen</b> 30-day streak 🔥</span><span class="t">2 h</span></li>
-                      </ul>
+                  <div class="card" data-spot="attention">
+                    <h4>Needs attention <span class="chip" id="att-left">3 to review</span></h4>
+                    <div class="att">
+                      <div class="row"><span class="av">TR</span><div class="who"><b>Tom Reyes</b><span>Program block ends Friday · next block not assigned</span></div><button class="nudge" data-act="Next block assigned to Tom" data-done="Assigned ✓">Assign block</button></div>
+                      <div class="row"><span class="av">SR</span><div class="who"><b>Sara Ruiz</b><span>ISAK retest due · last one 8 weeks ago</span></div><button class="nudge" data-act="ISAK retest scheduled for Sara" data-done="Scheduled ✓">Schedule</button></div>
+                      <div class="row"><span class="av">BC</span><div class="who"><b>Ben Carter</b><span>New Pitchero GPS session to review</span></div><button class="nudge" data-open="profile">Review</button></div>
                     </div>
                   </div>
                 </div>
 
                 <!-- Members -->
                 <div class="cscreen" data-cs="members" hidden>
-                  <div class="chead"><div><h2>Members</h2><p>Tap a member to open their profile.</p></div><span class="chip">128 active · 9 trial</span></div>
+                  <div class="chead"><div><h2>Clients</h2><p>All your clients in one list. Tap one to open their profile.</p></div><span class="chip">24 active</span></div>
                   <div class="card" style="margin-top:14px" data-spot="table">
                     <table class="tbl">
-                      <thead><tr><th>Member</th><th class="hide-s">Program</th><th>Adherence</th><th class="hide-s">Last workout</th></tr></thead>
+                      <thead><tr><th>Client</th><th class="hide-s">Program</th><th>Week</th><th class="hide-s">Next assessment</th></tr></thead>
                       <tbody>
-                        <tr class="clk" data-open="profile"><td><span class="nm"><span class="av">LP</span>Lucy Park</span></td><td class="hide-s">Strength 12 wk</td><td><span class="adh"><span class="bar"><i style="width:94%"></i></span>94%</span></td><td class="hide-s">Today</td></tr>
-                        <tr class="clk" data-open="profile"><td><span class="nm"><span class="av">OH</span>Omar Haddad</span></td><td class="hide-s">Hypertrophy</td><td><span class="adh"><span class="bar"><i style="width:88%"></i></span>88%</span></td><td class="hide-s">Yesterday</td></tr>
-                        <tr class="clk" data-open="profile"><td><span class="nm"><span class="av">MC</span>Mia Chen</span></td><td class="hide-s">Fat loss</td><td><span class="adh"><span class="bar"><i style="width:97%"></i></span>97%</span></td><td class="hide-s">Today</td></tr>
-                        <tr class="clk" data-open="profile"><td><span class="nm"><span class="av">SR</span>Sara Ruiz</span></td><td class="hide-s">Football pre-season</td><td><span class="adh"><span class="bar"><i style="width:81%"></i></span>81%</span></td><td class="hide-s">Today</td></tr>
-                        <tr class="clk" data-open="profile"><td><span class="nm"><span class="av">BC</span>Ben Carter</span></td><td class="hide-s">Strength 12 wk</td><td><span class="adh"><span class="bar"><i style="width:76%"></i></span>76%</span></td><td class="hide-s">2 days ago</td></tr>
-                        <tr class="clk" data-open="profile"><td><span class="nm"><span class="av">AK</span>Aisha Khan</span></td><td class="hide-s">Hypertrophy</td><td><span class="adh"><span class="bar low"><i style="width:52%"></i></span>52%</span></td><td class="hide-s">5 days ago</td></tr>
-                        <tr class="clk" data-open="profile"><td><span class="nm"><span class="av">TR</span>Tom Reyes</span></td><td class="hide-s">Fat loss</td><td><span class="adh"><span class="bar low"><i style="width:41%"></i></span>41%</span></td><td class="hide-s">6 days ago</td></tr>
+                        <tr class="clk" data-open="profile"><td><span class="nm"><span class="av">LP</span>Lucy Park</span></td><td class="hide-s">Strength 12 wk</td><td>3 / 12</td><td class="hide-s">ISAK + jump · 12 Dec</td></tr>
+                        <tr class="clk" data-open="profile"><td><span class="nm"><span class="av">OH</span>Omar Haddad</span></td><td class="hide-s">Hypertrophy</td><td>7 / 10</td><td class="hide-s">1RM retest · 2 Dec</td></tr>
+                        <tr class="clk" data-open="profile"><td><span class="nm"><span class="av">SR</span>Sara Ruiz</span></td><td class="hide-s">Football pre-season</td><td>5 / 8</td><td class="hide-s"><span class="chip" style="color:var(--warn)">ISAK due</span></td></tr>
+                        <tr class="clk" data-open="profile"><td><span class="nm"><span class="av">BC</span>Ben Carter</span></td><td class="hide-s">Speed &amp; power</td><td>2 / 6</td><td class="hide-s">Jump test · 9 Dec</td></tr>
+                        <tr class="clk" data-open="profile"><td><span class="nm"><span class="av">MC</span>Mia Chen</span></td><td class="hide-s">Strength 12 wk</td><td>10 / 12</td><td class="hide-s">1RM retest · 16 Dec</td></tr>
+                        <tr class="clk" data-open="profile"><td><span class="nm"><span class="av">TR</span>Tom Reyes</span></td><td class="hide-s">Return to play</td><td>6 / 6</td><td class="hide-s"><span class="chip" style="color:var(--warn)">Block ends Fri</span></td></tr>
+                        <tr class="clk" data-open="profile"><td><span class="nm"><span class="av">AK</span>Aisha Khan</span></td><td class="hide-s">Hypertrophy</td><td>1 / 10</td><td class="hide-s">Mobility · 28 Nov</td></tr>
                       </tbody>
                     </table>
                   </div>
@@ -510,7 +511,7 @@ footer .meta { display: flex; flex-direction: column; gap: 2px; text-align: righ
 
                 <!-- Program -->
                 <div class="cscreen" data-cs="program" hidden>
-                  <div class="chead"><div><h2>Strength 12 weeks</h2><p>Template · 3 days a week · Progressive overload built in</p></div>
+                  <div class="chead"><div><h2>Strength 12 weeks</h2><p>Template · 3 days a week · Loads progress week to week</p></div>
                     <div class="weeks" id="weeks"><button>Wk 1</button><button>Wk 2</button><button class="on">Wk 3</button><button>Wk 4</button><button>Deload</button></div></div>
                   <div class="days" style="margin-top:14px" id="days"></div>
                   <div class="card assign" data-spot="assign">
@@ -518,21 +519,15 @@ footer .meta { display: flex; flex-direction: column; gap: 2px; text-align: righ
                     <div class="picks" id="picks">
                       <button><span class="av">OH</span>Omar</button><button><span class="av">SR</span>Sara</button><button><span class="av">BC</span>Ben</button><button><span class="av">AK</span>Aisha</button><button><span class="av">JL</span>Jake</button><button><span class="av">NP</span>Nina</button>
                     </div>
-                    <div class="row-b"><span id="pick-note">Select members. Loads adapt to each member's 1RM.</span><button class="abtn" id="assign-btn" disabled>Assign program</button></div>
+                    <div class="row-b"><span id="pick-note">Select clients. Loads adapt to each client's 1RM.</span><button class="abtn" id="assign-btn" disabled>Assign program</button></div>
                   </div>
                 </div>
 
                 <!-- Profile -->
                 <div class="cscreen" data-cs="profile" hidden>
-                  <div class="phead"><span class="av">LP</span><div><h2>Lucy Park</h2><p>Member since Aug 2026 · Strength 12 wk · Coach Martín</p></div>
-                    <div class="chips"><span class="chip blue">94% adherence</span><span class="chip">12-day streak</span></div></div>
-                  <div class="kpis" style="margin-top:14px">
-                    <div class="card kpi"><div class="k">Back squat</div><div class="v">85 kg</div><div class="d">↑ 7.5 kg in 8 wk</div></div>
-                    <div class="card kpi"><div class="k">Body weight</div><div class="v">63.1</div><div class="d" style="color:var(--muted)">kg · −2.3 kg</div></div>
-                    <div class="card kpi"><div class="k">Protein avg.</div><div class="v">128 g</div><div class="d">91% of target</div></div>
-                    <div class="card kpi"><div class="k">Sessions</div><div class="v">31</div><div class="d" style="color:var(--muted)">of 33 planned</div></div>
-                  </div>
-                  <h4 style="margin-top:6px;font-size:1rem">Add-ons in this profile</h4>
+                  <div class="phead"><span class="av">LP</span><div><h2>Lucy Park</h2><p>Client since Aug 2026 · Strength 12 wk · Week 3 of 12</p></div>
+                    <div class="chips"><span class="chip blue">Strength 12 wk</span><span class="chip">Next test · 12 Dec</span></div></div>
+                  <h4 style="margin-top:14px;font-size:1rem">Assessments &amp; add-ons</h4>
                   <div class="addons" data-spot="addons">
                     <div class="card addon">
                       <div class="top"><img src="img/isak.png" alt="ISAK"><span class="chip blue">Add-on</span></div>
@@ -562,11 +557,11 @@ footer .meta { display: flex; flex-direction: column; gap: 2px; text-align: righ
 
                 <!-- Add-ons catalogue -->
                 <div class="cscreen" data-cs="addons" hidden>
-                  <div class="chead"><div><h2>Add-ons</h2><p>Switch on what your gym needs. Data lands in each member's profile.</p></div></div>
+                  <div class="chead"><div><h2>Add-ons</h2><p>Switch on what you need. Data lands in each client's profile.</p></div></div>
                   <div class="addons" style="margin-top:14px">
-                    <div class="card addon"><div class="top"><img src="img/pitchero.png" alt="Pitchero"><button class="nudge js-toggle">Enabled</button></div><h5>Pitchero GPS tracker</h5><p style="font-size:.82rem;color:var(--muted)">GPS sessions in each athlete's profile. Distance, speed and load.</p></div>
+                    <div class="card addon"><div class="top"><img src="img/pitchero.png" alt="Pitchero"><button class="nudge js-toggle">Enabled</button></div><h5>Pitchero GPS tracker</h5><p style="font-size:.82rem;color:var(--muted)">GPS sessions in each client's profile. Distance, speed and load.</p></div>
                     <div class="card addon"><div class="top"><img src="img/myjumplab.png" alt="My Jump Lab"><button class="nudge js-toggle">Enabled</button></div><h5>My Jump Lab</h5><p style="font-size:.82rem;color:var(--muted)">Jump tests saved next to the training program. Height and power over time.</p></div>
-                    <div class="card addon"><div class="top"><img src="img/isak.png" alt="ISAK"><button class="nudge js-toggle">Enabled</button></div><h5>ISAK anthropometry</h5><p style="font-size:.82rem;color:var(--muted)">Full ISAK record per member. Skinfolds, girths and body composition.</p></div>
+                    <div class="card addon"><div class="top"><img src="img/isak.png" alt="ISAK"><button class="nudge js-toggle">Enabled</button></div><h5>ISAK anthropometry</h5><p style="font-size:.82rem;color:var(--muted)">Full ISAK record per client. Skinfolds, girths and body composition.</p></div>
                     <div class="card addon"><div class="top"><span class="gen"><i><svg class="ico"><use href="#i-clip"/></svg></i>Assessments</span><button class="nudge js-toggle">Enabled</button></div><h5>Assessments</h5><p style="font-size:.82rem;color:var(--muted)">Scheduled tests and retests with history and reports.</p></div>
                   </div>
                 </div>
@@ -585,7 +580,7 @@ footer .meta { display: flex; flex-direction: column; gap: 2px; text-align: righ
 
                 <!-- Today -->
                 <div class="mbody mscreen" data-ms="today">
-                  <div class="mhead"><div><div class="day">Tuesday · Week 3</div><div class="hi">Hi, Lucy</div></div><span class="gb"><span class="gymlogo js-gyminit">NC</span></span></div>
+                  <div class="mhead"><div><div class="day">Tuesday · Week 3</div><div class="hi">Hi, Lucy</div></div><span class="gb"><span class="gymlogo js-gyminit">MC</span></span></div>
                   <div class="week"><span class="d done">M</span><span class="d today">T</span><span class="d">W</span><span class="d done">T</span><span class="d">F</span><span class="d">S</span><span class="d">S</span></div>
                   <div class="tile work" data-spot="today">
                     <div class="rb"><span class="k">Today's workout</span><span class="pill">50 min</span></div>
@@ -594,69 +589,35 @@ footer .meta { display: flex; flex-direction: column; gap: 2px; text-align: righ
                     <button class="go" data-goto="train">Start workout</button>
                   </div>
                   <div class="tile">
-                    <div class="rb"><span class="k">Nutrition</span><span class="kcal"><b class="js-kcal">1,180</b> / 2,100 kcal</span></div>
-                    <div class="macros js-macros"></div>
+                    <div class="rb"><span class="k">This week</span><span class="kcal"><b>1</b> of 3 sessions</span></div>
+                    <div class="wk-list">
+                      <div class="done"><span>Mon · Upper</span><span>Done ✓</span></div>
+                      <div class="now"><span>Tue · Lower body A</span><span>Today</span></div>
+                      <div><span>Thu · Lower body B</span><span>Planned</span></div>
+                    </div>
                   </div>
-                  <button class="msgprev" data-goto="coach"><span class="av n">M</span><span><b>Coach Martín</b><span>Great squats last week. +2.5 kg today 💪</span></span></button>
+                  <div class="tile">
+                    <div class="rb"><span class="k">Next assessment</span><span class="up">12 Dec</span></div>
+                    <span style="font-size:.76rem">ISAK + jump retest with Martín</span>
+                  </div>
                 </div>
 
                 <!-- Train -->
                 <div class="mbody mscreen" data-ms="train" hidden>
-                  <div class="wtop"><span class="day" style="font-size:.68rem;color:var(--muted)">Week 3 · Day 1</span><span class="t">Lower body A</span>
+                  <div class="wtop"><span class="day" style="font-size:.68rem;color:var(--muted)">Week 3 · Day 2 · by Martín</span><span class="t">Lower body A</span>
                     <div class="wprog"><div class="bar"><i id="w-bar" style="width:0%"></i></div><span id="w-count">0 / 13 sets</span></div></div>
                   <div id="exlist" data-spot="sets" style="display:flex;flex-direction:column;gap:8px"></div>
                   <button class="finish" id="finish">Finish workout</button>
                 </div>
 
-                <!-- Eat -->
-                <div class="mbody mscreen" data-ms="eat" hidden>
-                  <div class="wtop"><span class="day" style="font-size:.68rem;color:var(--muted)">Plan by Coach Martín</span><span class="t">Today's nutrition</span></div>
-                  <div class="tile">
-                    <div class="ring">
-                      <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="#fff" stroke-width="10"/><circle id="ring" cx="50" cy="50" r="42" fill="none" stroke="var(--accent)" stroke-width="10" stroke-linecap="round" stroke-dasharray="263.9" stroke-dashoffset="263.9" style="transition:stroke-dashoffset .6s ease"/></svg>
-                      <div class="lbl"><b class="js-kcal">1,180</b><span>of 2,100 kcal · <span id="kleft">920</span> left</span></div>
-                    </div>
-                    <div class="macros js-macros"></div>
-                  </div>
-                  <div id="meals" data-spot="meals" style="display:flex;flex-direction:column;gap:7px"></div>
-                </div>
-
-                <!-- Progress -->
-                <div class="mbody mscreen" data-ms="progress" hidden>
-                  <div class="wtop"><span class="day" style="font-size:.68rem;color:var(--muted)">Last 8 weeks</span><span class="t">Your progress</span></div>
-                  <div class="seg" id="metric"><button data-m="squat" class="on">Squat</button><button data-m="weight">Weight</button><button data-m="fat">Body fat</button><button data-m="jump">Jump</button></div>
-                  <div class="chart" data-spot="chart">
-                    <div class="rb"><div class="big" id="ch-big">85 <small>kg</small></div><span class="up" id="ch-delta">↑ 7.5 kg</span></div>
-                    <svg id="ch" viewBox="0 0 300 150" preserveAspectRatio="none"></svg>
-                    <div class="xl"><span>Wk 1</span><span>Wk 2</span><span>Wk 3</span><span>Wk 4</span><span>Wk 5</span><span>Wk 6</span><span>Wk 7</span><span>Wk 8</span></div>
-                  </div>
-                  <div class="stats"><div><b>31</b><span>sessions</span></div><div><b>12</b><span>day streak</span></div><div><b>4</b><span>new PRs</span></div></div>
-                </div>
-
-                <!-- Coach chat -->
-                <div class="mbody mscreen" data-ms="coach" hidden>
-                  <div class="chathead"><span class="av n">M</span><div><b>Coach Martín</b><span>● Online</span></div></div>
-                  <div class="msgs" id="msgs" data-spot="chat">
-                    <div class="bub c">Morning Lucy! Week 3 starts today. Squat goes to 85 kg, same reps. You've got it.<span class="ts">8:02</span></div>
-                    <div class="bub m">Nice, a bit nervous about it 😅<span class="ts">8:15</span></div>
-                    <div class="bub c">Your last set at 82.5 looked easy on video. Brace, slow down, drive up.<span class="ts">8:16</span></div>
-                    <div class="bub c img"><div class="ph">📋 <b>Lower body A</b> updated · tap to view</div></div>
-                  </div>
-                  <div class="quick" id="quick"><button>Done! New PR 🎉</button><button>Can I swap lunges?</button><button>Sore knee today</button></div>
-                </div>
-                <form class="compose" id="compose" hidden><input id="cin" placeholder="Message your coach" aria-label="Message your coach"><button aria-label="Send"><svg viewBox="0 0 24 24"><path d="M4 12l16-8-6 16-2-7z"/></svg></button></form>
-
-                <nav class="tabbar" aria-label="Member app">
+                                <nav class="tabbar two" aria-label="Client app">
                   <button data-t="today" class="on"><svg><use href="#i-home"/></svg>Today</button>
-                  <button data-t="train"><svg><use href="#i-train"/></svg>Train</button>
-                  <button data-t="eat"><svg><use href="#i-eat"/></svg>Eat</button>
-                  <button data-t="progress"><svg><use href="#i-prog"/></svg>Progress</button>
-                  <button data-t="coach"><svg><use href="#i-chat"/></svg>Coach</button>
+                  <button data-t="train"><svg><use href="#i-train"/></svg>Session</button>
                 </nav>
               </div>
             </div>
           </figure>
-          <p class="disclaimer">Interactive demo with sample members and data. Nothing you do here is saved.</p>
+          <p class="disclaimer">Interactive demo with sample clients and data. Nothing you do here is saved.</p>
         </div>
       </div>
     </div>
@@ -665,15 +626,16 @@ footer .meta { display: flex; flex-direction: column; gap: 2px; text-align: righ
   <section class="why">
     <div class="wrap">
       <div class="head">
-        <h2>What your gym <em class="s">gets.</em></h2>
-        <p>Everything you just clicked through, set up with your brand, your programs and your members. Built and used every day inside a real gym.</p>
+        <h2>What you <em class="s">get.</em></h2>
+        <p>Everything you just clicked through, set up with your brand, your programs and your clients. Built and used every day by real coaches.</p>
       </div>
       <div class="wgrid">
-        <div class="wcard"><span class="n">1</span><h3>One app</h3><p>Training, nutrition, progress and chat in one place. No more spreadsheets, PDFs and scattered WhatsApp groups.</p></div>
-        <div class="wcard"><span class="n">2</span><h3>Your brand</h3><p>Your logo, your colors, your name. Members see your gym, not ours.</p></div>
-        <div class="wcard"><span class="n">3</span><h3>Smart follow-up</h3><p>See who's drifting before they cancel, and nudge them in one tap.</p></div>
-        <div class="wcard"><span class="n">4</span><h3>Add-ons</h3><p>Pitchero GPS, My Jump Lab, ISAK and assessments in the same member profile.</p></div>
+        <div class="wcard"><span class="n">1</span><h3>Programs</h3><p>Build a program once, with sets, reps and loads that progress week to week, and assign it in seconds.</p></div>
+        <div class="wcard"><span class="n">2</span><h3>Assessments</h3><p>Pitchero GPS, My Jump Lab, ISAK and your own tests in each client's profile.</p></div>
+        <div class="wcard"><span class="n">3</span><h3>Client app</h3><p>Your clients see today's session and log their sets and loads.</p></div>
+        <div class="wcard"><span class="n">4</span><h3>Your brand</h3><p>Your name and colors. Clients see your coaching brand, not ours.</p></div>
       </div>
+    </div>
     </div>
   </section>
 
@@ -681,7 +643,7 @@ footer .meta { display: flex; flex-direction: column; gap: 2px; text-align: righ
     <div class="wrap">
       <span class="eyebrow">Next step</span>
       <h2>Liked it? See it <em class="s">live.</em></h2>
-      <p class="lead">Book a 20-minute call. We set up a demo with your gym's name and colors and answer every question. No commitment.</p>
+      <p class="lead">Book a 20-minute call. We set up a demo with your name and colors and answer every question. No commitment.</p>
       <div class="acts">
         <a class="btn btn-blue js-book" href="https://ig.me/m/wildmethod.app" target="_blank" rel="noopener">Book a demo on Instagram →</a>
         <a class="btn btn-ghost js-wa" href="#" target="_blank" rel="noopener"><svg class="wa-ico" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg>Message us on WhatsApp</a>
@@ -707,9 +669,9 @@ footer .meta { display: flex; flex-direction: column; gap: 2px; text-align: righ
 <div class="finale" id="finale" hidden role="dialog" aria-modal="true" aria-labelledby="fin-h">
   <div class="box">
     <span class="eyebrow" style="color:var(--blue)">Tour complete</span>
-    <h2 id="fin-h">Now picture it with <em class="s">your</em> members.</h2>
-    <p>That's Wild Method: the same platform we use every day in our own gym, ready to carry your brand.</p>
-    <ul><li>Set up with your logo, colors and programs</li><li>Onboarding for your coaches and first members</li><li>Add-ons when you need them</li></ul>
+    <h2 id="fin-h">Now picture it with <em class="s">your</em> clients.</h2>
+    <p>That's Wild Method: the same platform our coaches use every day, ready to carry your brand.</p>
+    <ul><li>Set up with your name, colors and programs</li><li>Help loading your first clients</li><li>Add-ons when you need them</li></ul>
     <div class="acts">
       <a class="btn btn-blue js-book" href="https://ig.me/m/wildmethod.app" target="_blank" rel="noopener">Book a live demo →</a>
       <a class="btn btn-ghost js-wa" href="#" target="_blank" rel="noopener">WhatsApp us</a>
@@ -721,14 +683,14 @@ footer .meta { display: flex; flex-direction: column; gap: 2px; text-align: righ
 <script>
 (() => {
   const WHATSAPP = "5491132555326";
-  const WA_TEXT = "Hi Wild Method! I just tried the interactive demo and I'd like to book a live demo for my gym.";
+  const WA_TEXT = "Hi Wild Method! I just tried the interactive demo and I'd like to book a live demo.";
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   $$(".js-wa").forEach(a => a.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(WA_TEXT)}`);
 
   /* ---------- views ---------- */
   let mode = "coach", cScreen = "dash", mTab = "today";
-  const urls = { dash: "dashboard", members: "members", program: "programs/strength-12", profile: "members/lucy-park", addons: "add-ons" };
+  const urls = { dash: "dashboard", members: "clients", program: "programs/strength-12", profile: "clients/lucy-park", addons: "add-ons" };
   function setMode(m) {
     mode = m;
     $$(".modes button").forEach(b => b.classList.toggle("on", b.dataset.mode === m));
@@ -746,27 +708,27 @@ footer .meta { display: flex; flex-direction: column; gap: 2px; text-align: righ
     mTab = t; setMode("member");
     $$(".tabbar button").forEach(b => b.classList.toggle("on", b.dataset.t === t));
     $$(".mscreen").forEach(el => el.hidden = el.dataset.ms !== t);
-    $("#compose").hidden = t !== "coach";
-    const body = $(`.mscreen[data-ms="${t}"]`); body.scrollTop = t === "coach" ? body.scrollHeight : 0;
+    $(`.mscreen[data-ms="${t}"]`).scrollTop = 0;
   }
   $$(".modes button").forEach(b => b.onclick = () => { b.dataset.mode === "coach" ? setCoach(cScreen) : setTab(mTab); userMoved(); });
   $$(".side button").forEach(b => b.onclick = () => { setCoach(b.dataset.c); userMoved(); });
   $$(".tabbar button").forEach(b => b.onclick = () => { setTab(b.dataset.t); userMoved(); });
   $$("[data-goto]").forEach(b => b.onclick = () => setTab(b.dataset.goto));
-  $$("tr[data-open]").forEach(r => r.onclick = () => setCoach("profile"));
+  $$("tr[data-open]").forEach(r => r.onclick = () => { setCoach("profile"); done("open"); });
 
   function toast(el, msg) { el.textContent = msg; el.classList.add("show"); clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove("show"), 2600); }
   const ctoast = m => toast($("#ctoast"), m), mtoast = m => toast($("#mtoast"), m);
 
-  /* ---------- coach: nudges ---------- */
-  let nudges = 3;
-  $$(".nudge[data-name]").forEach(b => b.onclick = () => {
+  /* ---------- coach: needs attention + quick access ---------- */
+  let left = 3;
+  $$(".nudge[data-act]").forEach(b => b.onclick = () => {
     if (b.classList.contains("sent")) return;
-    b.classList.add("sent"); b.textContent = "Sent ✓";
-    nudges--; $("#nudge-count").textContent = nudges;
-    ctoast(`Nudge sent to ${b.dataset.name} in the app`);
-    done("nudge");
+    b.classList.add("sent"); b.textContent = b.dataset.done;
+    left--; $("#att-left").textContent = left ? `${left} to review` : "All clear";
+    ctoast(b.dataset.act); done("nudge");
   });
+  $$(".nudge[data-open]").forEach(b => b.onclick = () => { setCoach("profile"); done("nudge"); });
+  $$(".quick-acc button").forEach(b => b.onclick = () => { setCoach(b.dataset.q); userMoved(); });
   $$(".js-toggle").forEach(b => b.onclick = () => {
     const on = b.textContent === "Enabled";
     b.textContent = on ? "Enable" : "Enabled"; b.classList.toggle("sent", on);
@@ -795,13 +757,13 @@ footer .meta { display: flex; flex-direction: column; gap: 2px; text-align: righ
     b.classList.toggle("on");
     const n = $$("#picks button.on").length;
     $("#assign-btn").disabled = !n;
-    $("#pick-note").textContent = n ? `${n} member${n > 1 ? "s" : ""} selected. Loads adapt to each 1RM.` : "Select members. Loads adapt to each member's 1RM.";
+    $("#pick-note").textContent = n ? `${n} client${n > 1 ? "s" : ""} selected. Loads adapt to each 1RM.` : "Select clients. Loads adapt to each client's 1RM.";
   });
   $("#assign-btn").onclick = () => {
     const n = $$("#picks button.on").length;
-    ctoast(`Assigned to ${n} member${n > 1 ? "s" : ""}. They'll see it in the app today.`);
+    ctoast(`Assigned to ${n} client${n > 1 ? "s" : ""}. They'll see it in their app today.`);
     $$("#picks button.on").forEach(b => b.classList.remove("on"));
-    $("#assign-btn").disabled = true; $("#pick-note").textContent = "Done. Select more members to assign again.";
+    $("#assign-btn").disabled = true; $("#pick-note").textContent = "Done. Select more clients to assign again.";
     done("assign");
   };
 
@@ -821,84 +783,12 @@ footer .meta { display: flex; flex-direction: column; gap: 2px; text-align: righ
       doneSets += row.classList.contains("done") ? 1 : -1;
       $("#w-count").textContent = `${doneSets} / ${totalSets} sets`;
       $("#w-bar").style.width = `${doneSets / totalSets * 100}%`;
-      if (row.classList.contains("done") && row.dataset.pr === "1" && !$(".pr", row)) { $(".r", row).innerHTML = `6 reps <span class="pr">PR</span>`; mtoast("🎉 New squat PR! Coach Martín was notified."); }
+      if (row.classList.contains("done") && row.dataset.pr === "1" && !$(".pr", row)) { $(".r", row).innerHTML = `6 reps <span class="pr">PR</span>`; mtoast("🎉 New squat PR! Martín can see it in your profile."); }
       else if (row.classList.contains("done")) mtoast("Set saved");
       done("set");
     };
   });
-  $("#finish").onclick = () => { mtoast(`Workout saved · ${doneSets} sets · Coach Martín notified`); done("set"); };
-
-  /* ---------- member: nutrition ---------- */
-  const target = { kcal: 2100, p: 140, c: 235, f: 70 };
-  const meals = [
-    { e: "🥣", n: "Breakfast", d: "Oats, Greek yogurt, berries", kcal: 520, p: 34, c: 70, f: 12, on: true },
-    { e: "🍗", n: "Lunch", d: "Chicken, rice, avocado salad", kcal: 660, p: 48, c: 72, f: 20, on: true },
-    { e: "🍌", n: "Pre-workout snack", d: "Banana, whey shake", kcal: 290, p: 27, c: 38, f: 3, on: false },
-    { e: "🐟", n: "Dinner", d: "Salmon, sweet potato, greens", kcal: 630, p: 31, c: 55, f: 31, on: false }
-  ];
-  function renderNutrition() {
-    const t = meals.filter(m => m.on).reduce((a, m) => ({ kcal: a.kcal + m.kcal, p: a.p + m.p, c: a.c + m.c, f: a.f + m.f }), { kcal: 0, p: 0, c: 0, f: 0 });
-    $$(".js-kcal").forEach(el => el.textContent = t.kcal.toLocaleString("en-US"));
-    $("#kleft").textContent = Math.max(0, target.kcal - t.kcal).toLocaleString("en-US");
-    $("#ring").style.strokeDashoffset = 263.9 * (1 - Math.min(1, t.kcal / target.kcal));
-    const row = (l, v, tg) => `<div><span>${l}</span><div class="bar"><i style="width:${Math.min(100, v / tg * 100)}%"></i></div><em>${v} / ${tg} g</em></div>`;
-    $$(".js-macros").forEach(el => el.innerHTML = row("Protein", t.p, target.p) + row("Carbs", t.c, target.c) + row("Fat", t.f, target.f));
-    $("#meals").innerHTML = meals.map((m, i) => `<div class="meal ${m.on ? "logged" : ""}"><span class="e">${m.e}</span><div class="w"><b>${m.n}</b><span>${m.d} · ${m.kcal} kcal · ${m.p} g protein</span></div><button data-i="${i}">${m.on ? "Logged ✓" : "Log"}</button></div>`).join("");
-    $$("#meals button").forEach(b => b.onclick = () => {
-      const m = meals[b.dataset.i]; if (m.on) return; m.on = true; renderNutrition();
-      mtoast(`${m.n} logged · +${m.p} g protein`); done("meal");
-    });
-  }
-  renderNutrition();
-
-  /* ---------- member: progress chart ---------- */
-  const series = {
-    squat: { d: [77.5, 77.5, 80, 80, 82.5, 82.5, 85, 85], u: "kg", lbl: v => `↑ ${(v[7] - v[0])} kg` },
-    weight: { d: [65.4, 65.1, 64.8, 64.5, 64.0, 63.8, 63.4, 63.1], u: "kg", lbl: v => `↓ ${(v[0] - v[7]).toFixed(1)} kg` },
-    fat: { d: [22.4, 22.4, 21.6, 21.6, 20.7, 20.7, 19.8, 19.8], u: "%", lbl: v => `↓ ${(v[0] - v[7]).toFixed(1)} pts` },
-    jump: { d: [31.2, 31.8, 32.1, 32.9, 33.4, 33.6, 34.2, 34.8], u: "cm", lbl: v => `↑ ${(v[7] - v[0]).toFixed(1)} cm` }
-  };
-  function chart(key) {
-    const s = series[key], v = s.d, min = Math.min(...v), max = Math.max(...v), pad = (max - min) * .25 || 1;
-    const lo = min - pad, hi = max + pad;
-    const pts = v.map((y, i) => [10 + i * (280 / 7), 140 - (y - lo) / (hi - lo) * 125]);
-    const line = pts.map(p => p.map(n => n.toFixed(1)).join(",")).join(" ");
-    $("#ch").innerHTML = `<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--accent)" stop-opacity=".22"/><stop offset="1" stop-color="var(--accent)" stop-opacity="0"/></linearGradient></defs>
-      ${[35, 75, 115].map(y => `<line x1="0" x2="300" y1="${y}" y2="${y}" stroke="#DCE6F5" stroke-dasharray="3 4"/>`).join("")}
-      <polygon points="10,150 ${line} 290,150" fill="url(#g)"/>
-      <polyline points="${line}" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
-      ${pts.map((p, i) => `<circle cx="${p[0]}" cy="${p[1]}" r="${i === 7 ? 5 : 3}" fill="${i === 7 ? "var(--accent)" : "#fff"}" stroke="var(--accent)" stroke-width="2" vector-effect="non-scaling-stroke"/>`).join("")}`;
-    $("#ch-big").innerHTML = `${v[7]} <small>${s.u}</small>`;
-    $("#ch-delta").textContent = s.lbl(v);
-  }
-  $$("#metric button").forEach(b => b.onclick = () => { $$("#metric button").forEach(x => x.classList.remove("on")); b.classList.add("on"); chart(b.dataset.m); done("metric"); });
-  chart("squat");
-
-  /* ---------- member: chat ---------- */
-  const replies = [
-    [/pr|done|🎉/i, "Huge! 85 kg for 6 is a big jump. Logging it as your new PR. Rest well tonight 🙌"],
-    [/swap|lunge/i, "Sure, swap lunges for Bulgarian split squats, 3 × 10 each leg. I've updated today's plan."],
-    [/knee|sore|pain/i, "Thanks for telling me. Drop squats to 75 kg today and skip lunges. I'll check in after the session."],
-    [/.*/, "Got it! I'll take a look and get back to you before your next session."]
-  ];
-  const now = () => { const d = new Date(); return `${d.getHours()}:${String(d.getMinutes()).padStart(2, "0")}`; };
-  function send(text) {
-    text = text.trim(); if (!text) return;
-    const box = $("#msgs"), body = box.parentElement;
-    box.insertAdjacentHTML("beforeend", `<div class="bub m"></div>`);
-    box.lastElementChild.textContent = text; box.lastElementChild.insertAdjacentHTML("beforeend", `<span class="ts">${now()}</span>`);
-    box.insertAdjacentHTML("beforeend", `<div class="typing"><i></i><i></i><i></i></div>`);
-    body.scrollTop = body.scrollHeight;
-    setTimeout(() => {
-      $(".typing", box)?.remove();
-      const r = replies.find(([re]) => re.test(text))[1];
-      box.insertAdjacentHTML("beforeend", `<div class="bub c">${r}<span class="ts">${now()}</span></div>`);
-      body.scrollTop = body.scrollHeight;
-    }, 1300);
-    done("chat");
-  }
-  $$("#quick button").forEach(b => b.onclick = () => send(b.textContent));
-  $("#compose").onsubmit = e => { e.preventDefault(); send($("#cin").value); $("#cin").value = ""; };
+  $("#finish").onclick = () => { mtoast(`Session saved · ${doneSets} sets logged`); done("set"); };
 
   /* ---------- brand ---------- */
   const brands = [
@@ -915,9 +805,9 @@ footer .meta { display: flex; flex-direction: column; gap: 2px; text-align: righ
     st.setProperty("--accent", br.a); st.setProperty("--accent-soft", br.s); st.setProperty("--accent-mist", br.m);
     $$("#swatches button").forEach(x => x.classList.toggle("on", x === b)); done("brand");
   });
-  function slug() { return ($("#gym-input").value || "yourgym").toLowerCase().replace(/[^a-z0-9]+/g, ""); }
+  function slug() { return ($("#gym-input").value || "yourbrand").toLowerCase().replace(/[^a-z0-9]+/g, ""); }
   function setGym() {
-    const name = $("#gym-input").value.trim() || "Your Gym";
+    const name = $("#gym-input").value.trim() || "Your Brand";
     $$(".js-gymname").forEach(el => el.textContent = name);
     $$(".js-gyminit").forEach(el => el.textContent = name.split(/\s+/).map(w => w[0]).join("").slice(0, 2).toUpperCase());
     $("#c-url").textContent = `app.wildmethod.app/${slug()}/${urls[cScreen]}`;
@@ -926,16 +816,14 @@ footer .meta { display: flex; flex-direction: column; gap: 2px; text-align: righ
 
   /* ---------- guided tour ---------- */
   const steps = [
-    { go: () => setCoach("dash"), spot: "kpis", t: "Your whole gym at a glance", x: "Coaches open the dashboard and see how the week is going: workouts logged, adherence and nutrition check-ins, updated as members train.", y: "Scroll the dashboard and check the live activity feed." },
-    { go: () => setCoach("dash"), spot: "attention", t: "Know who needs a nudge", x: "Wild Method flags members who stop checking in, miss workouts or drift off their nutrition targets, before they cancel.", y: "Tap “Send nudge” on Tom, Aisha or Diego.", k: "nudge" },
-    { go: () => setCoach("program"), spot: "assign", t: "Build once, assign in seconds", x: "Programs are templates with sets, reps and loads that progress week to week. Assign them to one member or fifty.", y: "Switch weeks, pick a few members and tap “Assign program”.", k: "assign" },
-    { go: () => setCoach("profile"), spot: "addons", t: "Every test in one profile", x: "Add-ons plug into the member profile: ISAK anthropometry, My Jump Lab jump tests, Pitchero GPS sessions and scheduled assessments.", y: "Open “Members” and tap any member, or browse “Add-ons”." },
-    { go: () => setTab("today"), spot: "today", t: "Members know what to do today", x: "Now the member side. Every member opens the app and sees today's workout, their nutrition and a message from their coach.", y: "Tap “Start workout”." },
-    { go: () => setTab("train"), spot: "sets", t: "Log sets as they train", x: "Members tick off each set and adjust the weight. The coach sees it live, and new personal records are flagged automatically.", y: "Tick the sets, and finish the last squat set for a PR.", k: "set" },
-    { go: () => setTab("eat"), spot: "meals", t: "Nutrition next to training", x: "Each member gets a personal plan with daily calories and macros. Logging a meal takes one tap.", y: "Log the snack or dinner and watch the macros fill up.", k: "meal" },
-    { go: () => setTab("progress"), spot: "chart", t: "Progress they can see", x: "Strength, body weight, body composition and jump tests over time. Visible progress keeps members coming back.", y: "Switch between Squat, Weight, Body fat and Jump.", k: "metric" },
-    { go: () => setTab("coach"), spot: "chat", t: "The coach in their pocket", x: "Chat lives inside the app, next to the plan, so feedback isn't lost in personal WhatsApp groups.", y: "Tap a quick reply or type a message to Coach Martín.", k: "chat" },
-    { go: () => setTab("today"), spot: "phone", t: "Your brand, not ours", x: "Members see your gym's name and colors. Try it now: pick a color and type your gym's name.", y: "Pick a color, then switch to “Coach dashboard” to see it there too.", brand: true, k: "brand" }
+    { go: () => setCoach("dash"), spot: "quick", t: "Your day, in one screen", x: "Open Wild Method and everything starts here: your clients, programs, assessments and add-ons, one tap away.", y: "Tap any shortcut, then come back to Dashboard." },
+    { go: () => setCoach("dash"), spot: "attention", t: "Know what needs you", x: "Blocks that are ending, assessments that are due and new GPS sessions to review show up on their own, so no client slips through.", y: "Tap “Assign block” or “Schedule”.", k: "nudge" },
+    { go: () => setCoach("members"), spot: "table", t: "All your clients, one list", x: "See every client's program, where they are in it and their next assessment, whether you train 5 or 50.", y: "Tap any client to open their profile.", k: "open" },
+    { go: () => setCoach("program"), spot: "assign", t: "Build once, assign in seconds", x: "Programs are templates with sets, reps and loads that progress week to week. Assign one to a single client or to many at once.", y: "Switch weeks, pick a few clients and tap “Assign program”.", k: "assign" },
+    { go: () => setCoach("profile"), spot: "addons", t: "Every test in one profile", x: "Each client profile holds their ISAK anthropometry, My Jump Lab jump tests, Pitchero GPS sessions and scheduled assessments.", y: "Scroll the profile, or open “Add-ons” in the menu." },
+    { go: () => setTab("today"), spot: "today", t: "Your client knows what to do today", x: "Now the client side. Your client opens the app and sees today's session, their week and their next assessment.", y: "Tap “Start workout”." },
+    { go: () => setTab("train"), spot: "sets", t: "They log, you see it", x: "Clients tick off each set and adjust the load. Everything lands in their profile, and new personal records are flagged.", y: "Tick the sets, and finish the last squat set for a PR.", k: "set" },
+    { go: () => setTab("today"), spot: "phone", t: "Your brand, not ours", x: "Clients see your coaching brand: your name and your color. Try it now.", y: "Pick a color, then switch to “Trainer dashboard” to see it there too.", brand: true, k: "brand" }
   ];
   let cur = 0, touring = false;
   const dots = $("#t-dots");
