@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wild Method Demo</title>
+<meta name="description" content="Take a 2-minute interactive tour of Wild Method, the training platform for personal trainers. Based in Dubai, UAE.">
+<meta property="og:title" content="Wild Method · Interactive demo">
+<meta property="og:description" content="Click through the trainer dashboard and the client app. Programs, client profiles and assessments in one platform.">
+<meta property="og:image" content="../assets/og.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232453FF'/%3E%3Cpath d='M12 34 L31 76 L50 46 L69 76 L88 20' fill='none' stroke='white' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap">
+<style>
+:root {
+  --white: #FFFFFF; --blue: #2453FF; --blue-deep: #1A3FD6; --sky: #9FD3FF; --mist: #EEF6FF;
+  --navy: #0B1B3A; --muted: #55627D; --line: #DCE6F5; --ok: #12A36B; --warn: #E8833A;
+  --accent: #2453FF; --accent-soft: #9FD3FF; --accent-mist: #EEF6FF;
+  --sans: "Inter Tight", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif: "Instrument Serif", Georgia, serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before { transition: none !important; animation: none !important; } }
+body { margin: 0; background: var(--white); color: var(--navy); font-family: var(--sans); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; }
+button { font-family: inherit; color: inherit; }
+em.s { font-family: var(--serif); font-style: italic; font-weight: 400; }
+h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: -0.035em; line-height: 1.05; text-wrap: balance; }
+p { margin: 0; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.eyebrow { font-size: .76rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5em; padding: .85em 1.4em; border-radius: 999px; font-weight: 600; font-size: .98rem; text-decoration: none; border: 0; cursor: pointer; transition: transform .15s ease, background .15s ease, opacity .15s; white-space: nowrap; }
+.btn:hover { transform: translateY(-1px); }
+.btn:focus-visible, a:focus-visible, button:focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; }
+.btn-blue { background: var(--blue); color: #fff; } .btn-blue:hover { background: var(--blue-deep); }
+.btn-white { background: #fff; color: var(--blue); }
+.btn-ghost { background: transparent; color: var(--navy); box-shadow: inset 0 0 0 1.5px var(--navy); }
+.btn-ghost-light { background: transparent; color: #fff; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.6); }
+.btn-sm { padding: .55em 1em; font-size: .86rem; }
+.wa-ico { width: 1.1em; height: 1.1em; fill: currentColor; }
+
+/* ---------- top nav + hero ---------- */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--blue); }
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 29; background: var(--blue); color: #fff; }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 14px; }
+.logo { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; font-size: 1.2rem; letter-spacing: -0.04em; }
+.logo svg { width: 28px; height: 28px; } .logo b { font-weight: 700; } .logo .m { font-weight: 400; }
+.logo .tag { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; background: rgba(255,255,255,.16); padding: 3px 8px; border-radius: 999px; margin-left: 4px; }
+.nav-r { display: flex; gap: 10px; align-items: center; }
+.nav-r .back { font-size: .92rem; opacity: .85; text-decoration: none; }
+@media (max-width: 620px) { .nav-r .back { display: none; } .logo .tag { display: none; } }
+
+.hero { background: var(--blue); color: #fff; }
+.hero .wrap { padding-block: 44px 52px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: end; }
+.hero h1 { font-size: clamp(2.4rem, 6vw, 4.6rem); }
+.hero h1 em.s { color: var(--sky); }
+.hero .lead { font-size: 1.12rem; color: rgba(255,255,255,.88); max-width: 34em; margin-top: 18px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.hero-facts { display: grid; gap: 10px; }
+.fact { display: flex; gap: 12px; align-items: center; background: rgba(255,255,255,.1); border-radius: 16px; padding: 12px 14px; font-size: .95rem; }
+.fact b { display: block; } .fact span { color: rgba(255,255,255,.75); font-size: .85rem; }
+.fact i { flex: none; width: 34px; height: 34px; border-radius: 10px; background: #fff; color: var(--blue); display: grid; place-items: center; font-style: normal; font-weight: 700; }
+@media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; padding-block: 32px 36px; gap: 26px; } }
+
+/* ---------- demo section ---------- */
+.demo { background: var(--mist); padding-block: 36px 56px; scroll-margin-top: 60px; }
+.demo-grid { display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 28px; align-items: start; }
+@media (max-width: 980px) { .demo-grid { grid-template-columns: 1fr; } }
+
+.modes { display: flex; gap: 6px; background: #fff; padding: 5px; border-radius: 999px; box-shadow: 0 1px 0 var(--line); width: max-content; max-width: 100%; margin: 0 auto 18px; }
+.modes button { border: 0; background: transparent; padding: .6em 1.15em; border-radius: 999px; font-weight: 600; font-size: .92rem; cursor: pointer; color: var(--muted); }
+.modes button.on { background: var(--navy); color: #fff; }
+
+/* tour panel */
+.tour { position: sticky; top: 84px; background: #fff; border-radius: 24px; padding: 22px; box-shadow: 0 20px 50px rgba(11,27,58,.08); display: flex; flex-direction: column; gap: 14px; }
+.tour .stepno { display: flex; justify-content: space-between; align-items: center; font-size: .78rem; font-weight: 600; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
+.tour .skip { background: none; border: 0; font-size: .82rem; color: var(--muted); cursor: pointer; text-decoration: underline; padding: 0; letter-spacing: 0; text-transform: none; font-weight: 500; }
+.tbar { height: 4px; background: var(--mist); border-radius: 4px; overflow: hidden; }
+.tbar i { display: block; height: 100%; width: 10%; background: var(--blue); border-radius: 4px; transition: width .35s ease; }
+.tour h3 { font-size: 1.55rem; }
+.tour p.txt { color: var(--muted); font-size: .98rem; }
+.tour .try { display: flex; gap: 10px; align-items: flex-start; background: var(--mist); border-radius: 14px; padding: 10px 12px; font-size: .9rem; }
+.tour .try b { color: var(--blue); flex: none; }
+.tour .ctrl { display: flex; gap: 8px; justify-content: space-between; align-items: center; }
+.tour .ctrl .btn-ghost { box-shadow: inset 0 0 0 1.5px var(--line); }
+.tour .dots { display: flex; gap: 5px; flex-wrap: wrap; }
+.tour .dots button { width: 8px; height: 8px; border-radius: 50%; border: 0; background: var(--line); padding: 0; cursor: pointer; }
+.tour .dots button.on { background: var(--blue); width: 20px; border-radius: 4px; }
+.swatches { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.swatches button { width: 34px; height: 34px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 0 0 1.5px var(--line); cursor: pointer; }
+.swatches button.on { box-shadow: 0 0 0 2.5px var(--navy); }
+.gymname { display: flex; gap: 8px; align-items: center; font-size: .88rem; color: var(--muted); }
+.gymname input { flex: 1; min-width: 0; font: inherit; color: var(--navy); border: 1.5px solid var(--line); border-radius: 10px; padding: 8px 10px; }
+.tour .cta-mini { border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+@media (max-width: 980px) {
+  .tour { position: fixed; z-index: 25; left: 8px; right: 8px; top: auto; bottom: calc(8px + env(safe-area-inset-bottom, 0px)); padding: 14px 16px; gap: 9px; border-radius: 20px; box-shadow: 0 -6px 40px rgba(11,27,58,.22); max-height: 46vh; overflow: auto; }
+  .tour h3 { font-size: 1.15rem; } .tour p.txt { font-size: .88rem; } .tour .try { font-size: .84rem; padding: 8px 10px; }
+  .tour .cta-mini, .tour .dots { display: none; }
+  .tour .try { display: none; }
+  .tour.min .txt, .tour.min .brandctl { display: none; }
+  body:not(.touring) .tour { display: none; }
+  body.touring { padding-bottom: 230px; }
+  .demo .modes { margin-bottom: 10px; }
+  .screen { height: max(430px, calc(100svh - 340px)) !important; }
+  .capp { height: max(460px, calc(100svh - 360px)) !important; }
+  .disclaimer { display: none; }
+}
+
+/* stage */
+.stage { min-width: 0; display: flex; flex-direction: column; align-items: center; }
+.disclaimer { font-size: .78rem; color: var(--muted); margin-top: 12px; text-align: center; }
+
+/* spotlight */
+.spot { position: relative; z-index: 3; border-radius: 14px; animation: spot 1.8s ease-in-out infinite; }
+@keyframes spot { 0%,100% { box-shadow: 0 0 0 3px var(--accent), 0 0 0 7px rgba(36,83,255,.18); } 50% { box-shadow: 0 0 0 3px var(--accent), 0 0 0 12px rgba(36,83,255,.05); } }
+
+/* ---------- coach browser frame ---------- */
+.browser { width: 100%; max-width: 900px; background: #fff; border-radius: 18px; box-shadow: 0 30px 70px rgba(11,27,58,.14); overflow: hidden; border: 1px solid var(--line); }
+.bbar { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: #F6F9FE; border-bottom: 1px solid var(--line); }
+.bbar .lights { display: flex; gap: 6px; } .bbar .lights i { width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
+.bbar .url { flex: 1; min-width: 0; background: #fff; border: 1px solid var(--line); border-radius: 8px; font-size: .76rem; color: var(--muted); padding: 5px 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.capp { display: grid; grid-template-columns: 190px minmax(0, 1fr); height: 600px; }
+.side { background: var(--navy); color: rgba(255,255,255,.75); padding: 16px 12px; display: flex; flex-direction: column; gap: 4px; font-size: .88rem; }
+.side .gym { display: flex; align-items: center; gap: 9px; color: #fff; font-weight: 700; letter-spacing: -0.02em; padding: 4px 6px 14px; }
+.gymlogo { flex: none; width: 30px; height: 30px; border-radius: 9px; background: var(--accent); display: grid; place-items: center; color: #fff; font-weight: 700; font-size: .8rem; }
+.side button { display: flex; align-items: center; gap: 10px; background: none; border: 0; color: inherit; text-align: left; padding: 9px 10px; border-radius: 10px; cursor: pointer; font-size: .88rem; }
+.side button svg { width: 17px; height: 17px; flex: none; }
+.side button:hover { background: rgba(255,255,255,.06); }
+.side button.on { background: rgba(255,255,255,.12); color: #fff; font-weight: 600; }
+.side .pw { margin-top: auto; font-size: .7rem; opacity: .6; padding: 6px; }
+.cmain { overflow: auto; padding: 22px 24px 28px; background: #FAFCFF; display: flex; flex-direction: column; gap: 16px; position: relative; }
+.chead { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
+.chead h2 { font-size: 1.55rem; } .chead p { color: var(--muted); font-size: .88rem; margin-top: 4px; }
+.card { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; }
+.card h4 { font-size: .98rem; letter-spacing: -0.02em; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.kpi .k { font-size: .72rem; color: var(--muted); }
+.kpi .v { font-size: 1.6rem; font-weight: 600; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.kpi .d { font-size: .72rem; font-weight: 600; color: var(--ok); }
+.kpi.alert .v { color: var(--warn); }
+.two { display: grid; grid-template-columns: 1.15fr .85fr; gap: 12px; }
+.att { display: flex; flex-direction: column; gap: 2px; margin-top: 8px; }
+.att .row { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid var(--line); font-size: .84rem; }
+.av { flex: none; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: .78rem; background: var(--accent-soft); color: var(--navy); }
+.av.n { background: var(--navy); color: var(--sky); }
+.att .who { flex: 1; min-width: 0; } .att .who b { display: block; } .att .who span { color: var(--muted); font-size: .76rem; }
+.nudge { border: 0; background: var(--accent); color: #fff; font-weight: 600; font-size: .76rem; padding: 6px 12px; border-radius: 999px; cursor: pointer; white-space: nowrap; }
+.nudge.sent { background: var(--mist); color: var(--ok); cursor: default; }
+.feed { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; font-size: .8rem; }
+.feed li { display: flex; gap: 8px; padding: 7px 0; border-top: 1px solid var(--line); color: var(--muted); }
+.feed li b { color: var(--navy); font-weight: 600; } .feed .t { margin-left: auto; white-space: nowrap; font-size: .72rem; }
+.tbl { width: 100%; border-collapse: collapse; font-size: .82rem; margin-top: 6px; }
+.tbl th { text-align: left; font-size: .7rem; font-weight: 600; color: var(--muted); padding: 6px 8px; text-transform: uppercase; letter-spacing: .06em; }
+.tbl td { padding: 9px 8px; border-top: 1px solid var(--line); vertical-align: middle; }
+.tbl tr.clk { cursor: pointer; } .tbl tr.clk:hover td { background: var(--mist); }
+.tbl .nm { display: flex; align-items: center; gap: 8px; font-weight: 600; } .tbl .nm .av { width: 26px; height: 26px; font-size: .68rem; }
+.adh { display: flex; align-items: center; gap: 8px; font-variant-numeric: tabular-nums; }
+.adh .bar { width: 70px; }
+.bar { height: 6px; background: var(--mist); border-radius: 6px; overflow: hidden; flex: none; }
+.bar i { display: block; height: 100%; background: var(--accent); border-radius: 6px; transition: width .5s ease; }
+.bar.low i { background: var(--warn); }
+.chip { display: inline-flex; align-items: center; gap: 4px; font-size: .72rem; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: var(--mist); color: var(--muted); }
+.chip.blue { background: var(--accent-mist); color: var(--accent); }
+.hide-s { }
+.quick-acc { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 16px; }
+.quick-acc button { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 14px; cursor: pointer; font-size: .9rem; transition: border-color .15s, transform .15s; }
+.quick-acc button:hover { border-color: var(--accent); transform: translateY(-1px); }
+.quick-acc .qi { width: 34px; height: 34px; border-radius: 10px; background: var(--accent-mist); color: var(--accent); display: grid; place-items: center; margin-bottom: 8px; }
+.quick-acc .qi svg { width: 18px; height: 18px; }
+.quick-acc button > span:last-child { font-size: .74rem; color: var(--muted); }
+@media (max-width: 760px) { .quick-acc { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.wk-list { display: flex; flex-direction: column; font-size: .74rem; }
+.wk-list div { display: flex; justify-content: space-between; padding: 6px 0; border-top: 1px solid var(--line); }
+.wk-list div span:last-child { color: var(--muted); }
+.wk-list .done span:last-child { color: var(--ok); font-weight: 600; }
+.wk-list .now { font-weight: 600; } .wk-list .now span:last-child { color: var(--accent); }
+.tabbar.two { grid-template-columns: repeat(2, 1fr); }
+/* program */
+.weeks { display: flex; gap: 6px; flex-wrap: wrap; }
+.weeks button { border: 1px solid var(--line); background: #fff; border-radius: 999px; padding: 5px 12px; font-size: .78rem; font-weight: 600; cursor: pointer; color: var(--muted); }
+.weeks button.on { background: var(--navy); border-color: var(--navy); color: #fff; }
+.days { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.day h5 { margin: 0 0 6px; font-size: .86rem; display: flex; justify-content: space-between; gap: 6px; }
+.day h5 span { color: var(--muted); font-weight: 500; font-size: .74rem; }
+.exl { list-style: none; margin: 0; padding: 0; font-size: .78rem; }
+.exl li { display: flex; justify-content: space-between; gap: 6px; padding: 6px 0; border-top: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+.exl li span:last-child { color: var(--muted); white-space: nowrap; }
+.assign { display: flex; flex-direction: column; gap: 10px; }
+.picks { display: flex; flex-wrap: wrap; gap: 6px; }
+.picks button { display: inline-flex; align-items: center; gap: 6px; border: 1.5px solid var(--line); background: #fff; border-radius: 999px; padding: 4px 10px 4px 4px; font-size: .8rem; cursor: pointer; }
+.picks button .av { width: 22px; height: 22px; font-size: .62rem; }
+.picks button.on { border-color: var(--accent); background: var(--accent-mist); color: var(--accent); font-weight: 600; }
+.assign .row-b { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; font-size: .82rem; color: var(--muted); }
+.abtn { border: 0; background: var(--accent); color: #fff; font-weight: 600; font-size: .86rem; padding: 9px 16px; border-radius: 999px; cursor: pointer; }
+.abtn:disabled { opacity: .45; cursor: default; }
+/* profile */
+.phead { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.phead .av { width: 52px; height: 52px; font-size: 1.05rem; }
+.phead h2 { font-size: 1.45rem; } .phead p { color: var(--muted); font-size: .84rem; }
+.phead .chips { margin-left: auto; display: flex; gap: 6px; flex-wrap: wrap; }
+.addons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.addon { display: flex; flex-direction: column; gap: 10px; }
+.addon .top { display: flex; justify-content: space-between; align-items: center; gap: 8px; min-height: 34px; }
+.addon .top img { height: 30px; width: auto; max-width: 60%; object-fit: contain; border-radius: 6px; }
+.addon .top .gen { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: .9rem; }
+.addon .top .gen i { width: 30px; height: 30px; border-radius: 9px; background: var(--accent-mist); color: var(--accent); display: grid; place-items: center; }
+.addon .top .gen svg { width: 17px; height: 17px; }
+.addon h5 { margin: 0; font-size: .86rem; }
+.mets { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.met { background: var(--mist); border-radius: 10px; padding: 7px 9px; }
+.met .k { font-size: .64rem; color: var(--muted); line-height: 1.2; }
+.met .v { font-weight: 700; font-size: .95rem; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.met .d { font-size: .64rem; font-weight: 600; color: var(--ok); }
+.retest { display: flex; flex-direction: column; gap: 6px; font-size: .8rem; }
+.retest div { display: flex; justify-content: space-between; gap: 8px; padding: 6px 0; border-top: 1px solid var(--line); }
+.retest div span:last-child { color: var(--muted); }
+.toast { position: absolute; left: 50%; bottom: 18px; transform: translate(-50%, 20px); background: var(--navy); color: #fff; font-size: .84rem; font-weight: 500; padding: 10px 16px; border-radius: 12px; opacity: 0; pointer-events: none; transition: all .3s ease; z-index: 6; white-space: nowrap; max-width: 92%; overflow: hidden; text-overflow: ellipsis; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+@media (max-width: 760px) {
+  .capp { grid-template-columns: 1fr; grid-template-rows: auto minmax(0, 1fr); height: 640px; }
+  .side { flex-direction: row; overflow-x: auto; padding: 8px; gap: 4px; scrollbar-width: none; }
+  .side .gym, .side .pw { display: none; }
+  .side button { flex: none; padding: 7px 10px; font-size: .8rem; }
+  .side button svg { display: none; }
+  .cmain { padding: 16px 14px 24px; }
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .two, .days, .addons { grid-template-columns: 1fr; }
+  .hide-s { display: none; }
+  .bbar .lights { display: none; }
+}
+
+/* ---------- member phone ---------- */
+.device { position: relative; width: 340px; max-width: 100%; }
+.phone { background: var(--navy); border-radius: 50px; padding: 11px; box-shadow: 0 40px 80px rgba(11,27,58,.3); }
+.screen { background: #fff; border-radius: 40px; height: 690px; display: flex; flex-direction: column; overflow: hidden; position: relative; font-size: .82rem; }
+.status { display: flex; justify-content: space-between; align-items: center; font-size: .72rem; font-weight: 600; padding: 12px 24px 6px; font-variant-numeric: tabular-nums; flex: none; }
+.status .notch { width: 86px; height: 24px; background: var(--navy); border-radius: 999px; }
+.status .sig { display: flex; align-items: flex-end; gap: 2px; }
+.status .sig i { width: 3px; background: var(--navy); border-radius: 1px; }
+.status .sig i:nth-child(1) { height: 5px; } .status .sig i:nth-child(2) { height: 7px; } .status .sig i:nth-child(3) { height: 9px; }
+.status .sig b { width: 18px; height: 9px; border: 1.5px solid var(--navy); border-radius: 3px; margin-left: 4px; background: linear-gradient(90deg, var(--navy) 70%, transparent 70%); }
+.mbody { flex: 1; overflow: auto; padding: 6px 14px 14px; display: flex; flex-direction: column; gap: 10px; scrollbar-width: none; }
+.mbody::-webkit-scrollbar { display: none; }
+.mhead { display: flex; justify-content: space-between; align-items: center; padding: 2px 4px; }
+.mhead .day { font-size: .68rem; color: var(--muted); }
+.mhead .hi { font-size: 1.3rem; font-weight: 600; letter-spacing: -0.03em; line-height: 1.15; }
+.mhead .gb { display: flex; align-items: center; gap: 6px; font-size: .66rem; font-weight: 700; color: var(--muted); }
+.mhead .gb .gymlogo { width: 26px; height: 26px; font-size: .66rem; border-radius: 8px; }
+.week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.week .d { text-align: center; font-size: .64rem; font-weight: 600; padding: 5px 0; border-radius: 9px; background: var(--mist); color: var(--muted); }
+.week .done { background: var(--accent-soft); color: var(--navy); }
+.week .today { background: var(--accent); color: #fff; }
+.tile { border-radius: 18px; padding: 12px 13px; background: var(--accent-mist); display: flex; flex-direction: column; gap: 7px; }
+.rb { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.tile .k { font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.tile.work { background: var(--accent); color: #fff; }
+.tile.work .k { color: rgba(255,255,255,.78); }
+.pill { font-size: .62rem; font-weight: 600; background: rgba(255,255,255,.2); padding: 2px 8px; border-radius: 999px; }
+.tile .t { font-size: 1.05rem; font-weight: 600; letter-spacing: -0.02em; }
+.ex { list-style: none; margin: 0; padding: 0; }
+.ex li { display: flex; justify-content: space-between; gap: 8px; padding: 5px 0; border-top: 1px solid rgba(255,255,255,.2); font-size: .72rem; font-variant-numeric: tabular-nums; }
+.ex li span:last-child { opacity: .85; }
+.go { border: 0; background: #fff; color: var(--accent); border-radius: 999px; padding: 8px 14px; font-weight: 600; font-size: .78rem; cursor: pointer; margin-top: 2px; }
+.kcal { font-size: .68rem; color: var(--muted); font-variant-numeric: tabular-nums; } .kcal b { color: var(--navy); font-size: .86rem; }
+.macros { display: flex; flex-direction: column; gap: 6px; }
+.macros > div { display: grid; grid-template-columns: 48px minmax(0,1fr) 72px; align-items: center; gap: 8px; font-size: .66rem; }
+.macros em { font-style: normal; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+.macros .bar { background: #fff; }
+.up { font-size: .66rem; font-weight: 700; color: var(--accent); }
+.msgprev { display: flex; gap: 10px; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 10px 12px; cursor: pointer; text-align: left; width: 100%; font-size: .74rem; }
+.msgprev b { display: block; font-size: .78rem; } .msgprev span { color: var(--muted); }
+.tabbar { flex: none; display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--line); padding: 8px 6px 16px; background: #fff; }
+.tabbar button { display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: .58rem; color: var(--muted); background: none; border: 0; cursor: pointer; padding: 2px 0; }
+.tabbar svg, .side svg, .ico { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.tabbar svg { width: 20px; height: 20px; }
+.tabbar .on { color: var(--accent); font-weight: 700; }
+/* train */
+.wtop { display: flex; flex-direction: column; gap: 4px; padding: 2px 4px; }
+.wtop .t { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.03em; }
+.wprog { display: flex; align-items: center; gap: 8px; font-size: .68rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.wprog .bar { flex: 1; }
+.exc { border: 1px solid var(--line); border-radius: 16px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; }
+.exc h5 { margin: 0; font-size: .86rem; display: flex; justify-content: space-between; gap: 6px; }
+.exc h5 span { font-size: .66rem; color: var(--muted); font-weight: 500; }
+.set { display: grid; grid-template-columns: 22px 1fr auto 30px; align-items: center; gap: 8px; font-size: .74rem; padding: 4px 0; font-variant-numeric: tabular-nums; }
+.set .n { color: var(--muted); font-weight: 600; }
+.set .kg { display: inline-flex; align-items: center; gap: 4px; }
+.set .kg button { width: 22px; height: 22px; border-radius: 7px; border: 1px solid var(--line); background: #fff; cursor: pointer; font-weight: 700; line-height: 1; padding: 0; color: var(--navy); }
+.set .kg b { min-width: 44px; text-align: center; }
+.set .chk { width: 28px; height: 28px; border-radius: 9px; border: 1.5px solid var(--line); background: #fff; cursor: pointer; display: grid; place-items: center; padding: 0; color: transparent; }
+.set .chk svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 3; }
+.set.done .chk { background: var(--accent); border-color: var(--accent); color: #fff; }
+.set.done .r { color: var(--muted); text-decoration: line-through; }
+.pr { display: inline-block; font-size: .6rem; font-weight: 700; color: #fff; background: var(--ok); border-radius: 6px; padding: 1px 5px; margin-left: 4px; text-decoration: none; }
+.finish { border: 0; background: var(--navy); color: #fff; font-weight: 600; padding: 11px; border-radius: 999px; cursor: pointer; font-size: .82rem; }
+/* eat */
+.ring { display: flex; align-items: center; gap: 14px; }
+.ring svg { width: 92px; height: 92px; flex: none; transform: rotate(-90deg); }
+.ring .lbl b { display: block; font-size: 1.4rem; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.ring .lbl span { font-size: .7rem; color: var(--muted); }
+.meal { display: flex; align-items: center; gap: 10px; border: 1px solid var(--line); border-radius: 14px; padding: 9px 10px; }
+.meal .e { width: 34px; height: 34px; border-radius: 10px; background: var(--mist); display: grid; place-items: center; font-size: 1.05rem; flex: none; }
+.meal .w { flex: 1; min-width: 0; } .meal .w b { display: block; font-size: .8rem; } .meal .w span { font-size: .66rem; color: var(--muted); }
+.meal button { border: 0; background: var(--accent); color: #fff; font-weight: 600; font-size: .7rem; padding: 6px 11px; border-radius: 999px; cursor: pointer; }
+.meal.logged button { background: var(--mist); color: var(--ok); cursor: default; }
+/* progress */
+.seg { display: flex; background: var(--mist); padding: 3px; border-radius: 999px; gap: 2px; }
+.seg button { flex: 1; border: 0; background: transparent; font-size: .7rem; font-weight: 600; padding: 6px 4px; border-radius: 999px; cursor: pointer; color: var(--muted); }
+.seg button.on { background: #fff; color: var(--navy); box-shadow: 0 1px 3px rgba(11,27,58,.12); }
+.chart { border: 1px solid var(--line); border-radius: 18px; padding: 12px; }
+.chart .big { font-size: 1.7rem; font-weight: 600; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.chart .big small { font-size: .8rem; color: var(--muted); font-weight: 500; }
+.chart svg { width: 100%; height: 150px; display: block; margin-top: 6px; overflow: visible; }
+.chart .xl { display: flex; justify-content: space-between; font-size: .6rem; color: var(--muted); margin-top: 4px; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.stats div { background: var(--mist); border-radius: 12px; padding: 8px; }
+.stats b { display: block; font-size: .95rem; letter-spacing: -0.02em; } .stats span { font-size: .62rem; color: var(--muted); }
+/* chat */
+.chathead { display: flex; align-items: center; gap: 10px; padding: 2px 4px 8px; border-bottom: 1px solid var(--line); }
+.chathead b { display: block; font-size: .88rem; } .chathead span { font-size: .66rem; color: var(--ok); }
+.msgs { display: flex; flex-direction: column; gap: 6px; }
+.bub { max-width: 82%; padding: 8px 11px; border-radius: 16px; font-size: .76rem; line-height: 1.4; animation: pop .25s ease; }
+@keyframes pop { from { transform: translateY(6px); opacity: 0; } }
+.bub.c { background: var(--mist); align-self: flex-start; border-bottom-left-radius: 5px; }
+.bub.m { background: var(--accent); color: #fff; align-self: flex-end; border-bottom-right-radius: 5px; }
+.bub .ts { display: block; font-size: .58rem; opacity: .6; margin-top: 2px; }
+.bub.img { padding: 6px; }
+.bub.img .ph { background: #fff; border-radius: 11px; padding: 9px; font-size: .7rem; color: var(--navy); }
+.typing { align-self: flex-start; background: var(--mist); border-radius: 16px; padding: 10px 12px; display: flex; gap: 4px; }
+.typing i { width: 6px; height: 6px; border-radius: 50%; background: var(--muted); animation: blink 1s infinite; }
+.typing i:nth-child(2) { animation-delay: .15s; } .typing i:nth-child(3) { animation-delay: .3s; }
+@keyframes blink { 50% { opacity: .25; } }
+.quick { display: flex; gap: 6px; flex-wrap: wrap; }
+.quick button { border: 1.5px solid var(--accent); color: var(--accent); background: #fff; border-radius: 999px; padding: 5px 10px; font-size: .7rem; font-weight: 600; cursor: pointer; }
+.compose { flex: none; display: flex; gap: 6px; padding: 8px 12px; border-top: 1px solid var(--line); }
+.compose input { flex: 1; min-width: 0; font: inherit; font-size: .78rem; border: 1px solid var(--line); border-radius: 999px; padding: 8px 12px; }
+.compose button { border: 0; background: var(--accent); color: #fff; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; display: grid; place-items: center; flex: none; }
+.compose svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.mtoast { position: absolute; left: 12px; right: 12px; top: 46px; background: var(--navy); color: #fff; border-radius: 14px; padding: 10px 12px; font-size: .74rem; z-index: 5; opacity: 0; transform: translateY(-10px); transition: all .3s ease; pointer-events: none; }
+.mtoast.show { opacity: 1; transform: none; }
+@media (max-width: 420px) { .screen { height: 620px; } .phone { border-radius: 44px; padding: 9px; } .screen { border-radius: 36px; } }
+
+/* ---------- finale ---------- */
+.finale { position: fixed; inset: 0; z-index: 40; background: rgba(11,27,58,.55); display: grid; place-items: center; padding: 16px; backdrop-filter: blur(4px); }
+.finale .box { background: #fff; border-radius: 26px; max-width: 520px; width: 100%; padding: 30px 26px; display: flex; flex-direction: column; gap: 16px; animation: pop .3s ease; }
+.finale h2 { font-size: clamp(1.9rem, 5vw, 2.6rem); } .finale h2 em.s { color: var(--blue); }
+.finale p { color: var(--muted); }
+.finale ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: .95rem; }
+.finale li { display: flex; gap: 10px; } .finale li::before { content: "✓"; color: var(--blue); font-weight: 700; }
+.finale .acts { display: flex; flex-wrap: wrap; gap: 8px; }
+.finale .close { align-self: flex-start; background: none; border: 0; color: var(--muted); text-decoration: underline; cursor: pointer; font-size: .88rem; padding: 0; }
+
+/* ---------- below demo ---------- */
+.why { padding-block: 80px; }
+.why .head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 36px; }
+.why h2 { font-size: clamp(2rem, 4.4vw, 3.3rem); }
+.why .head p { color: var(--muted); max-width: 30em; }
+.wgrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.wcard { border: 1px solid var(--line); border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 8px; }
+.wcard .n { font-size: 2rem; font-weight: 600; letter-spacing: -0.04em; color: var(--blue); }
+.wcard p { color: var(--muted); font-size: .92rem; }
+@media (max-width: 900px) { .wgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .why { padding-block: 56px; } }
+@media (max-width: 520px) { .wgrid { grid-template-columns: 1fr; } }
+.cta { background: var(--sky); padding-block: 88px; }
+.cta .wrap { display: flex; flex-direction: column; gap: 22px; align-items: flex-start; }
+.cta h2 { font-size: clamp(2.4rem, 6vw, 4.6rem); }
+.cta .lead { font-size: 1.1rem; max-width: 34em; }
+.cta .acts { display: flex; flex-wrap: wrap; gap: 10px; }
+.cta .alt { font-size: .92rem; opacity: .8; }
+.cta .alt code { font-family: var(--sans); font-weight: 600; background: rgba(255,255,255,.55); padding: 2px 8px; border-radius: 6px; }
+footer { background: var(--navy); color: rgba(255,255,255,.7); font-size: .86rem; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; padding-block: 28px; }
+footer .logo { color: #fff; }
+footer .meta { display: flex; flex-direction: column; gap: 2px; text-align: right; }
+@media (max-width: 620px) { footer .meta { text-align: left; } }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9H3z"/></symbol>
+  <symbol id="i-train" viewBox="0 0 24 24"><path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12"/></symbol>
+  <symbol id="i-eat" viewBox="0 0 24 24"><path d="M12 3c4 3 6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 2-7 6-10z"/></symbol>
+  <symbol id="i-prog" viewBox="0 0 24 24"><path d="M3 18l6-6 4 4 8-9"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18.5 14.8c1.6.8 2.6 2.5 3 5.2"/></symbol>
+  <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0zM12 17v4"/></symbol>
+  <symbol id="i-clip" viewBox="0 0 24 24"><path d="M9 4h6v3H9z"/><path d="M7 5H5v15h14V5h-2"/><path d="M9 13l2 2 4-4"/></symbol>
+</svg>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="../" aria-label="Wild Method home">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M12 34 L31 76 L50 46 L69 76 L88 20" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span><b>wild</b> <span class="m">method</span></span><span class="tag">Live demo</span>
+    </a>
+    <div class="nav-r">
+      <a class="back" href="../">← Back to site</a>
+      <a class="btn btn-white btn-sm js-book" href="https://ig.me/m/wildmethod.app" target="_blank" rel="noopener">Book a demo</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow" style="color:var(--sky)">Interactive demo · 2 minutes</span>
+        <h1 style="margin-top:14px">Try it <em class="s">before</em> you talk to us.</h1>
+        <p class="lead">Click through Wild Method the way a personal trainer and their clients would. Build a program, assign it, open a client profile with GPS, jump and ISAK data, and log a session, all with sample data.</p>
+        <div class="hero-actions">
+          <a class="btn btn-white" href="#demo" id="start-tour">Start the guided tour →</a>
+          <a class="btn btn-ghost-light" href="#demo" id="explore">Explore freely</a>
+        </div>
+      </div>
+      <div class="hero-facts">
+        <div class="fact"><i>1</i><div><b>Trainer dashboard</b><span>Clients, programs, assessments</span></div></div>
+        <div class="fact"><i>2</i><div><b>Client app</b><span>Today's session, sets and loads</span></div></div>
+        <div class="fact"><i>3</i><div><b>Your brand</b><span>Your name and color, live</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="demo" id="demo">
+    <div class="wrap">
+      <div class="modes" role="tablist" aria-label="Demo view">
+        <button role="tab" data-mode="coach" class="on">Trainer dashboard</button>
+        <button role="tab" data-mode="member">Client app</button>
+      </div>
+      <div class="demo-grid">
+        <!-- TOUR PANEL -->
+        <aside class="tour" id="tour" aria-live="polite">
+          <div class="stepno"><span id="t-no">Step 1 of 8</span><button class="skip" id="t-min">Hide tips</button></div>
+          <div class="tbar"><i id="t-bar"></i></div>
+          <h3 id="t-title">Your day, in one screen</h3>
+          <p class="txt" id="t-text"></p>
+          <div class="try" id="t-try"><b>Try it</b><span id="t-try-txt"></span></div>
+          <div class="brandctl" id="t-brand" hidden>
+            <div class="swatches" id="swatches" aria-label="Brand color"></div>
+            <label class="gymname" style="margin-top:10px">Your brand <input id="gym-input" value="Martín Coaching" maxlength="22"></label>
+          </div>
+          <div class="ctrl">
+            <button class="btn btn-ghost btn-sm" id="t-prev">← Back</button>
+            <div class="dots" id="t-dots"></div>
+            <button class="btn btn-blue btn-sm" id="t-next">Next →</button>
+          </div>
+          <div class="cta-mini">
+            <a class="btn btn-ghost btn-sm js-book" href="https://ig.me/m/wildmethod.app" target="_blank" rel="noopener">Book a live demo</a>
+            <a class="btn btn-ghost btn-sm js-wa" href="#" target="_blank" rel="noopener"><svg class="wa-ico" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg>WhatsApp</a>
+          </div>
+        </aside>
+
+        <!-- STAGE -->
+        <div class="stage">
+          <!-- COACH -->
+          <div class="browser" id="coach" data-spot="coach">
+            <div class="bbar"><span class="lights"><i></i><i></i><i></i></span><span class="url" id="c-url">app.wildmethod.app/martincoaching/dashboard</span></div>
+            <div class="capp">
+              <nav class="side" aria-label="Coach sections">
+                <div class="gym"><span class="gymlogo js-gyminit">MC</span><span class="js-gymname">Martín Coaching</span></div>
+                <button data-c="dash" class="on"><svg><use href="#i-home"/></svg>Dashboard</button>
+                <button data-c="members"><svg><use href="#i-users"/></svg>Clients</button>
+                <button data-c="program"><svg><use href="#i-train"/></svg>Programs</button>
+                <button data-c="profile"><svg><use href="#i-clip"/></svg>Client profile</button>
+                <button data-c="addons"><svg><use href="#i-plug"/></svg>Add-ons</button>
+                <span class="pw">Powered by Wild Method</span>
+              </nav>
+              <div class="cmain" id="cmain">
+
+                <!-- Dashboard -->
+                <div class="cscreen" data-cs="dash">
+                  <div class="chead"><div><h2>Good morning, Martín</h2><p>Tuesday · Here's what needs you today.</p></div><span class="chip blue">24 active clients</span></div>
+                  <div class="quick-acc" data-spot="quick">
+                    <button data-q="members"><span class="qi"><svg class="ico"><use href="#i-users"/></svg></span><b>Clients</b><span>24 active</span></button>
+                    <button data-q="program"><span class="qi"><svg class="ico"><use href="#i-train"/></svg></span><b>Programs</b><span>Build &amp; assign</span></button>
+                    <button data-q="profile"><span class="qi"><svg class="ico"><use href="#i-clip"/></svg></span><b>Assessments</b><span>3 due this week</span></button>
+                    <button data-q="addons"><span class="qi"><svg class="ico"><use href="#i-plug"/></svg></span><b>Add-ons</b><span>GPS · Jump · ISAK</span></button>
+                  </div>
+                  <div class="card" data-spot="attention">
+                    <h4>Needs attention <span class="chip" id="att-left">3 to review</span></h4>
+                    <div class="att">
+                      <div class="row"><span class="av">TR</span><div class="who"><b>Tom Reyes</b><span>Program block ends Friday · next block not assigned</span></div><button class="nudge" data-act="Next block assigned to Tom" data-done="Assigned ✓">Assign block</button></div>
+                      <div class="row"><span class="av">SR</span><div class="who"><b>Sara Ruiz</b><span>ISAK retest due · last one 8 weeks ago</span></div><button class="nudge" data-act="ISAK retest scheduled for Sara" data-done="Scheduled ✓">Schedule</button></div>
+                      <div class="row"><span class="av">BC</span><div class="who"><b>Ben Carter</b><span>New Pitchero GPS session to review</span></div><button class="nudge" data-open="profile">Review</button></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Members -->
+                <div class="cscreen" data-cs="members" hidden>
+                  <div class="chead"><div><h2>Clients</h2><p>All your clients in one list. Tap one to open their profile.</p></div><span class="chip">24 active</span></div>
+                  <div class="card" style="margin-top:14px" data-spot="table">
+                    <table class="tbl">
+                      <thead><tr><th>Client</th><th class="hide-s">Program</th><th>Week</th><th class="hide-s">Next assessment</th></tr></thead>
+                      <tbody>
+                        <tr class="clk" data-open="profile"><td><span class="nm"><span class="av">LP</span>Lucy Park</span></td><td class="hide-s">Strength 12 wk</td><td>3 / 12</td><td class="hide-s">ISAK + jump · 12 Dec</td></tr>
+                        <tr class="clk" data-open="profile"><td><span class="nm"><span class="av">OH</span>Omar Haddad</span></td><td class="hide-s">Hypertrophy</td><td>7 / 10</td><td class="hide-s">1RM retest · 2 Dec</td></tr>
+                        <tr class="clk" data-open="profile"><td><span class="nm"><span class="av">SR</span>Sara Ruiz</span></td><td class="hide-s">Football pre-season</td><td>5 / 8</td><td class="hide-s"><span class="chip" style="color:var(--warn)">ISAK due</span></td></tr>
+                        <tr class="clk" data-open="profile"><td><span class="nm"><span class="av">BC</span>Ben Carter</span></td><td class="hide-s">Speed &amp; power</td><td>2 / 6</td><td class="hide-s">Jump test · 9 Dec</td></tr>
+                        <tr class="clk" data-open="profile"><td><span class="nm"><span class="av">MC</span>Mia Chen</span></td><td class="hide-s">Strength 12 wk</td><td>10 / 12</td><td class="hide-s">1RM retest · 16 Dec</td></tr>
+                        <tr class="clk" data-open="profile"><td><span class="nm"><span class="av">TR</span>Tom Reyes</span></td><td class="hide-s">Return to play</td><td>6 / 6</td><td class="hide-s"><span class="chip" style="color:var(--warn)">Block ends Fri</span></td></tr>
+                        <tr class="clk" data-open="profile"><td><span class="nm"><span class="av">AK</span>Aisha Khan</span></td><td class="hide-s">Hypertrophy</td><td>1 / 10</td><td class="hide-s">Mobility · 28 Nov</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <!-- Program -->
+                <div class="cscreen" data-cs="program" hidden>
+                  <div class="chead"><div><h2>Strength 12 weeks</h2><p>Template · 3 days a week · Loads progress week to week</p></div>
+                    <div class="weeks" id="weeks"><button>Wk 1</button><button>Wk 2</button><button class="on">Wk 3</button><button>Wk 4</button><button>Deload</button></div></div>
+                  <div class="days" style="margin-top:14px" id="days"></div>
+                  <div class="card assign" data-spot="assign">
+                    <h4>Assign this program</h4>
+                    <div class="picks" id="picks">
+                      <button><span class="av">OH</span>Omar</button><button><span class="av">SR</span>Sara</button><button><span class="av">BC</span>Ben</button><button><span class="av">AK</span>Aisha</button><button><span class="av">JL</span>Jake</button><button><span class="av">NP</span>Nina</button>
+                    </div>
+                    <div class="row-b"><span id="pick-note">Select clients. Loads adapt to each client's 1RM.</span><button class="abtn" id="assign-btn" disabled>Assign program</button></div>
+                  </div>
+                </div>
+
+                <!-- Profile -->
+                <div class="cscreen" data-cs="profile" hidden>
+                  <div class="phead"><span class="av">LP</span><div><h2>Lucy Park</h2><p>Client since Aug 2026 · Strength 12 wk · Week 3 of 12</p></div>
+                    <div class="chips"><span class="chip blue">Strength 12 wk</span><span class="chip">Next test · 12 Dec</span></div></div>
+                  <h4 style="margin-top:14px;font-size:1rem">Assessments &amp; add-ons</h4>
+                  <div class="addons" data-spot="addons">
+                    <div class="card addon">
+                      <div class="top"><img src="img/isak.png" alt="ISAK"><span class="chip blue">Add-on</span></div>
+                      <h5>ISAK anthropometry · 12 Nov</h5>
+                      <div class="mets"><div class="met"><div class="k">Σ 6 skinfolds</div><div class="v">61 mm</div><div class="d">−7 mm</div></div><div class="met"><div class="k">Body fat</div><div class="v">19.8%</div><div class="d">−2.6 pts</div></div><div class="met"><div class="k">Waist girth</div><div class="v">69.5 cm</div><div class="d">−3.0 cm</div></div></div>
+                    </div>
+                    <div class="card addon">
+                      <div class="top"><img src="img/myjumplab.png" alt="My Jump Lab"><span class="chip blue">Add-on</span></div>
+                      <h5>My Jump Lab · Jump tests</h5>
+                      <div class="mets"><div class="met"><div class="k">CMJ height</div><div class="v">34.8 cm</div><div class="d">+3.6 cm</div></div><div class="met"><div class="k">Squat jump</div><div class="v">31.2 cm</div><div class="d">+2.9 cm</div></div><div class="met"><div class="k">RSI</div><div class="v">1.84</div><div class="d">+0.21</div></div></div>
+                    </div>
+                    <div class="card addon">
+                      <div class="top"><img src="img/pitchero.png" alt="Pitchero"><span class="chip blue">Add-on</span></div>
+                      <h5>Pitchero GPS · Last session</h5>
+                      <div class="mets"><div class="met"><div class="k">Distance</div><div class="v">6.4 km</div><div class="d">+0.8 km</div></div><div class="met"><div class="k">Top speed</div><div class="v">27.1</div><div class="d" style="color:var(--muted)">km/h</div></div><div class="met"><div class="k">High-speed run</div><div class="v">420 m</div><div class="d">+65 m</div></div></div>
+                    </div>
+                    <div class="card addon">
+                      <div class="top"><span class="gen"><i><svg class="ico"><use href="#i-clip"/></svg></i>Assessments</span><span class="chip blue">Add-on</span></div>
+                      <div class="retest">
+                        <div><span>Mobility screen</span><span>Done · 4 Nov</span></div>
+                        <div><span>1RM retest</span><span>Due · 2 Dec</span></div>
+                        <div><span>ISAK + jump retest</span><span>Scheduled · 12 Dec</span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Add-ons catalogue -->
+                <div class="cscreen" data-cs="addons" hidden>
+                  <div class="chead"><div><h2>Add-ons</h2><p>Switch on what you need. Data lands in each client's profile.</p></div></div>
+                  <div class="addons" style="margin-top:14px">
+                    <div class="card addon"><div class="top"><img src="img/pitchero.png" alt="Pitchero"><button class="nudge js-toggle">Enabled</button></div><h5>Pitchero GPS tracker</h5><p style="font-size:.82rem;color:var(--muted)">GPS sessions in each client's profile. Distance, speed and load.</p></div>
+                    <div class="card addon"><div class="top"><img src="img/myjumplab.png" alt="My Jump Lab"><button class="nudge js-toggle">Enabled</button></div><h5>My Jump Lab</h5><p style="font-size:.82rem;color:var(--muted)">Jump tests saved next to the training program. Height and power over time.</p></div>
+                    <div class="card addon"><div class="top"><img src="img/isak.png" alt="ISAK"><button class="nudge js-toggle">Enabled</button></div><h5>ISAK anthropometry</h5><p style="font-size:.82rem;color:var(--muted)">Full ISAK record per client. Skinfolds, girths and body composition.</p></div>
+                    <div class="card addon"><div class="top"><span class="gen"><i><svg class="ico"><use href="#i-clip"/></svg></i>Assessments</span><button class="nudge js-toggle">Enabled</button></div><h5>Assessments</h5><p style="font-size:.82rem;color:var(--muted)">Scheduled tests and retests with history and reports.</p></div>
+                  </div>
+                </div>
+
+                <div class="toast" id="ctoast"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MEMBER -->
+          <figure class="device" id="member" hidden style="margin:0">
+            <div class="phone" data-spot="phone">
+              <div class="screen">
+                <div class="status"><span>9:41</span><span class="notch"></span><span class="sig"><i></i><i></i><i></i><b></b></span></div>
+                <div class="mtoast" id="mtoast"></div>
+
+                <!-- Today -->
+                <div class="mbody mscreen" data-ms="today">
+                  <div class="mhead"><div><div class="day">Tuesday · Week 3</div><div class="hi">Hi, Lucy</div></div><span class="gb"><span class="gymlogo js-gyminit">MC</span></span></div>
+                  <div class="week"><span class="d done">M</span><span class="d today">T</span><span class="d">W</span><span class="d done">T</span><span class="d">F</span><span class="d">S</span><span class="d">S</span></div>
+                  <div class="tile work" data-spot="today">
+                    <div class="rb"><span class="k">Today's workout</span><span class="pill">50 min</span></div>
+                    <span class="t">Lower body A</span>
+                    <ul class="ex"><li><span>Back squat</span><span>4 × 6 · 85 kg</span></li><li><span>Romanian deadlift</span><span>3 × 8 · 60 kg</span></li><li><span>Walking lunges</span><span>3 × 12 · 14 kg</span></li><li><span>+ 2 more</span><span></span></li></ul>
+                    <button class="go" data-goto="train">Start workout</button>
+                  </div>
+                  <div class="tile">
+                    <div class="rb"><span class="k">This week</span><span class="kcal"><b>1</b> of 3 sessions</span></div>
+                    <div class="wk-list">
+                      <div class="done"><span>Mon · Upper</span><span>Done ✓</span></div>
+                      <div class="now"><span>Tue · Lower body A</span><span>Today</span></div>
+                      <div><span>Thu · Lower body B</span><span>Planned</span></div>
+                    </div>
+                  </div>
+                  <div class="tile">
+                    <div class="rb"><span class="k">Next assessment</span><span class="up">12 Dec</span></div>
+                    <span style="font-size:.76rem">ISAK + jump retest with Martín</span>
+                  </div>
+                </div>
+
+                <!-- Train -->
+                <div class="mbody mscreen" data-ms="train" hidden>
+                  <div class="wtop"><span class="day" style="font-size:.68rem;color:var(--muted)">Week 3 · Day 2 · by Martín</span><span class="t">Lower body A</span>
+                    <div class="wprog"><div class="bar"><i id="w-bar" style="width:0%"></i></div><span id="w-count">0 / 13 sets</span></div></div>
+                  <div id="exlist" data-spot="sets" style="display:flex;flex-direction:column;gap:8px"></div>
+                  <button class="finish" id="finish">Finish workout</button>
+                </div>
+
+                                <nav class="tabbar two" aria-label="Client app">
+                  <button data-t="today" class="on"><svg><use href="#i-home"/></svg>Today</button>
+                  <button data-t="train"><svg><use href="#i-train"/></svg>Session</button>
+                </nav>
+              </div>
+            </div>
+          </figure>
+          <p class="disclaimer">Interactive demo with sample clients and data. Nothing you do here is saved.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="wrap">
+      <div class="head">
+        <h2>What you <em class="s">get.</em></h2>
+        <p>Everything you just clicked through, set up with your brand, your programs and your clients. Built and used every day by real coaches.</p>
+      </div>
+      <div class="wgrid">
+        <div class="wcard"><span class="n">1</span><h3>Programs</h3><p>Build a program once, with sets, reps and loads that progress week to week, and assign it in seconds.</p></div>
+        <div class="wcard"><span class="n">2</span><h3>Assessments</h3><p>Pitchero GPS, My Jump Lab, ISAK and your own tests in each client's profile.</p></div>
+        <div class="wcard"><span class="n">3</span><h3>Client app</h3><p>Your clients see today's session and log their sets and loads.</p></div>
+        <div class="wcard"><span class="n">4</span><h3>Your brand</h3><p>Your name and colors. Clients see your coaching brand, not ours.</p></div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="cta" id="book">
+    <div class="wrap">
+      <span class="eyebrow">Next step</span>
+      <h2>Liked it? See it <em class="s">live.</em></h2>
+      <p class="lead">Book a 20-minute call. We set up a demo with your name and colors and answer every question. No commitment.</p>
+      <div class="acts">
+        <a class="btn btn-blue js-book" href="https://ig.me/m/wildmethod.app" target="_blank" rel="noopener">Book a demo on Instagram →</a>
+        <a class="btn btn-ghost js-wa" href="#" target="_blank" rel="noopener"><svg class="wa-ico" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></svg>Message us on WhatsApp</a>
+      </div>
+      <p class="alt">Or DM <code>WILD</code> to <code>@wildmethod.app</code> on Instagram</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="../" aria-label="Wild Method home">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M12 34 L31 76 L50 46 L69 76 L88 20" fill="none" stroke="#9FD3FF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span><b>wild</b> <span class="m">method</span></span>
+    </a>
+    <div class="meta">
+      <span>Based in Dubai, UAE · <a href="https://instagram.com/wildmethod.app" target="_blank" rel="noopener">@wildmethod.app</a> · <a href="https://linktr.ee/wildmethod" target="_blank" rel="noopener">Linktree</a></span>
+      <span>© 2026 Wild Method. All rights reserved. · Born at Silvestre Fitness</span>
+    </div>
+  </div>
+</footer>
+
+<div class="finale" id="finale" hidden role="dialog" aria-modal="true" aria-labelledby="fin-h">
+  <div class="box">
+    <span class="eyebrow" style="color:var(--blue)">Tour complete</span>
+    <h2 id="fin-h">Now picture it with <em class="s">your</em> clients.</h2>
+    <p>That's Wild Method: the same platform our coaches use every day, ready to carry your brand.</p>
+    <ul><li>Set up with your name, colors and programs</li><li>Help loading your first clients</li><li>Add-ons when you need them</li></ul>
+    <div class="acts">
+      <a class="btn btn-blue js-book" href="https://ig.me/m/wildmethod.app" target="_blank" rel="noopener">Book a live demo →</a>
+      <a class="btn btn-ghost js-wa" href="#" target="_blank" rel="noopener">WhatsApp us</a>
+    </div>
+    <button class="close" id="fin-close">Keep exploring the demo</button>
+  </div>
+</div>
+
+<script>
+(() => {
+  const WHATSAPP = "5491132555326";
+  const WA_TEXT = "Hi Wild Method! I just tried the interactive demo and I'd like to book a live demo.";
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  $$(".js-wa").forEach(a => a.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(WA_TEXT)}`);
+
+  /* ---------- views ---------- */
+  let mode = "coach", cScreen = "dash", mTab = "today";
+  const urls = { dash: "dashboard", members: "clients", program: "programs/strength-12", profile: "clients/lucy-park", addons: "add-ons" };
+  function setMode(m) {
+    mode = m;
+    $$(".modes button").forEach(b => b.classList.toggle("on", b.dataset.mode === m));
+    $("#coach").hidden = m !== "coach";
+    $("#member").hidden = m !== "member";
+  }
+  function setCoach(s) {
+    cScreen = s; setMode("coach");
+    $$(".side button").forEach(b => b.classList.toggle("on", b.dataset.c === s));
+    $$(".cscreen").forEach(el => el.hidden = el.dataset.cs !== s);
+    $("#c-url").textContent = `app.wildmethod.app/${slug()}/${urls[s]}`;
+    $("#cmain").scrollTop = 0;
+  }
+  function setTab(t) {
+    mTab = t; setMode("member");
+    $$(".tabbar button").forEach(b => b.classList.toggle("on", b.dataset.t === t));
+    $$(".mscreen").forEach(el => el.hidden = el.dataset.ms !== t);
+    $(`.mscreen[data-ms="${t}"]`).scrollTop = 0;
+  }
+  $$(".modes button").forEach(b => b.onclick = () => { b.dataset.mode === "coach" ? setCoach(cScreen) : setTab(mTab); userMoved(); });
+  $$(".side button").forEach(b => b.onclick = () => { setCoach(b.dataset.c); userMoved(); });
+  $$(".tabbar button").forEach(b => b.onclick = () => { setTab(b.dataset.t); userMoved(); });
+  $$("[data-goto]").forEach(b => b.onclick = () => setTab(b.dataset.goto));
+  $$("tr[data-open]").forEach(r => r.onclick = () => { setCoach("profile"); done("open"); });
+
+  function toast(el, msg) { el.textContent = msg; el.classList.add("show"); clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove("show"), 2600); }
+  const ctoast = m => toast($("#ctoast"), m), mtoast = m => toast($("#mtoast"), m);
+
+  /* ---------- coach: needs attention + quick access ---------- */
+  let left = 3;
+  $$(".nudge[data-act]").forEach(b => b.onclick = () => {
+    if (b.classList.contains("sent")) return;
+    b.classList.add("sent"); b.textContent = b.dataset.done;
+    left--; $("#att-left").textContent = left ? `${left} to review` : "All clear";
+    ctoast(b.dataset.act); done("nudge");
+  });
+  $$(".nudge[data-open]").forEach(b => b.onclick = () => { setCoach("profile"); done("nudge"); });
+  $$(".quick-acc button").forEach(b => b.onclick = () => { setCoach(b.dataset.q); userMoved(); });
+  $$(".js-toggle").forEach(b => b.onclick = () => {
+    const on = b.textContent === "Enabled";
+    b.textContent = on ? "Enable" : "Enabled"; b.classList.toggle("sent", on);
+    b.style.background = on ? "var(--mist)" : ""; b.style.color = on ? "var(--accent)" : "";
+  });
+
+  /* ---------- coach: program ---------- */
+  const prog = {
+    base: [
+      ["Day 1 · Lower A", "50 min", [["Back squat", 4, 6, 77.5], ["Romanian deadlift", 3, 8, 55], ["Walking lunges", 3, 12, 12], ["Leg curl", 3, 12, 30]]],
+      ["Day 2 · Upper", "45 min", [["Bench press", 4, 6, 45], ["Barbell row", 4, 8, 40], ["Overhead press", 3, 8, 27.5], ["Pull-ups", 3, 6, 0]]],
+      ["Day 3 · Lower B", "50 min", [["Deadlift", 4, 5, 90], ["Front squat", 3, 6, 55], ["Hip thrust", 3, 10, 80], ["Plank", 3, "40 s", 0]]]
+    ]
+  };
+  function renderWeek(w) {
+    const inc = [0, 2.5, 7.5, 10, -10][w];
+    $("#days").innerHTML = prog.base.map(([t, d, ex]) => `<div class="card day"><h5>${t}<span>${d}</span></h5><ul class="exl">${ex.map(([n, s, r, kg]) => {
+      const load = kg ? ` · ${Math.max(0, kg + (kg > 20 ? inc : inc / 5)).toFixed(1).replace(".0", "")} kg` : "";
+      const sets = w === 4 ? Math.max(2, s - 1) : s;
+      return `<li><span>${n}</span><span>${sets} × ${r}${load}</span></li>`;
+    }).join("")}</ul></div>`).join("");
+  }
+  $$("#weeks button").forEach((b, i) => b.onclick = () => { $$("#weeks button").forEach(x => x.classList.remove("on")); b.classList.add("on"); renderWeek(i); });
+  renderWeek(2);
+  $$("#picks button").forEach(b => b.onclick = () => {
+    b.classList.toggle("on");
+    const n = $$("#picks button.on").length;
+    $("#assign-btn").disabled = !n;
+    $("#pick-note").textContent = n ? `${n} client${n > 1 ? "s" : ""} selected. Loads adapt to each 1RM.` : "Select clients. Loads adapt to each client's 1RM.";
+  });
+  $("#assign-btn").onclick = () => {
+    const n = $$("#picks button.on").length;
+    ctoast(`Assigned to ${n} client${n > 1 ? "s" : ""}. They'll see it in their app today.`);
+    $$("#picks button.on").forEach(b => b.classList.remove("on"));
+    $("#assign-btn").disabled = true; $("#pick-note").textContent = "Done. Select more clients to assign again.";
+    done("assign");
+  };
+
+  /* ---------- member: workout ---------- */
+  const workout = [["Back squat", 4, 6, 85], ["Romanian deadlift", 3, 8, 60], ["Walking lunges", 3, 12, 14], ["Leg curl", 3, 12, 32.5]];
+  let doneSets = 0; const totalSets = workout.reduce((a, w) => a + w[1], 0);
+  $("#exlist").innerHTML = workout.map(([n, s, r, kg], ei) => `<div class="exc"><h5>${n}<span>${s} × ${r}</span></h5>${
+    Array.from({ length: s }, (_, i) => `<div class="set" data-kg="${kg}" data-pr="${ei === 0 && i === s - 1 ? 1 : 0}"><span class="n">${i + 1}</span><span class="r">${r} reps</span><span class="kg"><button type="button" data-d="-2.5" aria-label="Less weight">−</button><b>${kg} kg</b><button type="button" data-d="2.5" aria-label="More weight">+</button></span><button type="button" class="chk" aria-label="Mark set done"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></button></div>`).join("")
+  }</div>`).join("");
+  $$("#exlist .set").forEach(row => {
+    $$(".kg button", row).forEach(b => b.onclick = () => {
+      const v = Math.max(0, +row.dataset.kg + +b.dataset.d); row.dataset.kg = v;
+      $(".kg b", row).textContent = `${v} kg`;
+    });
+    $(".chk", row).onclick = () => {
+      row.classList.toggle("done");
+      doneSets += row.classList.contains("done") ? 1 : -1;
+      $("#w-count").textContent = `${doneSets} / ${totalSets} sets`;
+      $("#w-bar").style.width = `${doneSets / totalSets * 100}%`;
+      if (row.classList.contains("done") && row.dataset.pr === "1" && !$(".pr", row)) { $(".r", row).innerHTML = `6 reps <span class="pr">PR</span>`; mtoast("🎉 New squat PR! Martín can see it in your profile."); }
+      else if (row.classList.contains("done")) mtoast("Set saved");
+      done("set");
+    };
+  });
+  $("#finish").onclick = () => { mtoast(`Session saved · ${doneSets} sets logged`); done("set"); };
+
+  /* ---------- brand ---------- */
+  const brands = [
+    { n: "Blue", a: "#2453FF", s: "#9FD3FF", m: "#EEF6FF" },
+    { n: "Green", a: "#0E9F6E", s: "#9BE3C4", m: "#E9F8F1" },
+    { n: "Orange", a: "#F2600C", s: "#FFC59E", m: "#FFF2E9" },
+    { n: "Red", a: "#D92D3A", s: "#F7AAB0", m: "#FDECEE" },
+    { n: "Purple", a: "#6E3BFF", s: "#C9B6FF", m: "#F3EEFF" },
+    { n: "Black", a: "#111111", s: "#C9CED6", m: "#F1F2F4" }
+  ];
+  $("#swatches").innerHTML = brands.map((b, i) => `<button style="background:${b.a}" aria-label="${b.n}" data-i="${i}" class="${i ? "" : "on"}"></button>`).join("");
+  $$("#swatches button").forEach(b => b.onclick = () => {
+    const br = brands[b.dataset.i], st = document.documentElement.style;
+    st.setProperty("--accent", br.a); st.setProperty("--accent-soft", br.s); st.setProperty("--accent-mist", br.m);
+    $$("#swatches button").forEach(x => x.classList.toggle("on", x === b)); done("brand");
+  });
+  function slug() { return ($("#gym-input").value || "yourbrand").toLowerCase().replace(/[^a-z0-9]+/g, ""); }
+  function setGym() {
+    const name = $("#gym-input").value.trim() || "Your Brand";
+    $$(".js-gymname").forEach(el => el.textContent = name);
+    $$(".js-gyminit").forEach(el => el.textContent = name.split(/\s+/).map(w => w[0]).join("").slice(0, 2).toUpperCase());
+    $("#c-url").textContent = `app.wildmethod.app/${slug()}/${urls[cScreen]}`;
+  }
+  $("#gym-input").oninput = () => { setGym(); done("brand"); };
+
+  /* ---------- guided tour ---------- */
+  const steps = [
+    { go: () => setCoach("dash"), spot: "quick", t: "Your day, in one screen", x: "Open Wild Method and everything starts here: your clients, programs, assessments and add-ons, one tap away.", y: "Tap any shortcut, then come back to Dashboard." },
+    { go: () => setCoach("dash"), spot: "attention", t: "Know what needs you", x: "Blocks that are ending, assessments that are due and new GPS sessions to review show up on their own, so no client slips through.", y: "Tap “Assign block” or “Schedule”.", k: "nudge" },
+    { go: () => setCoach("members"), spot: "table", t: "All your clients, one list", x: "See every client's program, where they are in it and their next assessment, whether you train 5 or 50.", y: "Tap any client to open their profile.", k: "open" },
+    { go: () => setCoach("program"), spot: "assign", t: "Build once, assign in seconds", x: "Programs are templates with sets, reps and loads that progress week to week. Assign one to a single client or to many at once.", y: "Switch weeks, pick a few clients and tap “Assign program”.", k: "assign" },
+    { go: () => setCoach("profile"), spot: "addons", t: "Every test in one profile", x: "Each client profile holds their ISAK anthropometry, My Jump Lab jump tests, Pitchero GPS sessions and scheduled assessments.", y: "Scroll the profile, or open “Add-ons” in the menu." },
+    { go: () => setTab("today"), spot: "today", t: "Your client knows what to do today", x: "Now the client side. Your client opens the app and sees today's session, their week and their next assessment.", y: "Tap “Start workout”." },
+    { go: () => setTab("train"), spot: "sets", t: "They log, you see it", x: "Clients tick off each set and adjust the load. Everything lands in their profile, and new personal records are flagged.", y: "Tick the sets, and finish the last squat set for a PR.", k: "set" },
+    { go: () => setTab("today"), spot: "phone", t: "Your brand, not ours", x: "Clients see your coaching brand: your name and your color. Try it now.", y: "Pick a color, then switch to “Trainer dashboard” to see it there too.", brand: true, k: "brand" }
+  ];
+  let cur = 0, touring = false;
+  const dots = $("#t-dots");
+  dots.innerHTML = steps.map((_, i) => `<button aria-label="Step ${i + 1}"></button>`).join("");
+  $$("button", dots).forEach((b, i) => b.onclick = () => show(i));
+  function clearSpot() { $$(".spot").forEach(el => el.classList.remove("spot")); }
+  function show(i) {
+    cur = i; touring = true; document.body.classList.add("touring");
+    const s = steps[i]; s.go();
+    clearSpot();
+    const el = $(`[data-spot="${s.spot}"]`);
+    if (el) { el.classList.add("spot"); requestAnimationFrame(() => {
+      const sc = el.closest(".cmain, .mbody");
+      if (sc && sc.contains(el)) sc.scrollTo({ top: Math.max(0, sc.scrollTop + el.getBoundingClientRect().top - sc.getBoundingClientRect().top - 20), behavior: "smooth" });
+    }); }
+    $("#t-no").textContent = `Step ${i + 1} of ${steps.length}`;
+    $("#t-bar").style.width = `${(i + 1) / steps.length * 100}%`;
+    $("#t-title").textContent = s.t; $("#t-text").textContent = s.x; $("#t-try-txt").textContent = s.y;
+    $("#t-try").style.opacity = 1;
+    $("#t-brand").hidden = !s.brand;
+    $("#t-prev").disabled = i === 0; $("#t-prev").style.visibility = i === 0 ? "hidden" : "visible";
+    $("#t-next").textContent = i === steps.length - 1 ? "Finish ✓" : "Next →";
+    $$("button", dots).forEach((b, j) => b.classList.toggle("on", j === i));
+    if (matchMedia("(max-width: 980px)").matches) {
+      const top = $(".demo .modes").getBoundingClientRect().top + scrollY - $(".nav").offsetHeight - 6;
+      scrollTo({ top, behavior: "smooth" });
+    }
+  }
+  function done(k) { if (touring && steps[cur].k === k) { $("#t-try").style.opacity = .55; $("#t-try-txt").textContent = "Nice! Tap Next when you're ready."; } }
+  function userMoved() { clearSpot(); }
+  $("#t-next").onclick = () => cur < steps.length - 1 ? show(cur + 1) : finish();
+  $("#t-prev").onclick = () => cur > 0 && show(cur - 1);
+  $("#t-min").onclick = () => { const t = $("#tour"); t.classList.toggle("min"); $("#t-min").textContent = t.classList.contains("min") ? "Show tips" : "Hide tips"; };
+  function finish() { clearSpot(); $("#finale").hidden = false; }
+  $("#fin-close").onclick = () => { $("#finale").hidden = true; };
+  $("#finale").onclick = e => { if (e.target.id === "finale") $("#finale").hidden = true; };
+  document.addEventListener("keydown", e => { if (e.key === "Escape") $("#finale").hidden = true; });
+  $("#start-tour").onclick = e => { e.preventDefault(); $("#tour").classList.remove("min"); $("#t-min").textContent = "Hide tips"; show(0); };
+  $("#explore").onclick = e => { e.preventDefault(); touring = false; clearSpot(); $("#tour").classList.add("min"); $("#t-min").textContent = "Show tips"; show(0); clearSpot(); };
+
+  show(0); if (matchMedia("(max-width: 980px)").matches) { document.body.classList.remove("touring"); scrollTo(0, 0); }
+  if (location.hash === "#member") setTab("today");
+})();
+</script>
+</body>
+</html>
