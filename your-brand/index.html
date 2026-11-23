@@ -170,7 +170,7 @@ p { margin: 0; }
 .phone-cap { text-align: center; font-size: .82rem; color: var(--muted); margin-top: 12px; }
 
 /* Included */
-.incl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.incl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .icard { background: var(--mist); border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
 .icard .ic { width: 46px; height: 46px; border-radius: 14px; background: var(--white); display: grid; place-items: center; }
 .icard .ic svg { width: 24px; height: 24px; fill: none; stroke: var(--blue); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
@@ -222,6 +222,28 @@ p { margin: 0; }
 .bi p { color: var(--muted); }
 @media (max-width: 860px) { .bgrid { grid-template-columns: 1fr; gap: 28px; } }
 
+/* Website */
+.web { background: var(--mist); }
+.wgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.wbrowser { border-radius: 22px; overflow: hidden; background: var(--white); box-shadow: 0 30px 60px -36px rgba(11,27,58,.45); min-width: 0; }
+.wb-bar { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F1F4FA; }
+.wb-bar .dots { display: flex; gap: 6px; } .wb-bar .dots i { width: 10px; height: 10px; border-radius: 50%; background: #D5DCE8; }
+.wb-url { flex: 1; text-align: center; font-size: .82rem; color: var(--muted); background: var(--white); border-radius: 8px; padding: 4px; }
+.wb-site { padding: 18px 22px 24px; background: #FFF4EF; color: #17120F; }
+.wb-nav { display: flex; justify-content: space-between; gap: 10px; font-size: .85rem; flex-wrap: wrap; }
+.wb-nav span { color: #6B625E; }
+.wb-hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 16px; align-items: center; margin-top: 18px; }
+.wb-h { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 600; letter-spacing: -0.04em; line-height: 1; }
+.wb-h em.s { color: #FF5A36; }
+.wb-btn { display: inline-block; margin-top: 14px; background: #FF5A36; color: #fff; font-weight: 600; font-size: .85rem; padding: 8px 16px; border-radius: 999px; }
+.wb-img { aspect-ratio: 4/5; border-radius: 16px; background: linear-gradient(160deg, #FF5A36, #17120F); }
+.wlist { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; min-width: 0; }
+.wi { background: var(--white); border-radius: 18px; padding: 18px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.wi h3 { font-size: 1.05rem; }
+.wi p { color: var(--muted); font-size: .92rem; }
+@media (max-width: 900px) { .wgrid { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .wlist { grid-template-columns: 1fr; } }
+
 /* Shoots */
 .shoot .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
 .shoot .sec-head { margin-bottom: 0; }
@@ -239,6 +261,9 @@ p { margin: 0; }
 .vf .gear { color: rgba(255,255,255,.7); font-size: .85rem; text-align: center; margin-top: 16px; }
 @media (max-width: 860px) { .shoot .wrap { grid-template-columns: 1fr; gap: 36px; } }
 
+.qrow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 24px; }
+.qrow span { background: var(--blue); color: #fff; font-weight: 700; border-radius: 12px; padding: 8px 14px; }
+.qrow b { margin-left: 8px; }
 /* Plans */
 .plans { background: var(--mist); }
 .pgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
@@ -311,6 +336,7 @@ footer a:hover { color: var(--sky); }
       <a href="#make-it-yours">Make it yours</a>
       <a href="#included">What's included</a>
       <a href="#business">Admin panel</a>
+      <a href="#website">Website</a>
       <a href="#shoots">Content</a>
       <a href="#plans">Plans</a>
       <a class="btn btn-white" href="#book">Book a demo</a>
@@ -329,7 +355,7 @@ footer a:hover { color: var(--sky); }
           <a class="btn btn-white" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ07Ew69KhLRZXgkC3hHb6BV7yBul44-4eBXWbqmxo7DxIA3uplNNscReqz7l1Gw0ZB9SRdwSWSJ" target="_blank" rel="noopener">Book a live demo →</a>
           <a class="btn btn-ghost-light" href="#make-it-yours">Design yours now</a>
         </div>
-        <div class="badges"><span>Your logo & colors</span><span>Domain or subdomain</span><span>Corporate email</span><span>Admin panel with payments</span><span>Trainers &amp; nutritionists</span><span>Hosting & support</span><span>Your own store app</span><span>Content creation</span></div>
+        <div class="badges"><span>Your logo & colors</span><span>Domain or subdomain</span><span>Corporate email</span><span>Admin panel with payments</span><span>Trainers &amp; nutritionists</span><span>Hosting & support</span><span>Your own store app</span><span>Your website</span><span>Content creation</span></div>
       </div>
       <div>
         <div class="reelbox"><iframe src="../reel/?embed=1" title="Reel: from Silvestre to your own brand" loading="lazy" allow="autoplay"></iframe></div>
@@ -447,6 +473,7 @@ footer a:hover { color: var(--sky); }
         <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/></svg></span><h3>Support + monthly 1:1</h3><p>Direct support and a monthly call to review how it's going.</p></div>
         <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17 7h.01"/></svg></span><h3>Launch posts</h3><p>A starter set of Instagram posts to announce your app. You post them.</p></div>
         <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></span><h3>Your own store app</h3><p>On the App Store and Google Play with your name, your icon and your brand.</p><span class="tag">Quarterly & Annual</span></div>
+        <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></span><h3>Your website</h3><p>We build and host your own website, with SSL, daily backups and business email.</p><span class="tag">Annual</span></div>
         <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="15" height="11" rx="2"/><path d="M17 11l5-3v9l-5-3"/></svg></span><h3>Content creation</h3><p>Included with any Annual plan: we film the content you ask for and deliver it edited.</p><span class="tag">Annual</span></div>
       </div>
     </div>
@@ -510,14 +537,42 @@ footer a:hover { color: var(--sky); }
     </div>
   </section>
 
+  <section class="sec web" id="website">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Website · Annual plan</span>
+        <h2>Your own <em class="s">website</em>, built and hosted.</h2>
+        <p>With any Annual plan we design your website, put it on your domain and keep it running on business-grade hosting. Your app and your site, under one brand.</p>
+      </div>
+      <div class="wgrid">
+        <div class="wbrowser" aria-hidden="true">
+          <div class="wb-bar"><span class="dots"><i></i><i></i><i></i></span><span class="wb-url">🔒 yourbrand.com</span></div>
+          <div class="wb-site">
+            <div class="wb-nav"><b>Your Brand</b><span>Coaching · Nutrition · Contact</span></div>
+            <div class="wb-hero"><div><div class="wb-h">Train with a <em class="s">plan.</em></div><span class="wb-btn">Book a session</span></div><div class="wb-img"></div></div>
+          </div>
+        </div>
+        <div class="wlist">
+          <div class="wi"><h3>Your domain + free SSL</h3><p>Secure https on your own domain, renewed automatically.</p></div>
+          <div class="wi"><h3>Fast hosting</h3><p>NVMe storage, LiteSpeed servers and a built-in global CDN.</p></div>
+          <div class="wi"><h3>Daily backups</h3><p>Automatic daily backups, plus on-demand ones before big changes.</p></div>
+          <div class="wi"><h3>Business email</h3><p>Mailboxes on your domain, like hello@yourbrand.com.</p></div>
+          <div class="wi"><h3>Built-in security</h3><p>Web application firewall, DDoS protection and malware scanning.</p></div>
+          <div class="wi"><h3>Built and managed by us</h3><p>We design it, launch it and keep it updated. You just send your content.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="sec shoot" id="shoots">
     <div class="wrap">
       <div>
         <div class="sec-head">
-          <span class="eyebrow">Content shoots</span>
-          <h2>We film your <em class="s">content</em> too.</h2>
+          <span class="eyebrow">Content shoots · Annual plan</span>
+          <h2>We film your <em class="s">content</em>, every quarter.</h2>
           <p>Content creation is included with any Annual plan. Your app launches with your brand, and your Instagram grows with it.</p>
         </div>
+        <div class="qrow" aria-label="4 shoots a year"><span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span><b>4 shoots a year, included</b></div>
         <ul>
           <li><svg><use href="#chk"/></svg><div>Content you ask for<span>Exercise tips, client sessions, your story. You choose what we film.</span></div></li>
           <li><svg><use href="#chk"/></svg><div>Simple edit, ready to post<span>Clean cuts and captions, delivered for Reels and Stories.</span></div></li>
@@ -565,9 +620,10 @@ footer a:hover { color: var(--sky); }
           </ul>
         </div>
         <div class="plan" data-plan="Annual" tabindex="0" role="button" aria-pressed="false">
-          <span class="pick"></span><h3>Annual</h3><p>Everything in Quarterly, plus content made for you.</p>
+          <span class="pick"></span><h3>Annual</h3><p>Everything in Quarterly, plus your website and content made for you.</p>
           <ul>
             <li><svg><use href="#chk"/></svg>Everything in Quarterly</li>
+            <li class="plus"><svg><use href="#chk"/></svg>Your own website, built and hosted</li>
             <li class="plus"><svg><use href="#chk"/></svg>Content creation included: 4 shoots a year</li>
             <li><svg><use href="#chk"/></svg>Extra shoots available</li>
           </ul>
@@ -602,6 +658,7 @@ footer a:hover { color: var(--sky); }
       <details><summary>Is it only for personal trainers?</summary><p>No. It's built for personal trainers and nutritionists. Each professional gets their own panel, so your team can be trainers, nutritionists, or both.</p></details>
       <details><summary>How do I get paid by my clients?</summary><p>Payments are part of your admin panel. You connect your own Stripe account, clients pay by card and the money goes straight to you. Invoicing and taxes live in the same panel.</p></details>
       <details><summary>I'm a freelancer. Does it still work?</summary><p>Yes. It works whether you train under your own name or run a company registered in a UAE free zone.</p></details>
+      <details><summary>Do you build my website too?</summary><p>Yes, with any Annual plan. We design your website, connect your domain and host it with SSL, daily backups, business email and built-in security. We also keep it updated.</p></details>
       <details><summary>Do you manage my social media?</summary><p>No. We create a launch set of posts and, with any Annual plan, film and edit content for you. Posting stays with you.</p></details>
       <details><summary>Where are you based?</summary><p>We're based in Dubai, UAE, and work with personal trainers remotely.</p></details>
     </div>

@@ -191,7 +191,7 @@ i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-sp
 #team .note, #biz .note { text-align: center; font-size: 28px; color: var(--muted); font-weight: 500; }
 
 /* Shoot */
-#shoot { position: absolute; left: 140px; right: 140px; top: 610px; height: 980px; opacity: 0; }
+#shoot { position: absolute; left: 160px; right: 160px; top: 590px; height: 900px; opacity: 0; }
 #shoot .frame { position: absolute; inset: 0; border-radius: 40px; background: #0B1B3A; overflow: hidden; }
 #shoot .corner { position: absolute; width: 90px; height: 90px; border: 0 solid var(--blue); }
 #shoot .rec { position: absolute; left: 44px; top: 40px; display: flex; gap: 12px; align-items: center; color: #fff; font-size: 26px; font-weight: 600; letter-spacing: .06em; font-variant-numeric: tabular-nums; }
@@ -204,6 +204,35 @@ i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-sp
 #shoot .bar { position: absolute; left: 50px; right: 50px; bottom: 36px; height: 6px; border-radius: 3px; background: rgba(255,255,255,.18); }
 #shoot .bar i { display: block; height: 100%; border-radius: 3px; background: var(--sky); width: 0; }
 
+/* Website */
+#web { position: absolute; left: 80px; right: 80px; top: 600px; display: flex; flex-direction: column; gap: 26px; opacity: 0; }
+.bw { border-radius: 30px; background: #fff; box-shadow: 0 40px 80px -40px rgba(11,27,58,.45); overflow: hidden; }
+.bwbar { height: 64px; background: #F1F4FA; display: flex; align-items: center; gap: 18px; padding: 0 22px; }
+.bwbar .lights { display: flex; gap: 8px; } .bwbar .lights i { width: 14px; height: 14px; border-radius: 50%; background: #D5DCE8; }
+.bwurl { flex: 1; height: 40px; border-radius: 12px; background: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 20px; color: #55627D; font-weight: 500; }
+.bwurl svg { width: 16px; height: 16px; color: #18B26B; }
+.site { background: var(--ybg, #FFF4EF); color: #17120F; padding: 26px 34px 34px; }
+.snav { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.sbrand { display: flex; align-items: center; gap: 12px; font-size: 24px; }
+.slinks { font-size: 17px; color: #6B625E; font-weight: 500; }
+.shero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; align-items: center; margin-top: 30px; }
+.sh1 { font-size: 64px; line-height: .98; font-weight: 600; letter-spacing: -0.04em; }
+.sh1 i.s { color: var(--yac, #FF5A36); }
+.sp { font-size: 21px; color: #6B625E; margin-top: 14px; line-height: 1.35; }
+.sbtn { display: inline-block; margin-top: 20px; padding: 14px 26px; border-radius: 999px; background: var(--yac, #FF5A36); color: var(--yon, #fff); font-weight: 600; font-size: 20px; }
+.simg { aspect-ratio: 4/5; border-radius: 26px; background: linear-gradient(160deg, var(--yac, #FF5A36), #17120F); position: relative; overflow: hidden; }
+.simg span { position: absolute; left: 50%; bottom: -10%; width: 60%; aspect-ratio: 1; border-radius: 50%; transform: translateX(-50%); background: rgba(255,255,255,.18); }
+.wfeat { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.wf { background: #fff; border-radius: 22px; padding: 20px 22px; display: flex; flex-direction: column; gap: 4px; box-shadow: 0 16px 34px -24px rgba(11,27,58,.35); }
+.wf b { font-size: 27px; letter-spacing: -0.02em; color: var(--navy); }
+.wf span { font-size: 19px; color: var(--muted); font-weight: 500; }
+
+.qrow { display: flex; align-items: center; gap: 12px; }
+.q { width: 84px; height: 64px; border-radius: 18px; background: var(--mist); color: var(--muted); display: grid; place-items: center; font-weight: 700; font-size: 26px; }
+.q.on { background: var(--blue); color: #fff; }
+.qtx { margin-left: auto; font-size: 28px; font-weight: 600; }
+.qfacts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.qfacts span { background: var(--mist); border-radius: 16px; padding: 12px 16px; font-size: 22px; font-weight: 600; }
 /* Included */
 #incl { position: absolute; left: 90px; right: 90px; top: 560px; display: flex; flex-direction: column; gap: 14px; opacity: 0; }
 #incl .it { display: flex; align-items: center; gap: 22px; background: #fff; border-radius: 26px; padding: 18px 26px; font-size: 31px; font-weight: 600; letter-spacing: -0.02em; color: var(--navy); box-shadow: 0 16px 34px -22px rgba(11,27,58,.35); }
@@ -403,14 +432,39 @@ i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-sp
     <span class="corner" style="left:-14px;bottom:-14px;border-left-width:8px;border-bottom-width:8px;border-bottom-left-radius:44px"></span>
     <span class="corner" style="right:-14px;bottom:-14px;border-right-width:8px;border-bottom-width:8px;border-bottom-right-radius:44px"></span>
   </div>
-  <div class="chip vis" id="c-shoot" style="justify-content:center;font-size:26px">Sony ZV-1 II · iPhone · iPad <span style="color:var(--muted);font-weight:500">· edited for you</span></div>
+  <div class="chip vis" id="c-shoot" style="top:1560px;flex-direction:column;align-items:stretch;gap:16px;left:90px;right:90px">
+    <div class="qrow"><span class="q" id="q0">Q1</span><span class="q" id="q1">Q2</span><span class="q" id="q2">Q3</span><span class="q" id="q3">Q4</span><span class="qtx">4 shoots a year</span></div>
+    <div class="qfacts"><span id="qf0">You choose what we film</span><span id="qf1">Edited, ready to post</span><span id="qf2">Sony ZV-1 II · iPhone · iPad</span><span id="qf3">Extra sessions anytime</span></div>
+  </div>
+
+  <!-- Website -->
+  <div id="web" class="vis">
+    <div class="bw">
+      <div class="bwbar"><span class="lights"><i></i><i></i><i></i></span><span class="bwurl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span id="web-url">novacoaching.com</span></span></div>
+      <div class="site" id="site">
+        <div class="snav"><span class="sbrand"><span class="mark you-mark" style="width:44px;height:44px;font-family:var(--serif);font-style:italic;font-size:30px">N</span><b class="you-name">Nova Coaching</b></span><span class="slinks">Coaching · Nutrition · Results · Contact</span></div>
+        <div class="shero">
+          <div><div class="sh1">Train with a <i class="s">plan.</i></div><div class="sp">Personal training and nutrition, online and in person.</div><span class="sbtn" id="sbtn">Book a session</span></div>
+          <div class="simg"><span></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="wfeat">
+      <div class="wf" id="wf0"><b>Your domain</b><span>with free SSL</span></div>
+      <div class="wf" id="wf1"><b>Fast hosting</b><span>NVMe + global CDN</span></div>
+      <div class="wf" id="wf2"><b>Daily backups</b><span>restore any day</span></div>
+      <div class="wf" id="wf3"><b>Business email</b><span>on your domain</span></div>
+      <div class="wf" id="wf4"><b>Security</b><span>firewall, DDoS, malware scan</span></div>
+      <div class="wf" id="wf5"><b>Built by us</b><span>ready to launch</span></div>
+    </div>
+  </div>
 
   <div id="incl" class="vis"></div>
 
   <div id="plans" class="vis">
     <div class="plan" id="pp0"><span class="ring"></span><div class="top"><h3>Monthly</h3><span class="radio"><i></i></span></div><p>Your branded <b>web app</b>, live on your domain.</p></div>
     <div class="plan" id="pp1"><span class="ring"></span><div class="top"><h3>Quarterly</h3><span class="tag">Popular</span><span class="radio"><i></i></span></div><p>Plus <b>your own app</b> on the App Store &amp; Google Play.</p></div>
-    <div class="plan" id="pp2"><span class="ring"></span><div class="top"><h3>Annual</h3><span class="radio"><i></i></span></div><p>Plus <b>content creation</b>: 4 shoots a year, edited.</p></div>
+    <div class="plan" id="pp2"><span class="ring"></span><div class="top"><h3>Annual</h3><span class="radio"><i></i></span></div><p>Plus <b>content creation</b> and <b>your own website</b>, built and hosted.</p></div>
   </div>
 
   <section id="cta" class="vis">
@@ -450,7 +504,7 @@ i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-sp
 
   /* Voiceover clips: one per scene, played at scene start + VO_OFFSET. */
   const VO_SRC = "vo/";        // folder with <scene>.mp3 files; empty = no audio
-  const VO_DUR = {"hook": 1.906, "sil": 3.574, "wm": 5.63, "logo": 1.079, "colors": 1.084, "domain": 3.299, "email": 1.828, "style": 3.066, "stores": 6.792, "integ": 7.904, "pay": 7.546, "biz": 4.189, "shoot": 4.404, "incl": 5.876, "plans": 2.901, "cta": 5.563, "team": 8.68};          // seconds per clip (longest voice)
+  const VO_DUR = {"hook": 1.906, "sil": 3.574, "wm": 5.63, "logo": 1.079, "colors": 1.084, "domain": 3.299, "email": 1.828, "style": 3.066, "stores": 6.792, "integ": 7.904, "pay": 7.546, "biz": 4.189, "shoot": 10.719, "incl": 5.876, "plans": 2.901, "cta": 5.563, "team": 8.68, "web": 8.513};          // seconds per clip (longest voice)
   const VO_OFFSET = 0.25;
   const SILVESTRE_LOGO = ""; // data URI of the official Silvestre logo, empty = text placeholder
 
@@ -467,8 +521,8 @@ i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-sp
   const set = (el, o, tf) => { el.style.opacity = o; if (tf !== undefined) el.style.transform = tf; el.style.visibility = o <= 0.001 ? "hidden" : "visible"; };
 
   /* ---------- scenes ---------- */
-  const MIN = { stores: 5.4, hook: 2.8, logo: 2.8, colors: 2.8, email: 2.8, style: 3.2, plans: 3.6, cta: 4.6 };
-  const ORDER = ["hook", "sil", "wm", "team", "logo", "colors", "domain", "email", "style", "stores", "integ", "pay", "biz", "shoot", "incl", "plans", "cta"];
+  const MIN = { shoot: 8, web: 6.5, stores: 5.4, hook: 2.8, logo: 2.8, colors: 2.8, email: 2.8, style: 3.2, plans: 3.6, cta: 4.6 };
+  const ORDER = ["hook", "sil", "wm", "team", "logo", "colors", "domain", "email", "style", "stores", "integ", "pay", "biz", "shoot", "web", "incl", "plans", "cta"];
   const S = {}; let acc = 0;
   for (const id of ORDER) {
     const d = Math.max(MIN[id] || 2.8, (VO_DUR[id] || 0) + VO_OFFSET + 0.55);
@@ -503,6 +557,8 @@ i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-sp
     $("notif-txt").textContent = "Welcome to " + YOU.name + ", Lucy 👋 Your program is ready.";
     $("homename").textContent = short(YOU.name);
     DOMAIN = "app." + s + ".com";
+    $("web-url").textContent = s + ".com";
+    $("site").style.setProperty("--ybg", YL.bg); $("site").style.setProperty("--yac", c); $("site").style.setProperty("--yon", on);
     SUBDOMAIN = s.slice(0, 16) + ".wildmethod.app";
     const sw = SWATCHES.includes(c) ? SWATCHES : [c, ...SWATCHES.slice(1)];
     $("sws").innerHTML = sw.map(x => `<i style="background:${x}"></i>`).join("");
@@ -527,7 +583,8 @@ i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-sp
     ["integ", "<b>7</b> Integrations", `Plug in your <i class="s">tools.</i>`],
     ["pay", "<b>8</b> Admin panel", `Your admin <i class="s">panel.</i>`],
     ["biz", "Freelance or company", `Built for how <i class="s">you</i> work.`],
-    ["shoot", "Content creation", `We film your <i class="s">content</i> too.`],
+    ["shoot", "Content shoots · Annual plan", `We film your <i class="s">content.</i>`],
+    ["web", "Website · Annual plan", `Your own <i class="s">website.</i>`],
     ["incl", "Fully managed", `All <i class="s">included.</i>`],
     ["plans", "Plans", `Choose your <i class="s">plan.</i>`]
   ];
@@ -535,7 +592,7 @@ i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-sp
   const INCL = [
     ["Your logo, colors & style"], ["Domain or subdomain"], ["Corporate email"], ["Hosting, updates & security"],
     ["Admin panel with Stripe payments"], ["Support + monthly 1:1 call"], ["Launch posts for Instagram"],
-    ["App Store & Google Play", "Quarterly+"], ["Content creation", "Annual"]
+    ["App Store & Google Play", "Quarterly+"], ["Your website, built & hosted", "Annual"], ["Content creation", "Annual"]
   ];
   const okSvg = `<span class="ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>`;
   $("incl").innerHTML = INCL.map((x, i) => `<div class="it vis" id="in${i}">${okSvg}<span>${x[0]}</span>${x[1] ? `<small>${x[1]}</small>` : ""}</div>`).join("");
@@ -657,7 +714,7 @@ i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-sp
     // Chips
     chip("c-logo", t, "logo"); chip("c-color", t, "colors"); chip("c-domain", t, "domain"); chip("c-mail", t, "email");
     chip("c-vibe", t, "style"); chip("c-store", t, "stores"); chip("c-integ", t, "integ"); chip("c-pay", t, "pay");
-    chip("c-shoot", t, "shoot", .3);
+    chip("c-shoot", t, "shoot", .2);
     set($("store-sub"), Math.min(p(ls, .6, 1.0), 1 - p(ls, S.stores.d - .3, S.stores.d)));
 
     // Logo chip
@@ -736,7 +793,20 @@ i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-sp
     });
     $("rectime").textContent = "REC 00:00:" + String(Math.max(0, Math.floor(lsh * 4))).padStart(2, "0");
     $("recdot").style.opacity = Math.floor(t * 2) % 2 ? 1 : .25;
+    [0, 1, 2, 3].forEach(i => $("q" + i).classList.toggle("on", lsh > 1.0 + i * .45));
+    const qs = Math.max(.7, (S.shoot.d - 3.2) / 4);
+    [0, 1, 2, 3].forEach(i => { const k = p(lsh, 2.6 + i * qs, 3.0 + i * qs, backOut); $("qf" + i).style.opacity = clamp((lsh - 2.6 - i * qs) / .2); $("qf" + i).style.transform = `scale(${.8 + .2 * k})`; });
     $("shootbar").style.width = (clamp((lsh - .3) / (S.shoot.d - .6)) * 100) + "%";
+
+    // Website
+    const lwb = L(t, "web");
+    set($("web"), Math.min(p(lwb, .1, .5, easeOut), 1 - p(lwb, S.web.d - .35, S.web.d)), `translateY(${(1 - p(lwb, .1, .6, easeOut)) * 60}px)`);
+    const ws = Math.max(.6, (S.web.d - 2.2) / 6);
+    [0, 1, 2, 3, 4, 5].forEach(i => {
+      const k = p(lwb, 1.0 + i * ws, 1.4 + i * ws, backOut);
+      $("wf" + i).style.opacity = clamp((lwb - 1.0 - i * ws) / .2); $("wf" + i).style.transform = `scale(${.7 + .3 * k})`;
+    });
+    $("sbtn").style.transform = `scale(${1 + .05 * Math.sin(Math.max(0, lwb - .8) * 4)})`;
 
     // Included
     const lin = L(t, "incl");
