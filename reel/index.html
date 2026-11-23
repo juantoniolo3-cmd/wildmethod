@@ -189,6 +189,11 @@ i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-sp
 #team .bcard { padding: 64px 48px; }
 #team .bcard h3 { font-size: 60px; }
 #team .bcard p { font-size: 30px; }
+.avs { display: flex; margin-top: 18px; }
+.avs i { width: 62px; height: 62px; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-weight: 700; font-size: 24px; color: #fff; background: var(--blue); border: 4px solid #fff; margin-left: -14px; }
+.avs i:first-child { margin-left: 0; }
+.avs i.n { background: #3FA9F5; }
+.avs i.more { background: var(--mist); color: var(--blue); font-size: 32px; }
 #team .note, #biz .note { text-align: center; font-size: 28px; color: var(--muted); font-weight: 500; }
 
 /* Shoot */
@@ -259,6 +264,17 @@ i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-sp
 #cta h2 { margin: 0; font-size: 132px; line-height: .94; font-weight: 600; letter-spacing: -0.05em; }
 #cta h2 i.s { color: var(--sky); }
 #cta .btn { display: inline-flex; align-items: center; gap: 16px; background: #fff; color: var(--blue); border-radius: 999px; padding: 28px 46px; font-size: 40px; font-weight: 600; }
+.subfree { font-size: 24px; font-weight: 600; color: var(--blue); text-align: right; letter-spacing: .02em; }
+#cta .journey { display: flex; align-items: center; gap: 26px; margin: 10px 0; }
+#cta .ji { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+#cta .ji .ic { width: 170px; height: 170px; border-radius: 42px; display: grid; place-items: center; font-size: 84px; font-weight: 700; box-shadow: 0 30px 60px -24px rgba(0,0,0,.45); }
+#cta .ji .ic.sil { background: #0B0B0B; color: #fff; letter-spacing: -0.04em; }
+#cta .ji .ic.wm { background: #fff; }
+#cta .ji .ic.wm svg { width: 104px; height: 104px; }
+#cta .ji.big .ic { width: 250px; height: 250px; border-radius: 60px; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 150px; box-shadow: 0 0 0 8px rgba(255,255,255,.9), 0 40px 80px -24px rgba(0,0,0,.5); }
+#cta .ji small { font-size: 26px; font-weight: 600; opacity: .9; white-space: nowrap; }
+#cta .ji.big small { font-size: 30px; opacity: 1; }
+#cta .ja { font-size: 54px; opacity: .6; margin-bottom: 44px; }
 #cta p { margin: 0; font-size: 32px; opacity: .85; line-height: 1.4; }
 
 /* Player UI (hidden in export) */
@@ -390,6 +406,7 @@ i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-sp
   <div class="chip vis" id="c-domain" style="top:1610px"><div class="dom">
     <div class="field"><small>Domain</small><span id="dom-typed"></span><span class="caret" id="dom-caret"></span><span class="ok" id="dom-ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
     <div class="field" id="subrow"><small>Subdomain</small><span id="sub-typed"></span><span class="ok" id="sub-ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
+    <div class="subfree" id="subfree">Up to 10 free subdomains</div>
   </div></div>
   <div class="chip vis" id="c-mail"><span class="mail"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><div style="flex:1;min-width:0"><span class="lbl">Corporate email</span><span id="mail-addr">hello@novacoaching.com</span></div><span class="ok" id="mail-ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
   <div class="chip vis" id="c-vibe"><div class="tog"><div class="seg"><i id="seg1"></i><span id="s1a">Light</span><span id="s1b">Dark</span></div><div class="seg"><i id="seg2"></i><span id="s2a">Clean</span><span id="s2b" style="font-family:var(--serif);font-style:italic;font-weight:400;font-size:26px">Editorial</span></div></div></div>
@@ -406,9 +423,9 @@ i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-sp
 
   <!-- Team: trainers and nutritionists -->
   <div id="team" class="vis">
-    <div class="bcard" id="tm0"><span class="bi"><svg viewBox="0 0 24 24"><path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12"/></svg></span><div><h3>Personal trainers</h3><p>Programs, sessions and assessments</p></div><span class="ok" id="tmo0"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
-    <div class="bcard" id="tm1"><span class="bi"><svg viewBox="0 0 24 24"><path d="M12 3c4 3 6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 2-7 6-10z"/></svg></span><div><h3>Nutritionists</h3><p>Nutrition plans and client follow-up</p></div><span class="ok" id="tmo1"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
-    <div class="note" id="tmnote">A panel for each professional. Trainers, nutritionists, or both.</div>
+    <div class="bcard" id="tm0"><span class="bi"><svg viewBox="0 0 24 24"><path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12"/></svg></span><div><h3>Trainers</h3><p>Programs, sessions and assessments</p><span class="avs"><i class="t">A</i><i class="t">M</i><i class="t">J</i><i class="more">+</i></span></div><span class="ok" id="tmo0"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
+    <div class="bcard" id="tm1"><span class="bi"><svg viewBox="0 0 24 24"><path d="M12 3c4 3 6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 2-7 6-10z"/></svg></span><div><h3>Nutritionists</h3><p>Nutrition plans and client follow-up</p><span class="avs"><i class="n">L</i><i class="n">S</i><i class="more">+</i></span></div><span class="ok" id="tmo1"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
+    <div class="note" id="tmnote">Add your whole team. Each professional gets their own panel.</div>
   </div>
 
   <!-- Business type -->
@@ -473,8 +490,14 @@ i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-sp
   <section id="cta" class="vis">
     <div class="wm-logo"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M12 34 L31 76 L50 46 L69 76 L88 20" fill="none" stroke="#fff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>wild</b> method</span></div>
     <h2>Your brand.<br><i class="s">Our engine.</i></h2>
-    <span class="btn">Book a live demo →</span>
-    <p>Link in bio · @wildmethod.app<br>Based in Dubai, UAE</p>
+    <div class="journey">
+      <div class="ji"><span class="ic sil">S</span><small>Silvestre</small></div>
+      <span class="ja">→</span>
+      <div class="ji"><span class="ic wm"><svg viewBox="0 0 100 100"><path d="M12 34 L31 76 L50 46 L69 76 L88 20" fill="none" stroke="#2453FF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></span><small>Wild Method</small></div>
+      <span class="ja">→</span>
+      <div class="ji big"><span class="ic you-mark">N</span><small class="you-name">Nova Coaching</small></div>
+    </div>
+    <p>@wildmethod.app<br>Based in Dubai, UAE</p>
   </section>
 
   <div id="ui">
@@ -507,7 +530,7 @@ i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-sp
 
   /* Voiceover clips: one per scene, played at scene start + VO_OFFSET. */
   const VO_SRC = "vo/";        // folder with <scene>.mp3 files; empty = no audio
-  const VO_DUR = {"hook": 1.906, "sil": 3.574, "wm": 5.63, "logo": 3.26, "colors": 1.084, "domain": 3.299, "email": 1.828, "style": 3.066, "stores": 6.792, "integ": 7.0, "pay": 7.546, "biz": 4.189, "shoot": 10.719, "incl": 5.876, "plans": 2.901, "cta": 5.563, "team": 8.68, "web": 10.46};          // seconds per clip (longest voice)
+  const VO_DUR = {"hook": 1.906, "sil": 3.574, "wm": 5.63, "logo": 3.26, "colors": 1.084, "domain": 3.135, "email": 1.828, "style": 3.066, "stores": 6.792, "integ": 7.0, "pay": 7.546, "biz": 4.189, "shoot": 10.719, "incl": 5.876, "plans": 2.901, "cta": 3.228, "team": 4.32, "web": 10.46};          // seconds per clip (longest voice)
   const VO_OFFSET = 0.25;
   const SILVESTRE_LOGO = ""; // data URI of the official Silvestre logo, empty = text placeholder
 
@@ -579,7 +602,7 @@ i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-sp
     ["team", "Trainers &amp; nutritionists", `One app for <i class="s">your whole team.</i>`],
     ["logo", "<b>1</b> Logo", `Your <i class="s">logo.</i>`],
     ["colors", "<b>2</b> Colors", `Your <i class="s">colors.</i>`],
-    ["domain", "<b>3</b> Domain", `Your domain <i class="s">or subdomain.</i>`],
+    ["domain", "<b>3</b> Domain", `Your domain <i class="s">+ 10 free subdomains.</i>`],
     ["email", "<b>4</b> Email", `Your corporate <i class="s">email.</i>`],
     ["style", "<b>5</b> Style", `Your <i class="s">vibe.</i>`],
     ["stores", "<b>6</b> App stores", `Your <i class="s">own app.</i>`],
@@ -754,6 +777,7 @@ i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-sp
     $("sub-typed").textContent = ld < 1.9 ? "" : SUBDOMAIN.slice(0, Math.floor(clamp((ld - 1.9) / .8) * SUBDOMAIN.length));
     $("sub-ok").style.transform = `scale(${p(ld, 2.7, 3.05, backOut)})`;
     $("subrow").style.opacity = .4 + .6 * p(ld, 1.7, 2.0);
+    $("subfree").style.opacity = p(ld, 2.0, 2.4);
 
     // Mail chip
     $("mail-ok").style.transform = `scale(${p(le, .6, 1.0, backOut)})`;
