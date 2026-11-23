@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Make It Yours Reel</title>
+<meta name="description" content="A 35-second reel: the app that runs Silvestre, powered by Wild Method, turned into your own brand step by step.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232453FF'/%3E%3Cpath d='M12 34 L31 76 L50 46 L69 76 L88 20' fill='none' stroke='white' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+:root {
+  --blue: #2453FF; --sky: #9FD3FF; --mist: #EEF6FF; --navy: #0B1B3A; --muted: #55627D; --line: #DCE6F5;
+  --sans: "Inter Tight", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif: "Instrument Serif", Georgia, serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body { background: #0B1B3A; font-family: var(--sans); -webkit-font-smoothing: antialiased; overflow: hidden; display: grid; place-items: center; }
+body.embed { background: transparent; }
+#viewport { position: relative; width: 1080px; height: 1920px; transform-origin: 0 0; position: absolute; left: 0; top: 0; }
+#stage { position: absolute; inset: 0; overflow: hidden; background: var(--blue); color: #fff; border-radius: 0; }
+.abs { position: absolute; }
+em.s, i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+
+/* Headline block */
+.head { position: absolute; left: 90px; right: 90px; top: 240px; will-change: transform, opacity; }
+.head .eb { font-size: 27px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; opacity: .8; margin-bottom: 22px; display: flex; gap: 14px; align-items: center; }
+.head .eb b { display: inline-grid; place-items: center; min-width: 46px; height: 46px; padding: 0 12px; border-radius: 999px; background: var(--blue); color: #fff; font-size: 22px; letter-spacing: .04em; }
+.head h2 { margin: 0; font-size: 96px; line-height: 0.98; font-weight: 600; letter-spacing: -0.045em; }
+.head h2 i.s { color: var(--hl, var(--blue)); }
+
+/* Hook */
+#hook { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding: 0 90px; gap: 34px; }
+#hook .logo { display: flex; align-items: center; gap: 18px; font-size: 44px; letter-spacing: -0.03em; }
+#hook .logo svg { width: 62px; height: 62px; }
+#hook h1 { margin: 0; font-size: 150px; line-height: .92; font-weight: 600; letter-spacing: -0.05em; }
+#hook h1 span { display: block; will-change: transform, opacity; }
+#hook h1 i.s { color: var(--sky); }
+#hook p { margin: 0; font-size: 40px; opacity: .85; max-width: 16em; line-height: 1.3; }
+
+/* Phone */
+#phone { position: absolute; left: 290px; top: 590px; width: 500px; height: 1020px; border-radius: 76px; background: #0B1B3A; padding: 14px; box-shadow: 0 60px 120px -40px rgba(11,27,58,.55), 0 0 0 2px rgba(255,255,255,.08) inset; will-change: transform, opacity; }
+#screen { position: relative; width: 100%; height: 100%; border-radius: 62px; overflow: hidden; background: var(--bg); color: var(--ink); }
+.st { height: 62px; display: flex; align-items: center; justify-content: space-between; padding: 6px 40px 0; font-size: 21px; font-weight: 600; }
+.st .isl { width: 132px; height: 38px; border-radius: 999px; background: #000; }
+.st .sig { display: flex; gap: 4px; align-items: flex-end; }
+.st .sig i { width: 5px; background: currentColor; border-radius: 2px; }
+.st .sig b { width: 32px; height: 15px; border: 2.5px solid currentColor; border-radius: 5px; margin-left: 6px; position: relative; }
+.st .sig b::after { content: ""; position: absolute; inset: 2px 8px 2px 2px; background: currentColor; border-radius: 2px; }
+.urlbar { margin: 6px 26px 0; height: 44px; border-radius: 14px; background: var(--card); border: 1.5px solid var(--line2); display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 18px; color: var(--muted); font-weight: 500; white-space: nowrap; overflow: hidden; position: relative; }
+.urlbar svg { width: 15px; height: 15px; flex: none; }
+.urlbar .caret { display: inline-block; width: 2px; height: 20px; background: var(--accent); margin-left: 1px; vertical-align: middle; }
+.urlbar .glow { position: absolute; inset: -2px; border-radius: 14px; box-shadow: 0 0 0 3px var(--accent); opacity: 0; }
+.apphead { display: flex; align-items: center; justify-content: space-between; padding: 22px 28px 6px; }
+.brand { position: relative; height: 52px; flex: 1; }
+.brand > div { position: absolute; left: 0; top: 0; height: 52px; display: flex; align-items: center; gap: 12px; white-space: nowrap; }
+.mark { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; flex: none; }
+.bname { font-size: 25px; letter-spacing: -0.02em; }
+.av { width: 46px; height: 46px; border-radius: 50%; background: var(--card); border: 1.5px solid var(--line2); display: grid; place-items: center; font-weight: 600; font-size: 19px; }
+.greet { padding: 18px 28px 0; }
+.greet .d { font-size: 18px; color: var(--muted); font-weight: 500; }
+.greet .h { font-size: 46px; font-weight: 600; letter-spacing: -0.035em; margin-top: 2px; line-height: 1.05; }
+.hf { font-family: var(--hfont); }
+.serifmode .greet .h, .serifmode .work .t { font-weight: 400; letter-spacing: -0.01em; }
+.work { margin: 20px 22px 0; border-radius: var(--rad); padding: 24px 24px 22px; background: var(--accent); color: var(--on); }
+.work .k { font-size: 15px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; opacity: .8; }
+.work .t { font-size: 36px; font-weight: 600; letter-spacing: -0.03em; margin: 6px 0 4px; }
+.work .m { font-size: 18px; opacity: .8; }
+.work .go { display: inline-block; margin-top: 16px; padding: 11px 24px; border-radius: 999px; background: var(--on); color: var(--accent); font-weight: 600; font-size: 18px; }
+.card { margin: 14px 22px 0; border-radius: var(--rad); background: var(--card); border: 1.5px solid var(--line2); padding: 18px 20px; }
+.card .k { font-size: 14px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.prog { display: flex; justify-content: space-between; align-items: baseline; margin-top: 6px; font-size: 21px; font-weight: 600; }
+.prog span { font-size: 16px; font-weight: 500; color: var(--muted); }
+.wk { display: flex; gap: 6px; margin-top: 12px; }
+.wk i { flex: 1; height: 8px; border-radius: 4px; background: var(--line2); }
+.wk i.on { background: var(--accent); }
+.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+.tile { border-radius: 16px; background: var(--bg); padding: 12px 14px; }
+.tile b { display: block; font-size: 15px; color: var(--muted); font-weight: 500; }
+.tile span { font-size: 21px; font-weight: 600; letter-spacing: -0.02em; }
+.tabbar { position: absolute; left: 0; right: 0; bottom: 0; height: 104px; background: var(--card); border-top: 1.5px solid var(--line2); display: flex; justify-content: space-around; padding-top: 16px; font-size: 14px; color: var(--muted); font-weight: 500; }
+.tabbar span { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.tabbar span.on { color: var(--accent); }
+.tabbar svg { width: 27px; height: 27px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Notification */
+.notif { position: absolute; left: 14px; right: 14px; top: 58px; border-radius: 26px; background: rgba(250,250,252,.96); color: #0B1B3A; padding: 16px 18px; display: flex; gap: 14px; align-items: center; box-shadow: 0 20px 40px -12px rgba(0,0,0,.35); will-change: transform, opacity; }
+.notif .ic { width: 50px; height: 50px; border-radius: 13px; display: grid; place-items: center; flex: none; }
+.notif b { font-size: 17px; display: block; }
+.notif span { font-size: 16px; color: #55627D; display: block; line-height: 1.3; }
+.notif small { position: absolute; right: 18px; top: 16px; font-size: 14px; color: #8A94A8; }
+
+/* Home screen */
+#home { position: absolute; inset: 0; background: linear-gradient(160deg, #9FD3FF 0%, #5C84FF 55%, #2453FF 100%); padding: 110px 34px 0; will-change: opacity; }
+#home .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 34px 20px; }
+#home .app { display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 14px; color: #fff; font-weight: 500; }
+#home .app i { width: 84px; height: 84px; border-radius: 22px; background: rgba(255,255,255,.28); display: block; }
+#home .app.me i { display: grid; place-items: center; box-shadow: 0 16px 30px -10px rgba(0,0,0,.4); }
+#home .dock { position: absolute; left: 22px; right: 22px; bottom: 22px; height: 116px; border-radius: 36px; background: rgba(255,255,255,.3); display: flex; justify-content: space-around; align-items: center; }
+#home .dock i { width: 80px; height: 80px; border-radius: 22px; background: rgba(255,255,255,.4); }
+#home .tap { position: absolute; width: 110px; height: 110px; border-radius: 50%; border: 5px solid #fff; opacity: 0; }
+
+/* Bottom control chips */
+.chip { position: absolute; left: 130px; right: 130px; top: 1650px; min-height: 120px; border-radius: 34px; background: #fff; color: var(--navy); box-shadow: 0 30px 60px -24px rgba(11,27,58,.35); padding: 22px 28px; display: flex; align-items: center; gap: 20px; font-size: 28px; font-weight: 600; letter-spacing: -0.01em; will-change: transform, opacity; opacity: 0; }
+.chip .lbl { font-size: 18px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 600; display: block; margin-bottom: 4px; }
+.drop { flex: 1; height: 76px; border: 3px dashed #B9C8E6; border-radius: 22px; display: flex; align-items: center; justify-content: center; gap: 12px; color: var(--muted); font-size: 24px; position: relative; }
+.file { position: absolute; display: flex; align-items: center; gap: 12px; padding: 12px 20px; border-radius: 18px; background: var(--navy); color: #fff; font-size: 22px; white-space: nowrap; }
+.file .fm { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; font-family: var(--serif); font-style: italic; font-size: 28px; color: #fff; }
+.ok { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #18B26B; color: #fff; flex: none; }
+.ok svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 3.4; stroke-linecap: round; stroke-linejoin: round; }
+.sw { display: flex; gap: 18px; flex: 1; justify-content: center; position: relative; }
+.sw i { width: 66px; height: 66px; border-radius: 50%; display: block; box-shadow: 0 0 0 0 #fff, 0 0 0 0 var(--navy); }
+.cursor { position: absolute; width: 46px; height: 46px; border-radius: 50%; background: rgba(11,27,58,.22); border: 4px solid var(--navy); pointer-events: none; }
+.field { flex: 1; height: 76px; border-radius: 22px; background: var(--mist); display: flex; align-items: center; padding: 0 22px; font-size: 27px; font-weight: 500; white-space: nowrap; overflow: hidden; }
+.field small { color: var(--muted); font-size: 27px; }
+.field .caret { display: inline-block; width: 3px; height: 32px; background: var(--blue); margin-left: 2px; }
+.mail { width: 70px; height: 70px; border-radius: 20px; background: var(--mist); display: grid; place-items: center; flex: none; }
+.mail svg, .store svg { width: 36px; height: 36px; fill: none; stroke: var(--blue); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.tog { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.seg { position: relative; height: 70px; border-radius: 999px; background: var(--mist); display: grid; grid-template-columns: 1fr 1fr; align-items: center; text-align: center; font-size: 22px; font-weight: 600; color: var(--muted); }
+.seg i { position: absolute; top: 6px; bottom: 6px; left: 6px; width: calc(50% - 6px); border-radius: 999px; background: var(--navy); }
+.seg span { position: relative; z-index: 1; }
+.store { flex: 1; height: 80px; border-radius: 22px; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; gap: 14px; font-size: 24px; }
+.store svg { stroke: #fff; }
+.store small { display: block; font-size: 15px; opacity: .7; font-weight: 500; }
+.sub { position: absolute; left: 130px; right: 130px; top: 1790px; text-align: center; font-size: 22px; color: var(--muted); font-weight: 500; opacity: 0; }
+
+/* Shoot */
+#shoot { position: absolute; left: 140px; right: 140px; top: 610px; height: 980px; opacity: 0; }
+#shoot .frame { position: absolute; inset: 0; border-radius: 40px; background: #0B1B3A; overflow: hidden; }
+#shoot .corner { position: absolute; width: 90px; height: 90px; border: 0 solid #fff; }
+#shoot .rec { position: absolute; left: 44px; top: 40px; display: flex; gap: 12px; align-items: center; color: #fff; font-size: 26px; font-weight: 600; letter-spacing: .06em; font-variant-numeric: tabular-nums; }
+#shoot .rec i { width: 20px; height: 20px; border-radius: 50%; background: #FF3B30; }
+#shoot .cam { position: absolute; right: 44px; top: 40px; color: rgba(255,255,255,.7); font-size: 22px; font-weight: 500; }
+#shoot .clips { position: absolute; left: 50px; right: 50px; top: 130px; bottom: 70px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: center; }
+#shoot .clip { border-radius: 26px; aspect-ratio: 9/16; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 18px; color: #fff; font-size: 21px; font-weight: 600; line-height: 1.15; will-change: transform, opacity; }
+#shoot .clip svg { position: absolute; left: 50%; top: 42%; width: 64px; height: 64px; transform: translate(-50%,-50%); fill: rgba(255,255,255,.92); }
+#shoot .clip small { display: block; font-size: 15px; opacity: .8; font-weight: 500; margin-top: 4px; }
+#shoot .bar { position: absolute; left: 50px; right: 50px; bottom: 36px; height: 6px; border-radius: 3px; background: rgba(255,255,255,.18); }
+#shoot .bar i { display: block; height: 100%; border-radius: 3px; background: var(--sky); width: 0; }
+
+/* Included */
+#incl { position: absolute; left: 90px; right: 90px; top: 600px; display: flex; flex-direction: column; gap: 16px; opacity: 0; }
+#incl .it { display: flex; align-items: center; gap: 22px; background: #fff; border-radius: 26px; padding: 20px 26px; font-size: 32px; font-weight: 600; letter-spacing: -0.02em; color: var(--navy); box-shadow: 0 16px 34px -22px rgba(11,27,58,.35); will-change: transform, opacity; }
+#incl .it .ok { background: var(--blue); width: 48px; height: 48px; }
+#incl .it small { margin-left: auto; font-size: 19px; color: var(--blue); font-weight: 600; background: var(--mist); padding: 6px 14px; border-radius: 999px; letter-spacing: 0; white-space: nowrap; }
+
+/* CTA */
+#cta { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 0 90px; gap: 38px; opacity: 0; }
+#cta .logo { display: flex; align-items: center; gap: 20px; font-size: 56px; letter-spacing: -0.03em; }
+#cta .logo svg { width: 80px; height: 80px; }
+#cta h2 { margin: 0; font-size: 132px; line-height: .94; font-weight: 600; letter-spacing: -0.05em; }
+#cta h2 i.s { color: var(--sky); }
+#cta .btn { display: inline-flex; align-items: center; gap: 16px; background: #fff; color: var(--blue); border-radius: 999px; padding: 28px 46px; font-size: 40px; font-weight: 600; }
+#cta p { margin: 0; font-size: 32px; opacity: .85; }
+
+/* Player UI (hidden in export) */
+#ui { position: absolute; inset: 0; z-index: 20; }
+.exporting #ui { display: none; }
+#bars { position: absolute; left: 36px; right: 36px; top: 40px; display: flex; gap: 8px; }
+#bars button { flex: 1; height: 8px; border: 0; padding: 0; border-radius: 4px; background: rgba(255,255,255,.35); overflow: hidden; cursor: pointer; position: relative; }
+#bars button::before { content: ""; position: absolute; inset: -20px 0; }
+#bars button i { display: block; height: 100%; width: 0; background: #fff; }
+.light #bars button { background: rgba(11,27,58,.15); }
+.light #bars button i { background: var(--navy); }
+#tapL, #tapR, #tapC { position: absolute; top: 80px; bottom: 0; }
+#tapL { left: 0; width: 28%; } #tapR { right: 0; width: 28%; } #tapC { left: 28%; right: 28%; }
+#pausebadge { position: absolute; left: 50%; top: 50%; width: 170px; height: 170px; margin: -85px 0 0 -85px; border-radius: 50%; background: rgba(11,27,58,.55); display: none; place-items: center; pointer-events: none; }
+#pausebadge svg { width: 70px; height: 70px; fill: #fff; }
+.paused #pausebadge { display: grid; }
+#sound { position: absolute; right: 36px; top: 76px; font-size: 22px; color: rgba(255,255,255,.75); font-weight: 500; }
+.light #sound { color: var(--muted); }
+
+#end { position: absolute; inset: 0; background: rgba(11,27,58,.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); display: none; align-items: center; justify-content: center; padding: 60px; z-index: 30; }
+#end.on { display: flex; }
+#end .box { background: #fff; color: var(--navy); border-radius: 48px; padding: 60px 56px; width: 100%; display: flex; flex-direction: column; gap: 30px; }
+#end h3 { margin: 0; font-size: 74px; line-height: 1; letter-spacing: -0.045em; font-weight: 600; }
+#end h3 i.s { color: var(--blue); }
+#end p { margin: 0; font-size: 30px; color: var(--muted); line-height: 1.35; }
+#end label { font-size: 22px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); display: flex; flex-direction: column; gap: 12px; }
+#end input { font: inherit; font-size: 40px; letter-spacing: -0.01em; text-transform: none; color: var(--navy); font-weight: 600; border: 3px solid var(--line); border-radius: 24px; padding: 22px 26px; outline: none; }
+#end input:focus { border-color: var(--blue); }
+#end .sws { display: flex; gap: 16px; flex-wrap: wrap; }
+#end .sws button { width: 84px; height: 84px; border-radius: 50%; border: 0; cursor: pointer; box-shadow: 0 0 0 0 #fff; }
+#end .sws button.on { box-shadow: 0 0 0 6px #fff, 0 0 0 10px var(--navy); }
+#end .row { display: flex; gap: 16px; flex-wrap: wrap; }
+#end .b { font: inherit; font-size: 34px; font-weight: 600; border-radius: 999px; padding: 26px 40px; border: 0; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; }
+#end .b1 { background: var(--blue); color: #fff; }
+#end .b2 { background: var(--mist); color: var(--navy); }
+</style>
+</head>
+<body>
+<div id="viewport">
+<div id="stage">
+
+  <!-- 1. Hook -->
+  <section id="hook">
+    <div class="logo"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M12 34 L31 76 L50 46 L69 76 L88 20" fill="none" stroke="#fff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>wild</b> method</span></div>
+    <h1><span>Your clients.</span><span>Your app.</span><span><i class="s">Your brand.</i></span></h1>
+    <p>Watch one app become yours in 30 seconds.</p>
+  </section>
+
+  <!-- Headlines -->
+  <div id="heads"></div>
+
+  <!-- Phone -->
+  <div id="phone">
+    <div id="screen">
+      <div class="st"><span>9:41</span><span class="isl"></span><span class="sig"><i style="height:8px"></i><i style="height:12px"></i><i style="height:16px"></i><b></b></span></div>
+      <div class="urlbar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span id="url"></span><span class="glow" id="urlglow"></span></div>
+      <div class="apphead">
+        <div class="brand">
+          <div id="b-sil"><span class="mark" style="background:#fff;color:#0F0F0F;font-weight:800;font-size:24px">S</span><span class="bname" style="font-weight:800;letter-spacing:.14em;font-size:22px">SILVESTRE</span></div>
+          <div id="b-wm"><span class="mark" style="background:#2453FF"><svg viewBox="0 0 100 100" width="30" height="30"><path d="M12 34 L31 76 L50 46 L69 76 L88 20" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="bname"><b>wild</b> method</span></div>
+          <div id="b-you"><span class="mark" id="you-mark" style="font-family:var(--serif);font-style:italic;font-size:34px">N</span><span class="bname hf" id="you-name" style="font-weight:600">Nova Coaching</span></div>
+        </div>
+        <span class="av">L</span>
+      </div>
+      <div class="greet"><div class="d">Tuesday · Week 3</div><div class="h hf">Hi, Lucy</div></div>
+      <div class="work">
+        <div class="k">Today's session</div>
+        <div class="t hf">Lower body A</div>
+        <div class="m">6 exercises · 50 min</div>
+        <span class="go">Start session</span>
+      </div>
+      <div class="card">
+        <div class="k">Your program</div>
+        <div class="prog">Strength block <span>Week 3 of 6</span></div>
+        <div class="wk"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div>
+      </div>
+      <div class="card">
+        <div class="k">Profile · Assessments</div>
+        <div class="tiles">
+          <div class="tile"><b>Pitchero GPS</b><span>31.4 km/h</span></div>
+          <div class="tile"><b>My Jump Lab</b><span>CMJ 41 cm</span></div>
+          <div class="tile"><b>ISAK</b><span>Body comp</span></div>
+          <div class="tile"><b>Assessment</b><span>Mobility 16</span></div>
+        </div>
+      </div>
+      <nav class="tabbar">
+        <span class="on"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9H3z"/></svg>Today</span>
+        <span><svg viewBox="0 0 24 24"><path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12"/></svg>Programs</span>
+        <span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4.5 4.2-6.5 8-6.5s7 2 8 6.5"/></svg>Profile</span>
+      </nav>
+      <div class="notif" id="notif"><span class="ic" id="notif-ic" style="font-family:var(--serif);font-style:italic;font-size:30px;color:#fff">N</span><div><b id="notif-from">hello@novacoaching.com</b><span id="notif-txt">Welcome to Nova Coaching, Lucy 👋 Your program is ready.</span></div><small>now</small></div>
+      <div id="home">
+        <div class="grid">
+          <span class="app"><i></i>Photos</span><span class="app"><i></i>Camera</span><span class="app"><i></i>Maps</span><span class="app"><i></i>Clock</span>
+          <span class="app"><i></i>Notes</span><span class="app"><i></i>Music</span><span class="app me" id="homeapp"><i id="homeicon" style="font-family:var(--serif);font-style:italic;font-size:52px;color:#fff">N</i><span id="homename">Nova</span></span><span class="app"><i></i>Wallet</span>
+          <span class="app"><i></i>Mail</span><span class="app"><i></i>Health</span><span class="app"><i></i>Files</span><span class="app"><i></i>Settings</span>
+        </div>
+        <span class="tap" id="hometap"></span>
+        <div class="dock"><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step chips -->
+  <div class="chip" id="c-logo"><div class="drop" id="drop"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg><span id="drop-t">Drop your logo</span><span class="file" id="file"><span class="fm" id="file-mark">N</span><span id="file-name">nova-logo.svg</span></span></div><span class="ok" id="logo-ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
+  <div class="chip" id="c-color"><div class="sw" id="sws"></div><span class="cursor" id="cur"></span></div>
+  <div class="chip" id="c-domain"><div style="flex:1"><span class="lbl">Your domain</span><div class="field"><small>https://</small><span id="dom-typed"></span><span class="caret" id="dom-caret"></span></div></div><span class="ok" id="dom-ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
+  <div class="sub" id="dom-sub">No domain yet? Start on <b id="dom-subname">nova.wildmethod.app</b></div>
+  <div class="chip" id="c-mail"><span class="mail"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><div style="flex:1;min-width:0"><span class="lbl">Corporate email</span><span id="mail-addr">hello@novacoaching.com</span></div><span class="ok" id="mail-ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
+  <div class="chip" id="c-vibe"><div class="tog"><div class="seg"><i id="seg1"></i><span id="s1a">Light</span><span id="s1b">Dark</span></div><div class="seg"><i id="seg2"></i><span id="s2a">Clean</span><span id="s2b">Editorial</span></div></div></div>
+  <div class="chip" id="c-store" style="gap:16px"><div class="store"><svg viewBox="0 0 24 24"><path d="M12 3v10M8 9l4 4 4-4"/><rect x="4" y="15" width="16" height="5" rx="1.5"/></svg><span><small>Download on the</small>App Store</span></div><div class="store"><svg viewBox="0 0 24 24"><path d="M6 3l12 9-12 9z"/></svg><span><small>Get it on</small>Google Play</span></div></div>
+  <div class="sub" id="store-sub">Your own app, published under your name</div>
+
+  <!-- Shoot -->
+  <div id="shoot">
+    <div class="frame">
+      <div class="rec"><i id="recdot"></i><span id="rectime">REC 00:00:00</span></div>
+      <div class="cam">4K · 25p</div>
+      <div class="clips">
+        <div class="clip" id="clip1"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Exercise tip<small>Reel · 0:24</small></div>
+        <div class="clip" id="clip2"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Client session<small>Reel · 0:31</small></div>
+        <div class="clip" id="clip3"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Your story<small>Reel · 0:45</small></div>
+      </div>
+      <div class="bar"><i id="shootbar"></i></div>
+    </div>
+    <span class="corner" style="left:-14px;top:-14px;border-left-width:8px;border-top-width:8px;border-color:var(--blue);border-top-left-radius:44px"></span>
+    <span class="corner" style="right:-14px;top:-14px;border-right-width:8px;border-top-width:8px;border-color:var(--blue);border-top-right-radius:44px"></span>
+    <span class="corner" style="left:-14px;bottom:-14px;border-left-width:8px;border-bottom-width:8px;border-color:var(--blue);border-bottom-left-radius:44px"></span>
+    <span class="corner" style="right:-14px;bottom:-14px;border-right-width:8px;border-bottom-width:8px;border-color:var(--blue);border-bottom-right-radius:44px"></span>
+  </div>
+  <div class="chip" id="c-shoot" style="justify-content:center;font-size:26px">Sony ZV-1 II · iPhone · iPad <span style="color:var(--muted);font-weight:500">· simple edit</span></div>
+
+  <!-- Included -->
+  <div id="incl"></div>
+
+  <!-- CTA -->
+  <section id="cta">
+    <div class="logo"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M12 34 L31 76 L50 46 L69 76 L88 20" fill="none" stroke="#fff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>wild</b> method</span></div>
+    <h2>Your brand.<br><i class="s">Our engine.</i></h2>
+    <span class="btn">Book a live demo →</span>
+    <p>Link in bio · @wildmethod.app<br>Based in Dubai, UAE</p>
+  </section>
+
+  <!-- Player UI -->
+  <div id="ui">
+    <div id="bars"></div>
+    <div id="sound">Tap to pause</div>
+    <div id="tapL" aria-label="Previous"></div><div id="tapC" aria-label="Pause"></div><div id="tapR" aria-label="Next"></div>
+    <div id="pausebadge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+  </div>
+  <div id="end">
+    <div class="box">
+      <h3>Now try it with <i class="s">your</i> brand.</h3>
+      <p>Type your brand name, pick a color, and watch the app become yours.</p>
+      <label>Brand name<input id="in-name" maxlength="20" value="" placeholder="e.g. Nova Coaching" autocomplete="off"></label>
+      <label>Brand color<div class="sws" id="in-sws"></div></label>
+      <div class="row"><button class="b b1" id="go-mine">Make it mine →</button><button class="b b2" id="go-replay">Watch again</button></div>
+      <a class="b b2" id="go-book" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ07Ew69KhLRZXgkC3hHb6BV7yBul44-4eBXWbqmxo7DxIA3uplNNscReqz7l1Gw0ZB9SRdwSWSJ" target="_blank" rel="noopener" style="justify-content:center">Book a live demo</a>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const params = new URLSearchParams(location.search);
+  const EXPORT = params.has("export");
+  if (EXPORT) document.documentElement.classList.add("exporting");
+  if (params.has("embed")) document.body.classList.add("embed");
+
+  /* ---------- helpers ---------- */
+  const clamp = (x) => Math.max(0, Math.min(1, x));
+  const easeIO = (x) => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+  const easeOut = (x) => 1 - Math.pow(1 - x, 3);
+  const backOut = (x) => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+  const p = (t, a, b, e = easeIO) => e(clamp((t - a) / (b - a)));
+  const win = (t, a, b, fi = .35, fo = .3) => Math.min(p(t, a, a + fi, easeOut), 1 - p(t, b - fo, b, easeIO)); // fade-in/out window
+  const hex = (h) => { h = h.replace("#", ""); return [0, 2, 4].map(i => parseInt(h.substr(i, 2), 16)); };
+  const toHex = (c) => "#" + c.map(v => Math.round(v).toString(16).padStart(2, "0")).join("");
+  const mix = (a, b, k) => { const A = hex(a), B = hex(b); return toHex(A.map((v, i) => v + (B[i] - v) * k)); };
+  const lum = (h) => { const [r, g, b] = hex(h).map(v => { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); }); return .2126 * r + .7152 * g + .0722 * b; };
+  const set = (el, o, tf) => { el.style.opacity = o; if (tf !== undefined) el.style.transform = tf; el.style.visibility = o <= 0.001 ? "hidden" : "visible"; };
+
+  /* ---------- the brand being built ---------- */
+  const YOU = { name: "Nova Coaching", color: "#FF5A36" };
+  const SWATCHES = ["#FF5A36", "#12B886", "#7C4DFF", "#F2B705", "#E64980", "#111827"];
+  function slug(n) { return (n || "yourbrand").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]/g, "") || "yourbrand"; }
+  function short(n) { return (n || "Your brand").split(/\s+/)[0]; }
+  function onColor(c) { return lum(c) > .45 ? "#0B1B3A" : "#FFFFFF"; }
+
+  const SIL = { bg: "#0E0E0E", card: "#1B1B1B", line2: "#2A2A2A", ink: "#FFFFFF", muted: "#9A9A9A", accent: "#FFFFFF", on: "#0E0E0E" };
+  const WM  = { bg: "#EEF6FF", card: "#FFFFFF", line2: "#DCE6F5", ink: "#0B1B3A", muted: "#55627D", accent: "#2453FF", on: "#FFFFFF" };
+  let YL, YD;
+  function buildYou() {
+    const c = YOU.color, on = onColor(c);
+    YL = { bg: mix(c, "#FFFFFF", .92), card: "#FFFFFF", line2: mix(c, "#FFFFFF", .8), ink: "#17120F", muted: "#6B625E", accent: c, on };
+    YD = { bg: mix(c, "#0C0C10", .9), card: mix(c, "#17171C", .88), line2: mix(c, "#2A2A31", .85), ink: "#FFFFFF", muted: "#A6A2A8", accent: c, on };
+    const s = slug(YOU.name), init = (YOU.name.trim()[0] || "Y").toUpperCase();
+    $("you-name").textContent = YOU.name;
+    ["you-mark", "notif-ic", "homeicon", "file-mark"].forEach(id => { $(id).textContent = init; $(id).style.background = c; $(id).style.color = on; });
+    $("file-name").textContent = s.slice(0, 14) + "-logo.svg";
+    $("mail-addr").textContent = "hello@" + s + ".com";
+    $("notif-from").textContent = "hello@" + s + ".com";
+    $("notif-txt").textContent = "Welcome to " + YOU.name + ", Lucy 👋 Your program is ready.";
+    $("homename").textContent = short(YOU.name);
+    $("dom-subname").textContent = s.slice(0, 16) + ".wildmethod.app";
+    DOMAIN = "app." + s + ".com";
+    const sw = SWATCHES.includes(c) ? SWATCHES : [c, ...SWATCHES.slice(1)];
+    $("sws").innerHTML = sw.map(x => `<i style="background:${x}" data-c="${x}"></i>`).join("");
+    TARGET = sw.indexOf(c);
+  }
+  let DOMAIN = "", TARGET = 0;
+
+  /* ---------- timeline (seconds) ---------- */
+  const DUR = 35;
+  const SCENES = [
+    { a: 0, b: 2.8 }, { a: 2.8, b: 5.8 }, { a: 5.8, b: 8.8 },
+    { a: 8.8, b: 11.4 }, { a: 11.4, b: 14.0 }, { a: 14.0, b: 16.6 }, { a: 16.6, b: 19.2 }, { a: 19.2, b: 21.8 }, { a: 21.8, b: 24.6 },
+    { a: 24.6, b: 27.6 }, { a: 27.6, b: 31.0 }, { a: 31.0, b: 35 }
+  ];
+  const HEADS = [
+    { a: 2.8, b: 5.8, eb: "Built inside a real gym", h: `This app runs <i class="s">Silvestre</i> every day.`, dark: true },
+    { a: 5.8, b: 8.8, eb: "Powered by Wild Method", h: `Same app. Now it can be <i class="s">yours.</i>` },
+    { a: 8.8, b: 11.4, eb: "<b>1</b> Logo", h: `Your <i class="s">logo.</i>` },
+    { a: 11.4, b: 14.0, eb: "<b>2</b> Colors", h: `Your <i class="s">colors.</i>` },
+    { a: 14.0, b: 16.6, eb: "<b>3</b> Domain", h: `Your <i class="s">domain.</i>` },
+    { a: 16.6, b: 19.2, eb: "<b>4</b> Email", h: `Your <i class="s">email.</i>` },
+    { a: 19.2, b: 21.8, eb: "<b>5</b> Style", h: `Your <i class="s">vibe.</i>` },
+    { a: 21.8, b: 24.6, eb: "<b>6</b> App stores", h: `Your <i class="s">own app.</i>` },
+    { a: 24.6, b: 27.6, eb: "Content shoots", h: `We film your <i class="s">content</i> too.` },
+    { a: 27.6, b: 31.0, eb: "Fully managed", h: `All <i class="s">included.</i>` }
+  ];
+  $("heads").innerHTML = HEADS.map((h, i) => `<div class="head" id="h${i}"><div class="eb">${h.eb}</div><h2>${h.h}</h2></div>`).join("");
+  const INCL = [
+    ["Your logo, colors & style"], ["Your domain or subdomain"], ["Corporate email"], ["Hosting, updates & security"],
+    ["Support + monthly 1:1 call"], ["Launch posts for Instagram"], ["App Store & Google Play", "Quarterly+"], ["Content shoots", "Annual"]
+  ];
+  const okSvg = `<span class="ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>`;
+  $("incl").innerHTML = INCL.map((x, i) => `<div class="it" id="in${i}">${okSvg}<span>${x[0]}</span>${x[1] ? `<small>${x[1]}</small>` : ""}</div>`).join("");
+  $("bars").innerHTML = SCENES.map(() => `<button><i></i></button>`).join("");
+  const barEls = [...$("bars").querySelectorAll("i")];
+
+  const stage = $("stage"), screen = $("screen"), phone = $("phone");
+
+  /* ---------- render one frame ---------- */
+  function render(t) {
+    // Stage background: blue → navy (Silvestre) → mist → white (included) → blue (CTA)
+    let bg = "#2453FF";
+    bg = mix(bg, "#0B1B3A", p(t, 2.6, 3.2));
+    bg = mix(bg, "#EEF6FF", p(t, 5.6, 6.4));
+    bg = mix(bg, "#E4EEFC", p(t, 27.4, 27.9));
+    bg = mix(bg, "#2453FF", p(t, 30.8, 31.3));
+    stage.style.background = bg;
+    const lightBg = lum(bg) > .4;
+    stage.style.color = lightBg ? "#0B1B3A" : "#FFFFFF";
+    document.documentElement.classList.toggle("light", lightBg);
+    stage.style.setProperty("--hl", t < 5.8 ? "#9FD3FF" : "#2453FF");
+
+    // Hook
+    const hookOut = p(t, 2.5, 2.9);
+    $("hook").style.opacity = 1 - hookOut;
+    $("hook").style.visibility = hookOut >= 1 ? "hidden" : "visible";
+    [...$("hook").querySelectorAll("h1 span")].forEach((s, i) => {
+      const k = p(t, .15 + i * .42, .75 + i * .42, easeOut);
+      s.style.opacity = k; s.style.transform = `translateY(${(1 - k) * 60}px)`;
+    });
+    const hp = p(t, 1.5, 2.0, easeOut);
+    $("hook").querySelector("p").style.opacity = hp;
+    $("hook").querySelector(".logo").style.opacity = p(t, 0, .4);
+
+    // Headlines
+    HEADS.forEach((h, i) => {
+      const el = $("h" + i);
+      const k = win(t, h.a + .05, h.b, .45, .3);
+      const inK = p(t, h.a + .05, h.a + .55, easeOut);
+      set(el, k, `translateY(${(1 - inK) * 40}px)`);
+    });
+
+    // Phone in/out
+    const pin = p(t, 2.8, 3.6, easeOut), pout = p(t, 24.4, 24.9);
+    let scale = 1, ty = (1 - pin) * 500 + pout * 120;
+    const pulse = (a) => Math.sin(clamp((t - a) / .5) * Math.PI) * .025; // tiny "bump" when brand changes
+    scale = 1 + pulse(6.0) + pulse(9.9) + pulse(12.4) + pulse(20.1);
+    set(phone, pin * (1 - pout), `translateY(${ty}px) scale(${scale * (1 - pout * .1)})`);
+
+    // App brand colors
+    let c = { ...SIL };
+    const k1 = p(t, 6.0, 6.8), k2 = p(t, 12.3, 12.9), k3 = p(t, 20.0, 20.6);
+    for (const key of Object.keys(c)) {
+      let v = mix(SIL[key], WM[key], k1);
+      v = mix(v, YL[key], k2);
+      v = mix(v, YD[key], k3);
+      c[key] = v;
+    }
+    for (const key in c) screen.style.setProperty("--" + key, c[key]);
+    const serif = t >= 20.3;
+    screen.classList.toggle("serifmode", serif);
+    screen.style.setProperty("--hfont", serif ? "var(--serif)" : "var(--sans)");
+    screen.style.setProperty("--rad", (28 + k3 * 8) + "px");
+
+    // Logos
+    const lSil = 1 - p(t, 6.0, 6.5), lWm = p(t, 6.2, 6.7) * (1 - p(t, 9.8, 10.2)), lYou = p(t, 10.0, 10.4);
+    set($("b-sil"), lSil, `translateY(${(1 - lSil) * -14}px)`);
+    set($("b-wm"), lWm, `translateY(${(lWm < 1 && t > 8 ? (1 - lWm) * -14 : (1 - lWm) * 14)}px)`);
+    set($("b-you"), lYou, `translateY(${(1 - lYou) * 14}px) scale(${.9 + .1 * backOut(clamp((t - 10.0) / .5))})`);
+
+    // URL bar
+    let url;
+    if (t < 6.3) url = "performanceos.silvestrefitness.net";
+    else if (t < 14.6) url = "app.wildmethod.app";
+    else {
+      const n = Math.floor(clamp((t - 14.6) / 1.2) * DOMAIN.length);
+      url = t < 14.75 ? "" : DOMAIN.slice(0, n);
+    }
+    const typing = t >= 14.6 && t < 16.2;
+    $("url").innerHTML = url + (typing && Math.floor(t * 3) % 2 === 0 ? '<span class="caret"></span>' : "");
+    $("urlglow").style.opacity = win(t, 14.5, 16.4, .2, .4);
+
+    // Notification (email)
+    const nk = win(t, 17.4, 19.0, .4, .35);
+    set($("notif"), nk, `translateY(${(1 - p(t, 17.4, 17.85, backOut)) * -160}px)`);
+
+    // Home screen (stores)
+    const hk = p(t, 22.0, 22.45);
+    set($("home"), hk, `scale(${1.08 - hk * .08})`);
+    const ik = p(t, 22.6, 23.1, backOut);
+    $("homeapp").style.transform = `scale(${t < 22.6 ? 0.001 : ik})`;
+    const tapK = clamp((t - 23.9) / .5);
+    const tap = $("hometap");
+    const ia = $("homeicon").getBoundingClientRect, iconRect = { x: 0, y: 0 };
+    tap.style.opacity = t > 23.9 && t < 24.4 ? (1 - tapK) : 0;
+    tap.style.left = "178px"; tap.style.top = "254px";
+    tap.style.transform = `scale(${.4 + tapK * .7})`;
+
+    // Chips
+    chip("c-logo", t, 8.85, 11.35);
+    chip("c-color", t, 11.45, 13.95);
+    chip("c-domain", t, 14.05, 16.55);
+    chip("c-mail", t, 16.65, 19.15);
+    chip("c-vibe", t, 19.25, 21.75);
+    chip("c-store", t, 21.85, 24.5);
+    chip("c-shoot", t, 24.9, 27.5);
+    const sub1 = win(t, 14.6, 16.5, .4, .3); set($("dom-sub"), sub1);
+    const sub2 = win(t, 22.4, 24.5, .4, .3); set($("store-sub"), sub2);
+
+    // logo chip: file flies in, drops, check
+    const fk = p(t, 9.2, 9.8, easeOut);
+    const file = $("file");
+    file.style.transform = `translate(${(1 - fk) * 420}px, ${Math.sin(fk * Math.PI) * -40}px) scale(${1 + Math.sin(fk * Math.PI) * .06})`;
+    file.style.opacity = p(t, 9.1, 9.3);
+    $("drop-t").style.opacity = 1 - p(t, 9.5, 9.7);
+    $("drop").style.borderColor = t > 9.6 ? "#18B26B" : "#B9C8E6";
+    const ok1 = p(t, 9.9, 10.3, backOut); $("logo-ok").style.transform = `scale(${ok1})`;
+
+    // color chip: cursor travels to swatch, taps
+    const sws = [...$("sws").children];
+    if (sws.length) {
+      const target = sws[TARGET] || sws[0];
+      const tx = target.offsetLeft + 33 - 23 + 28, ty2 = 37 - 23 + 22;
+      const mk = p(t, 11.7, 12.2);
+      const cur = $("cur");
+      cur.style.left = (820 * .55 + (tx - 820 * .55) * mk) + "px";
+      cur.style.top = (ty2 + 70 * (1 - mk)) + "px";
+      const press = Math.sin(clamp((t - 12.2) / .25) * Math.PI);
+      cur.style.transform = `scale(${1 - press * .25})`;
+      cur.style.opacity = win(t, 11.6, 13.4, .2, .4);
+      sws.forEach((s, i) => {
+        const on = i === TARGET && t > 12.25;
+        s.style.boxShadow = on ? "0 0 0 6px #fff, 0 0 0 10px #0B1B3A" : "none";
+        s.style.transform = on ? `scale(${1 + .12 * Math.sin(clamp((t - 12.25) / .35) * Math.PI)})` : "none";
+      });
+    }
+
+    // domain chip
+    const dn = Math.floor(clamp((t - 14.6) / 1.2) * DOMAIN.length);
+    $("dom-typed").textContent = t < 14.6 ? "" : DOMAIN.slice(0, dn);
+    $("dom-caret").style.opacity = t < 16.0 && Math.floor(t * 3) % 2 === 0 ? 1 : 0;
+    $("dom-ok").style.transform = `scale(${p(t, 15.9, 16.3, backOut)})`;
+
+    // mail chip
+    $("mail-ok").style.transform = `scale(${p(t, 17.2, 17.6, backOut)})`;
+    const mk2 = p(t, 16.9, 17.3, easeOut);
+    $("mail-addr").style.opacity = mk2;
+
+    // vibe chip
+    const v1 = p(t, 19.75, 20.15), v2 = p(t, 20.1, 20.5);
+    $("seg1").style.transform = `translateX(${v1 * 100}%)`;
+    $("seg2").style.transform = `translateX(${v2 * 100}%)`;
+    $("s1a").style.color = v1 < .5 ? "#fff" : ""; $("s1b").style.color = v1 >= .5 ? "#fff" : "";
+    $("s2a").style.color = v2 < .5 ? "#fff" : ""; $("s2b").style.color = v2 >= .5 ? "#fff" : "";
+    $("s2b").style.fontFamily = "var(--serif)"; $("s2b").style.fontStyle = "italic"; $("s2b").style.fontWeight = "400"; $("s2b").style.fontSize = "26px";
+
+    // Shoot scene
+    const sk = win(t, 24.75, 27.6, .5, .35);
+    set($("shoot"), sk, `scale(${.94 + .06 * p(t, 24.75, 25.3, easeOut)})`);
+    [1, 2, 3].forEach((n, i) => {
+      const k = p(t, 25.1 + i * .3, 25.6 + i * .3, backOut);
+      const el = $("clip" + n);
+      el.style.opacity = clamp((t - 25.1 - i * .3) / .2);
+      el.style.transform = `translateY(${(1 - k) * 80}px) rotate(${(i - 1) * 2.5 * k}deg)`;
+      el.style.background = [`linear-gradient(160deg,#9FD3FF,#2453FF)`, `linear-gradient(160deg,#5C84FF,#0B1B3A)`, `linear-gradient(160deg,#2453FF,#14286E)`][i];
+    });
+    const secs = Math.max(0, Math.floor((t - 24.9) * 4));
+    $("rectime").textContent = "REC 00:00:" + String(secs).padStart(2, "0");
+    $("recdot").style.opacity = Math.floor(t * 2) % 2 ? 1 : .25;
+    $("shootbar").style.width = (p(t, 25.0, 27.4, x => x) * 100) + "%";
+
+    // Included list
+    const ik2 = win(t, 27.8, 31.0, .3, .3);
+    set($("incl"), ik2);
+    INCL.forEach((_, i) => {
+      const k = p(t, 28.0 + i * .2, 28.4 + i * .2, easeOut);
+      const el = $("in" + i);
+      el.style.opacity = k; el.style.transform = `translateX(${(1 - k) * -60}px)`;
+      el.querySelector(".ok").style.transform = `scale(${p(t, 28.2 + i * .2, 28.55 + i * .2, backOut)})`;
+    });
+
+    // CTA
+    const ck = p(t, 31.1, 31.6);
+    set($("cta"), ck);
+    [...$("cta").children].forEach((el, i) => {
+      const k = p(t, 31.2 + i * .25, 31.75 + i * .25, easeOut);
+      el.style.opacity = k; el.style.transform = `translateY(${(1 - k) * 50}px)`;
+    });
+    const bk = $("cta").querySelector(".btn");
+    bk.style.transform += ` scale(${1 + .04 * Math.sin(Math.max(0, t - 32.5) * 4)})`;
+
+    // progress bars
+    SCENES.forEach((s, i) => { barEls[i].style.width = (clamp((t - s.a) / (s.b - s.a)) * 100) + "%"; });
+  }
+  function chip(id, t, a, b) {
+    const k = win(t, a, b, .4, .3);
+    const inK = p(t, a, a + .45, backOut);
+    set($(id), k, `translateY(${(1 - inK) * 120}px)`);
+  }
+
+  /* ---------- fit to window ---------- */
+  function fit() {
+    const vw = innerWidth, vh = innerHeight;
+    const s = Math.min(vw / 1080, vh / 1920);
+    const vp = $("viewport");
+    vp.style.transform = `scale(${s})`;
+    vp.style.left = ((vw - 1080 * s) / 2) + "px";
+    vp.style.top = ((vh - 1920 * s) / 2) + "px";
+  }
+  addEventListener("resize", fit);
+
+  /* ---------- player ---------- */
+  let t = 0, playing = !EXPORT, last = null;
+  function loop(now) {
+    if (last == null) last = now;
+    const dt = Math.min(.1, (now - last) / 1000); last = now;
+    if (playing) {
+      t += dt;
+      if (t >= DUR) { t = DUR; playing = false; showEnd(true); }
+    }
+    render(t);
+    requestAnimationFrame(loop);
+  }
+  function seek(x) { t = Math.max(0, Math.min(DUR - .01, x)); showEnd(false); render(t); }
+  function sceneIndex() { return SCENES.findIndex(s => t >= s.a && t < s.b); }
+  function setPaused(pz) { playing = !pz; document.documentElement.classList.toggle("paused", pz); }
+  function showEnd(on) { $("end").classList.toggle("on", on); }
+
+  $("tapC").addEventListener("click", () => setPaused(playing));
+  $("tapL").addEventListener("click", () => { const i = sceneIndex(); seek(SCENES[Math.max(0, (t - SCENES[i].a < .6 ? i - 1 : i))].a); setPaused(false); });
+  $("tapR").addEventListener("click", () => { const i = sceneIndex(); if (i < SCENES.length - 1) seek(SCENES[i + 1].a); else seek(DUR - .05); setPaused(false); });
+  [...$("bars").children].forEach((b, i) => b.addEventListener("click", (e) => { e.stopPropagation(); seek(SCENES[i].a); setPaused(false); }));
+  addEventListener("keydown", (e) => { if (e.target.tagName === "INPUT") return; if (e.code === "Space") { e.preventDefault(); setPaused(playing); } if (e.key === "ArrowRight") $("tapR").click(); if (e.key === "ArrowLeft") $("tapL").click(); });
+
+  // end card: build your own
+  let pick = YOU.color;
+  $("in-sws").innerHTML = SWATCHES.map(c => `<button style="background:${c}" data-c="${c}" aria-label="Color ${c}"></button>`).join("");
+  const markPick = () => [...$("in-sws").children].forEach(b => b.classList.toggle("on", b.dataset.c === pick));
+  markPick();
+  $("in-sws").addEventListener("click", (e) => { const c = e.target.dataset.c; if (c) { pick = c; markPick(); } });
+  $("go-mine").addEventListener("click", () => {
+    const n = $("in-name").value.trim();
+    YOU.name = n || "Your Brand"; YOU.color = pick; buildYou();
+    seek(8.8); setPaused(false);
+  });
+  $("go-replay").addEventListener("click", () => { seek(0); setPaused(false); });
+  $("in-name").addEventListener("keydown", (e) => { if (e.key === "Enter") $("go-mine").click(); });
+
+  if (params.get("brand")) YOU.name = params.get("brand").slice(0, 20);
+  if (params.get("color") && /^[0-9a-f]{6}$/i.test(params.get("color"))) YOU.color = "#" + params.get("color");
+  buildYou();
+  fit();
+
+  // Export hooks
+  window.REEL = { DUR, render: (x) => render(x) };
+  if (EXPORT) { render(Number(params.get("t") || 0)); }
+  else {
+    // start after fonts are ready so the first frame doesn't jump
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => requestAnimationFrame(loop));
+  }
+})();
+</script>
+</body>
+</html>
