@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Your Brand · Wild Method</title>
-<meta name="description" content="Get the training app we run every day, rebuilt with your logo, colors, domain and email. Fully managed by Wild Method. Based in Dubai, UAE.">
+<meta name="description" content="For personal trainers and nutritionists: the app we run every day, rebuilt with your logo, colors, domain and email. Fully managed by Wild Method. Based in Dubai, UAE.">
 <meta property="og:title" content="Our app. Your brand. · Wild Method">
 <meta property="og:description" content="The training app we run every day, rebuilt with your logo, colors, domain and email. Fully managed.">
 <meta property="og:image" content="../assets/og.png">
@@ -93,6 +93,15 @@ p { margin: 0; }
 .jcard.you .chip { background: var(--sky); color: var(--navy); }
 @media (max-width: 860px) { .journey .steps3 { grid-template-columns: 1fr; } }
 
+/* Team */
+.tgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.tcard { background: var(--mist); border-radius: 26px; padding: 28px; display: flex; gap: 18px; align-items: flex-start; min-width: 0; }
+.tcard .ic { width: 52px; height: 52px; border-radius: 16px; background: var(--white); display: grid; place-items: center; flex: none; }
+.tcard .ic svg { width: 26px; height: 26px; fill: none; stroke: var(--blue); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.tcard h3 { margin-bottom: 6px; }
+.tcard p { color: var(--muted); }
+@media (max-width: 760px) { .tgrid { grid-template-columns: 1fr; } }
+
 /* Configurator */
 .config { background: var(--mist); }
 .cfg { display: grid; grid-template-columns: 1fr 380px; gap: 56px; align-items: start; }
@@ -175,7 +184,7 @@ p { margin: 0; }
 .inside .sec-head .eyebrow { color: var(--sky); }
 .inside .sec-head h2 em.s { color: var(--sky); }
 .inside .sec-head p { color: rgba(255,255,255,.75); }
-.feat { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.feat { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .fcard { background: rgba(255,255,255,.06); border-radius: 24px; padding: 26px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
 .fcard p { color: rgba(255,255,255,.72); font-size: .97rem; }
 .partners { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
@@ -301,7 +310,7 @@ footer a:hover { color: var(--sky); }
     <nav class="nav-links" aria-label="Sections">
       <a href="#make-it-yours">Make it yours</a>
       <a href="#included">What's included</a>
-      <a href="#business">Payments</a>
+      <a href="#business">Admin panel</a>
       <a href="#shoots">Content</a>
       <a href="#plans">Plans</a>
       <a class="btn btn-white" href="#book">Book a demo</a>
@@ -313,14 +322,14 @@ footer a:hover { color: var(--sky); }
   <section class="hero">
     <div class="wrap">
       <div>
-        <span class="eyebrow">White-label · Fully managed · For personal trainers</span>
+        <span class="eyebrow">White-label · Fully managed · For trainers &amp; nutritionists</span>
         <h1>Our app.<br><em class="s">Your</em> brand.</h1>
         <p class="lead">The same training app we run every day at Silvestre, rebuilt with your logo, your colors, your domain and your email. We host it, support it and keep it running. You just coach.</p>
         <div class="hero-actions">
           <a class="btn btn-white" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ07Ew69KhLRZXgkC3hHb6BV7yBul44-4eBXWbqmxo7DxIA3uplNNscReqz7l1Gw0ZB9SRdwSWSJ" target="_blank" rel="noopener">Book a live demo →</a>
           <a class="btn btn-ghost-light" href="#make-it-yours">Design yours now</a>
         </div>
-        <div class="badges"><span>Your logo & colors</span><span>Domain or subdomain</span><span>Corporate email</span><span>Stripe payments</span><span>Admin panel</span><span>Hosting & support</span><span>Your own store app</span><span>Content creation</span></div>
+        <div class="badges"><span>Your logo & colors</span><span>Domain or subdomain</span><span>Corporate email</span><span>Admin panel with payments</span><span>Trainers &amp; nutritionists</span><span>Hosting & support</span><span>Your own store app</span><span>Content creation</span></div>
       </div>
       <div>
         <div class="reelbox"><iframe src="../reel/?embed=1" title="Reel: from Silvestre to your own brand" loading="lazy" allow="autoplay"></iframe></div>
@@ -340,6 +349,20 @@ footer a:hover { color: var(--sky); }
         <div class="jcard sil"><span class="n">1</span><span class="chip">SILVESTRE</span><h3>Built inside a real gym</h3><p>Our coaches program, assess and follow clients with it every single day.</p></div>
         <div class="jcard wm"><span class="n">2</span><span class="chip">wild method</span><h3>Packaged for trainers</h3><p>Wild Method takes that same engine and sets it up, hosts it and supports it for you.</p></div>
         <div class="jcard you"><span class="n">3</span><span class="chip">Your brand</span><h3>Launched as yours</h3><p>Your logo, colors, domain and email. Your clients only ever see your brand.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec team" id="team" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Trainers &amp; nutritionists</span>
+        <h2>One app for your <em class="s">whole</em> team.</h2>
+        <p>Each professional gets their own panel, whether your team is made up of trainers, nutritionists, or both.</p>
+      </div>
+      <div class="tgrid">
+        <div class="tcard"><span class="ic"><svg viewBox="0 0 24 24"><path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12"/></svg></span><div><h3>Personal trainer panel</h3><p>Build programs, follow every session and keep each client's assessments in one profile.</p></div></div>
+        <div class="tcard"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3c4 3 6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 2-7 6-10z"/></svg></span><div><h3>Nutritionist panel</h3><p>Create nutrition plans and follow up with clients, under the same brand as the training.</p></div></div>
       </div>
     </div>
   </section>
@@ -434,10 +457,11 @@ footer a:hover { color: var(--sky); }
       <div class="sec-head">
         <span class="eyebrow">Inside the app</span>
         <h2>Built for how trainers <em class="s">actually</em> work.</h2>
-        <p>The same features our coaches use every day, now under your brand.</p>
+        <p>The same tools our trainers and nutritionists use every day, now under your brand.</p>
       </div>
       <div class="feat">
         <div class="fcard"><h3>Programs</h3><p>Build training blocks once, assign them to clients and adjust week by week.</p></div>
+        <div class="fcard"><h3>Nutrition plans</h3><p>Nutritionists build plans and follow up with clients from their own panel.</p></div>
         <div class="fcard"><h3>Client app</h3><p>Your clients open today's session, follow each exercise and log every set.</p></div>
         <div class="fcard"><h3>Client profile & assessments</h3><p>Every evaluation in one profile: GPS, jumps, anthropometry and your own assessments.</p></div>
       </div>
@@ -464,22 +488,22 @@ footer a:hover { color: var(--sky); }
   <section class="sec biz" id="business">
     <div class="wrap">
       <div class="sec-head">
-        <span class="eyebrow">Payments & admin</span>
-        <h2>Get paid. <em class="s">Run</em> your business.</h2>
-        <p>Connect Stripe and client payments go straight to your account. Then manage everything from your own admin panel.</p>
+        <span class="eyebrow">Admin panel</span>
+        <h2>Your business, in <em class="s">one</em> panel.</h2>
+        <p>Clients, payments, invoicing and taxes, all in your own admin panel. Payments run through Stripe and go straight to your account.</p>
       </div>
       <div class="bgrid">
         <div class="admin-mock" aria-hidden="true">
-          <div class="am-top"><b>Admin</b><span>Your brand</span></div>
-          <div class="am-rev"><span>Revenue this month</span><b>AED 18,450</b><em>stripe · paid to your account</em></div>
-          <div class="am-row"><span>Payments</span><i class="g">32 paid</i></div>
+          <div class="am-top"><b>Admin panel</b><span>Your brand</span></div>
+          <div class="am-rev"><span>Revenue this month</span><b>AED 18,450</b><em>stripe · payments inside your panel</em></div>
           <div class="am-row"><span>Clients</span><i>42 active</i></div>
+          <div class="am-row"><span>Payments</span><i class="g">Stripe · 32 paid</i></div>
           <div class="am-row"><span>Invoicing</span><i>Auto-sent</i></div>
           <div class="am-row"><span>Taxes</span><i>Report ready</i></div>
         </div>
         <div class="blist">
-          <div class="bi"><h3>Stripe payments</h3><p>Clients pay by card. The money goes to your own Stripe account, not ours.</p></div>
-          <div class="bi"><h3>Your admin panel</h3><p>Payments, clients, invoicing and taxes, all from one place.</p></div>
+          <div class="bi"><h3>Payments, inside your panel</h3><p>Connect your Stripe account. Clients pay by card and the money goes to you, not to us.</p></div>
+          <div class="bi"><h3>Clients, invoicing &amp; taxes</h3><p>See who's active, send invoices and keep your tax reports ready, from the same panel.</p></div>
           <div class="bi"><h3>Freelancer or company</h3><p>Works whether you train under your own name or run a company in a UAE free zone.</p></div>
         </div>
       </div>
@@ -518,7 +542,7 @@ footer a:hover { color: var(--sky); }
       <div class="sec-head">
         <span class="eyebrow">Plans</span>
         <h2>Choose your <em class="s">plan.</em></h2>
-        <p>Every plan includes your branding, domain or subdomain, corporate email, Stripe payments, admin panel, hosting, support and a monthly 1:1.</p>
+        <p>Every plan includes your branding, domain or subdomain, corporate email, admin panel with Stripe payments, hosting, support and a monthly 1:1.</p>
       </div>
       <div class="pgrid">
         <div class="plan" data-plan="Monthly" tabindex="0" role="button" aria-pressed="false">
@@ -526,7 +550,7 @@ footer a:hover { color: var(--sky); }
           <ul>
             <li><svg><use href="#chk"/></svg>Web app your clients add to their home screen</li>
             <li><svg><use href="#chk"/></svg>Your logo, colors, domain or subdomain & email</li>
-            <li><svg><use href="#chk"/></svg>Stripe payments & admin panel</li>
+            <li><svg><use href="#chk"/></svg>Admin panel with Stripe payments</li>
             <li><svg><use href="#chk"/></svg>Hosting, support & monthly 1:1</li>
             <li><svg><use href="#chk"/></svg>Launch posts for Instagram</li>
           </ul>
@@ -575,7 +599,8 @@ footer a:hover { color: var(--sky); }
       <details><summary>Can I use a domain I already own?</summary><p>Yes. We connect it for you. If you don't have one yet, you can start on a free yourbrand.wildmethod.app subdomain.</p></details>
       <details><summary>Will my clients see Wild Method or Silvestre?</summary><p>No. Your clients see your name, logo and colors across the app.</p></details>
       <details><summary>What's the difference between the web app and the store app?</summary><p>On the Monthly plan your clients use a web app they add to their home screen. From the Quarterly plan, you also get your own app on the App Store and Google Play, listed with your name, icon and brand.</p></details>
-      <details><summary>How do I get paid by my clients?</summary><p>You connect your own Stripe account. Clients pay by card and the money goes straight to you. Payments, invoicing and taxes are tracked in your admin panel.</p></details>
+      <details><summary>Is it only for personal trainers?</summary><p>No. It's built for personal trainers and nutritionists. Each professional gets their own panel, so your team can be trainers, nutritionists, or both.</p></details>
+      <details><summary>How do I get paid by my clients?</summary><p>Payments are part of your admin panel. You connect your own Stripe account, clients pay by card and the money goes straight to you. Invoicing and taxes live in the same panel.</p></details>
       <details><summary>I'm a freelancer. Does it still work?</summary><p>Yes. It works whether you train under your own name or run a company registered in a UAE free zone.</p></details>
       <details><summary>Do you manage my social media?</summary><p>No. We create a launch set of posts and, with any Annual plan, film and edit content for you. Posting stays with you.</p></details>
       <details><summary>Where are you based?</summary><p>We're based in Dubai, UAE, and work with personal trainers remotely.</p></details>
