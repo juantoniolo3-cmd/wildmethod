@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Your Brand · Wild Method</title>
+<meta name="description" content="For personal trainers and nutritionists: the app we run every day, rebuilt with your logo, colors, domain and email. Fully managed by Wild Method. Based in Dubai, UAE.">
+<meta property="og:title" content="Our app. Your brand. · Wild Method">
+<meta property="og:description" content="The training app we run every day, rebuilt with your logo, colors, domain and email. Fully managed.">
+<meta property="og:image" content="../assets/og.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232453FF'/%3E%3Cpath d='M12 34 L31 76 L50 46 L69 76 L88 20' fill='none' stroke='white' stroke-width='11' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+/* Same system as the main landing: blue hero, white/mist sections, navy band, sky CTA. One serif-italic word per heading. */
+:root {
+  --white: #FFFFFF; --blue: #2453FF; --blue-deep: #1A3FD6; --sky: #9FD3FF; --mist: #EEF6FF; --navy: #0B1B3A; --muted: #55627D; --line: #DCE6F5;
+  --sans: "Inter Tight", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --wrap: 1120px; color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+img, video { max-width: 100%; }
+body { margin: 0; background: var(--white); color: var(--navy); font-family: var(--sans); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+em.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: 0; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -0.04em; line-height: 1.02; text-wrap: balance; }
+h1 { font-size: clamp(2.8rem, 7vw, 5.4rem); }
+h2 { font-size: clamp(2.1rem, 4.6vw, 3.6rem); }
+h3 { font-size: 1.25rem; letter-spacing: -0.02em; line-height: 1.2; }
+p { margin: 0; }
+.eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+.lead { font-size: 1.15rem; max-width: 34em; }
+.sec { padding-block: 104px; }
+.sec-head { display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px; max-width: 760px; }
+.sec-head .eyebrow { color: var(--blue); }
+.sec-head h2 em.s { color: var(--blue); }
+.sec-head p { color: var(--muted); font-size: 1.1rem; }
+@media (max-width: 860px) { .sec { padding-block: 72px; } .sec-head { margin-bottom: 32px; } }
+
+.btn { display: inline-flex; align-items: center; gap: 0.5em; padding: 0.9em 1.5em; border-radius: 999px; font-weight: 600; font-size: 1rem; text-decoration: none; transition: transform .15s, background .15s; border: 0; cursor: pointer; font-family: inherit; }
+.btn:hover { transform: translateY(-1px); }
+.btn-white { background: var(--white); color: var(--blue); }
+.btn-blue { background: var(--blue); color: var(--white); }
+.btn-blue:hover { background: var(--blue-deep); }
+.btn-ghost { background: transparent; color: var(--navy); box-shadow: inset 0 0 0 1.5px var(--navy); }
+.btn-ghost-light { background: transparent; color: var(--white); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.7); }
+
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: var(--blue); color: var(--white); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 16px; }
+.logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-size: 1.3rem; letter-spacing: -0.03em; }
+.logo svg { width: 30px; height: 30px; }
+.logo span span { font-weight: 400; }
+.nav-links { display: flex; align-items: center; gap: 28px; font-size: 0.95rem; }
+.nav-links a:not(.btn) { text-decoration: none; opacity: .85; }
+.nav-links a:not(.btn):hover { opacity: 1; }
+.nav .btn { padding: 0.6em 1.15em; font-size: 0.92rem; }
+@media (max-width: 860px) { .nav-links a:not(.btn) { display: none; } }
+
+/* Hero */
+.hero { background: var(--blue); color: var(--white); padding-block: 72px 96px; overflow: hidden; }
+.hero .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+.hero .eyebrow { color: var(--sky); display: block; margin-bottom: 20px; }
+.hero h1 em.s { color: var(--sky); }
+.hero .lead { margin-top: 24px; opacity: .92; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+.hero .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 30px; }
+.hero .badges span { font-size: .85rem; padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,.14); }
+.reelbox { justify-self: center; width: min(100%, 360px); aspect-ratio: 9 / 16; border-radius: 34px; overflow: hidden; background: var(--navy); box-shadow: 0 40px 80px -30px rgba(11,27,58,.6), 0 0 0 6px rgba(255,255,255,.12); position: relative; }
+.reelbox iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.reelcap { text-align: center; font-size: .85rem; opacity: .8; margin-top: 14px; }
+.reelcap a { color: var(--sky); }
+@media (max-width: 860px) { .hero { padding-block: 48px 72px; } .hero .wrap { grid-template-columns: 1fr; gap: 44px; } .reelbox { width: min(100%, 340px); } }
+
+/* Journey: Silvestre → Wild Method → You */
+.journey .steps3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.jcard { border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.jcard .n { font-family: var(--serif); font-style: italic; font-size: 2.4rem; line-height: 1; }
+.jcard p { font-size: .98rem; opacity: .85; }
+.jcard.sil { background: #111; color: #fff; }
+.jcard.wm { background: var(--mist); }
+.jcard.wm .n { color: var(--blue); }
+.jcard.you { background: var(--white); box-shadow: inset 0 0 0 2px var(--blue); }
+.jcard.you .n { color: var(--blue); }
+.jcard .chip { align-self: flex-start; font-size: .8rem; font-weight: 600; padding: 5px 12px; border-radius: 999px; }
+.jcard.sil .chip { background: #fff; color: #111; letter-spacing: .12em; }
+.jcard.wm .chip { background: var(--blue); color: #fff; }
+.jcard.you .chip { background: var(--sky); color: var(--navy); }
+@media (max-width: 860px) { .journey .steps3 { grid-template-columns: 1fr; } }
+
+/* Team */
+.tgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.tcard { background: var(--mist); border-radius: 26px; padding: 28px; display: flex; gap: 18px; align-items: flex-start; min-width: 0; }
+.tcard .ic { width: 52px; height: 52px; border-radius: 16px; background: var(--white); display: grid; place-items: center; flex: none; }
+.tcard .ic svg { width: 26px; height: 26px; fill: none; stroke: var(--blue); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.tcard h3 { margin-bottom: 6px; }
+.tcard p { color: var(--muted); }
+@media (max-width: 760px) { .tgrid { grid-template-columns: 1fr; } }
+
+/* Configurator */
+.config { background: var(--mist); }
+.cfg { display: grid; grid-template-columns: 1fr 380px; gap: 56px; align-items: start; }
+.panel { background: var(--white); border-radius: 28px; padding: 32px; display: flex; flex-direction: column; gap: 26px; }
+.panel label, .panel .lbl { font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); display: flex; flex-direction: column; gap: 10px; }
+.panel input[type=text] { font: inherit; font-size: 1.15rem; font-weight: 600; text-transform: none; letter-spacing: -0.01em; color: var(--navy); border: 2px solid var(--line); border-radius: 16px; padding: 14px 16px; outline: none; width: 100%; }
+.panel input[type=text]:focus { border-color: var(--blue); }
+.sws { display: flex; flex-wrap: wrap; gap: 12px; }
+.sws button { width: 44px; height: 44px; border-radius: 50%; border: 0; cursor: pointer; }
+.sws button.on { box-shadow: 0 0 0 3px #fff, 0 0 0 6px var(--navy); }
+.sws .custom { position: relative; overflow: hidden; background: conic-gradient(red, yellow, lime, cyan, blue, magenta, red); }
+.sws .custom input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.segs { display: flex; flex-wrap: wrap; gap: 10px; }
+.seg { display: inline-flex; background: var(--mist); border-radius: 999px; padding: 4px; }
+.seg button { font: inherit; font-size: .95rem; font-weight: 600; border: 0; background: transparent; color: var(--muted); padding: 9px 16px; border-radius: 999px; cursor: pointer; }
+.seg button.on { background: var(--navy); color: #fff; }
+.presets { display: flex; flex-wrap: wrap; gap: 8px; }
+.presets button { font: inherit; font-size: .9rem; font-weight: 600; border: 1.5px solid var(--line); background: #fff; color: var(--navy); padding: 8px 14px; border-radius: 999px; cursor: pointer; }
+.presets button.on { border-color: var(--blue); color: var(--blue); }
+.outs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.out { background: var(--mist); border-radius: 16px; padding: 14px 16px; min-width: 0; }
+.out b { display: block; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 4px; }
+.out span { font-weight: 600; word-break: break-all; }
+@media (max-width: 960px) { .cfg { grid-template-columns: 1fr; } .phone-wrap { order: -1; } }
+@media (max-width: 520px) { .outs { grid-template-columns: 1fr; } .panel { padding: 22px; } }
+
+/* Phone preview */
+.phone-wrap { position: sticky; top: 96px; justify-self: center; width: min(100%, 340px); }
+.phone { border-radius: 52px; background: var(--navy); padding: 10px; box-shadow: 0 40px 80px -30px rgba(11,27,58,.45); }
+.screen { position: relative; border-radius: 43px; overflow: hidden; background: var(--bg); color: var(--ink); height: 720px; transition: background .4s, color .4s; }
+.screen * { transition: background-color .4s, color .4s, border-color .4s; }
+.st { height: 44px; display: flex; align-items: center; justify-content: space-between; padding: 4px 28px 0; font-size: 14px; font-weight: 600; }
+.st .isl { width: 92px; height: 26px; border-radius: 999px; background: #000; }
+.st .bat { width: 24px; height: 11px; border: 2px solid currentColor; border-radius: 4px; }
+.urlbar { margin: 4px 18px 0; height: 30px; border-radius: 10px; background: var(--card); border: 1px solid var(--line2); display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 12px; color: var(--muted); font-weight: 500; white-space: nowrap; overflow: hidden; padding: 0 10px; }
+.apphead { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px 2px; gap: 8px; }
+.brand { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.mark { width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center; background: var(--accent); color: var(--on); font-family: var(--serif); font-style: italic; font-size: 22px; flex: none; overflow: hidden; }
+.mark img { width: 100%; height: 100%; object-fit: cover; }
+.bname { font-weight: 600; font-size: 17px; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.av { width: 32px; height: 32px; border-radius: 50%; background: var(--card); border: 1px solid var(--line2); display: grid; place-items: center; font-weight: 600; font-size: 13px; flex: none; }
+.greet { padding: 12px 20px 0; }
+.greet .d { font-size: 12.5px; color: var(--muted); font-weight: 500; }
+.greet .h { font-size: 32px; font-weight: 600; letter-spacing: -0.035em; line-height: 1.05; font-family: var(--hfont); }
+.work { margin: 14px 16px 0; border-radius: var(--rad); padding: 16px 16px 15px; background: var(--accent); color: var(--on); }
+.work .k { font-size: 10.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; opacity: .8; }
+.work .t { font-size: 25px; font-weight: 600; letter-spacing: -0.03em; margin: 4px 0 2px; font-family: var(--hfont); }
+.work .m { font-size: 12.5px; opacity: .8; }
+.work .go { display: inline-block; margin-top: 11px; padding: 7px 16px; border-radius: 999px; background: var(--on); color: var(--accent); font-weight: 600; font-size: 12.5px; }
+.editorial .greet .h, .editorial .work .t { font-weight: 400; letter-spacing: -0.01em; }
+.pcard { margin: 10px 16px 0; border-radius: var(--rad); background: var(--card); border: 1px solid var(--line2); padding: 12px 14px; }
+.pcard .k { font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.prog { display: flex; justify-content: space-between; align-items: baseline; margin-top: 4px; font-size: 15px; font-weight: 600; }
+.prog span { font-size: 11.5px; font-weight: 500; color: var(--muted); }
+.wk { display: flex; gap: 4px; margin-top: 9px; }
+.wk i { flex: 1; height: 6px; border-radius: 3px; background: var(--line2); }
+.wk i.on { background: var(--accent); }
+.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 8px; }
+.tile { border-radius: 11px; background: var(--bg); padding: 8px 10px; }
+.tile b { display: block; font-size: 10.5px; color: var(--muted); font-weight: 500; }
+.tile span { font-size: 14.5px; font-weight: 600; letter-spacing: -0.02em; }
+.tabbar { position: absolute; left: 0; right: 0; bottom: 0; height: 70px; background: var(--card); border-top: 1px solid var(--line2); display: flex; justify-content: space-around; padding-top: 11px; font-size: 10px; color: var(--muted); font-weight: 500; }
+.tabbar span { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.tabbar span.on { color: var(--accent); }
+.tabbar svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.phone-cap { text-align: center; font-size: .82rem; color: var(--muted); margin-top: 12px; }
+
+/* Included */
+.incl { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 1100px) { .incl { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.icard { background: var(--mist); border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.icard .ic { width: 46px; height: 46px; border-radius: 14px; background: var(--white); display: grid; place-items: center; }
+.icard .ic svg { width: 24px; height: 24px; fill: none; stroke: var(--blue); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.icard p { color: var(--muted); font-size: .95rem; }
+.icard .tag { align-self: flex-start; font-size: .75rem; font-weight: 600; color: var(--blue); background: var(--white); padding: 4px 10px; border-radius: 999px; }
+@media (max-width: 960px) { .incl { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .incl { grid-template-columns: 1fr; } }
+
+/* Inside the app (navy band) */
+.inside { background: var(--navy); color: var(--white); }
+.inside .sec-head .eyebrow { color: var(--sky); }
+.inside .sec-head h2 em.s { color: var(--sky); }
+.inside .sec-head p { color: rgba(255,255,255,.75); }
+.feat { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.fcard { background: rgba(255,255,255,.06); border-radius: 24px; padding: 26px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.fcard p { color: rgba(255,255,255,.72); font-size: .97rem; }
+.partners { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+.partners span { display: inline-flex; align-items: center; gap: 8px; background: #fff; color: var(--navy); border-radius: 12px; padding: 6px 10px; font-size: .85rem; font-weight: 600; }
+.partners img { height: 22px; width: auto; }
+@media (max-width: 860px) { .feat { grid-template-columns: 1fr; } }
+
+/* Integrations */
+.integ { background: var(--mist); }
+.igrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.ig { background: var(--white); border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.ig .lg { height: 110px; border-radius: 16px; border: 1.5px solid var(--line); display: grid; place-items: center; padding: 10px; }
+.ig .lg img { max-height: 72px; width: auto; max-width: 100%; }
+.ig .lg-txt { font-weight: 800; font-size: 2rem; color: var(--navy); letter-spacing: -0.04em; }
+.ig p { color: var(--muted); font-size: .95rem; }
+.integ .pnote { margin-top: 20px; }
+@media (max-width: 960px) { .igrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .igrid { grid-template-columns: 1fr; } }
+
+/* Payments & admin */
+.bgrid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; align-items: center; }
+.admin-mock { background: var(--navy); color: #fff; border-radius: 28px; padding: 26px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.am-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+.am-top b { font-size: 1.4rem; letter-spacing: -0.03em; }
+.am-top span { font-size: .8rem; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,.1); }
+.am-rev { background: var(--blue); border-radius: 18px; padding: 18px; display: flex; flex-direction: column; gap: 2px; }
+.am-rev span { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; opacity: .8; font-weight: 600; }
+.am-rev b { font-size: 2rem; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.am-rev em { font-style: normal; align-self: flex-start; margin-top: 6px; background: #fff; color: #635BFF; font-weight: 700; font-size: .82rem; padding: 4px 10px; border-radius: 999px; }
+.am-row { display: flex; justify-content: space-between; padding: 12px 14px; border-radius: 14px; background: rgba(255,255,255,.06); font-weight: 600; }
+.am-row i { font-style: normal; font-weight: 500; opacity: .7; }
+.am-row i.g { color: #4ADE80; opacity: 1; }
+.blist { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.bi { background: var(--mist); border-radius: 22px; padding: 22px 24px; display: flex; flex-direction: column; gap: 6px; }
+.bi p { color: var(--muted); }
+@media (max-width: 860px) { .bgrid { grid-template-columns: 1fr; gap: 28px; } }
+
+/* Website */
+.web { background: var(--mist); }
+.wgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.wbrowser { border-radius: 22px; overflow: hidden; background: var(--white); box-shadow: 0 30px 60px -36px rgba(11,27,58,.45); min-width: 0; }
+.wb-bar { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F1F4FA; }
+.wb-bar .dots { display: flex; gap: 6px; } .wb-bar .dots i { width: 10px; height: 10px; border-radius: 50%; background: #D5DCE8; }
+.wb-url { flex: 1; text-align: center; font-size: .82rem; color: var(--muted); background: var(--white); border-radius: 8px; padding: 4px; }
+.wb-site { padding: 18px 22px 24px; background: #FFF4EF; color: #17120F; }
+.wb-nav { display: flex; justify-content: space-between; gap: 10px; font-size: .85rem; flex-wrap: wrap; }
+.wb-nav span { color: #6B625E; }
+.wb-hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 16px; align-items: center; margin-top: 18px; }
+.wb-h { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 600; letter-spacing: -0.04em; line-height: 1; }
+.wb-h em.s { color: #FF5A36; }
+.wb-btn { display: inline-block; margin-top: 14px; background: #FF5A36; color: #fff; font-weight: 600; font-size: .85rem; padding: 8px 16px; border-radius: 999px; }
+.wb-img { aspect-ratio: 4/5; border-radius: 16px; background: linear-gradient(160deg, #FF5A36, #17120F); }
+.wlist { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; min-width: 0; }
+.wi { background: var(--white); border-radius: 18px; padding: 18px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.wi h3 { font-size: 1.05rem; }
+.wi p { color: var(--muted); font-size: .92rem; }
+@media (max-width: 900px) { .wgrid { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .wlist { grid-template-columns: 1fr; } }
+
+/* Shoots */
+.shoot .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.shoot .sec-head { margin-bottom: 0; }
+.shoot ul { list-style: none; padding: 0; margin: 24px 0 0; display: flex; flex-direction: column; gap: 14px; }
+.shoot li { display: flex; gap: 12px; align-items: flex-start; }
+.shoot li svg { flex: none; width: 22px; height: 22px; stroke: var(--blue); fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; margin-top: 2px; }
+.shoot li span { color: var(--muted); display: block; font-size: .93rem; }
+.vf { position: relative; aspect-ratio: 4 / 5; border-radius: 28px; background: var(--navy); overflow: hidden; padding: 26px; display: flex; flex-direction: column; }
+.vf .top { display: flex; justify-content: space-between; color: #fff; font-size: .9rem; font-weight: 600; letter-spacing: .06em; }
+.vf .top i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #FF3B30; margin-right: 8px; animation: blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity: .2; } }
+.vf .clips { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; align-items: center; margin-top: 18px; }
+.vf .clip { aspect-ratio: 9 / 16; border-radius: 16px; display: flex; flex-direction: column; justify-content: flex-end; padding: 12px; color: #fff; font-size: .85rem; font-weight: 600; line-height: 1.2; }
+.vf .clip small { display: block; font-weight: 500; opacity: .75; font-size: .75rem; }
+.vf .gear { color: rgba(255,255,255,.7); font-size: .85rem; text-align: center; margin-top: 16px; }
+@media (max-width: 860px) { .shoot .wrap { grid-template-columns: 1fr; gap: 36px; } }
+
+.qrow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 24px; }
+.qrow span { background: var(--blue); color: #fff; font-weight: 700; border-radius: 12px; padding: 8px 14px; }
+.qrow b { margin-left: 8px; }
+/* Plans */
+.plans { background: var(--mist); }
+.pgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.plan { background: var(--white); border-radius: 28px; padding: 30px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.plan { position: relative; cursor: pointer; box-shadow: inset 0 0 0 1.5px var(--line); transition: box-shadow .15s, transform .15s; }
+.plan:hover { transform: translateY(-2px); }
+.plan:focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; }
+.plan.on { box-shadow: inset 0 0 0 3px var(--blue); }
+.plan .pick { position: absolute; top: 26px; right: 26px; width: 26px; height: 26px; border-radius: 50%; box-shadow: inset 0 0 0 2px var(--line); }
+.plan.on .pick { box-shadow: inset 0 0 0 7px var(--blue); }
+.pcta { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
+.plan .pill { align-self: flex-start; font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; background: var(--blue); color: #fff; padding: 5px 12px; border-radius: 999px; }
+.plan h3 { font-size: 1.6rem; }
+.plan > p { color: var(--muted); }
+.plan ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.plan li { display: flex; gap: 10px; font-size: .97rem; }
+.plan li svg { flex: none; width: 20px; height: 20px; stroke: var(--blue); fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; margin-top: 2px; }
+.plan li.plus { font-weight: 600; }
+.pnote { margin-top: 24px; color: var(--muted); font-size: .95rem; }
+@media (max-width: 860px) { .pgrid { grid-template-columns: 1fr; } }
+
+/* How */
+.steps4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.step { background: var(--mist); border-radius: 24px; padding: 26px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.step .n { font-family: var(--serif); font-style: italic; font-size: 2.6rem; line-height: 1; color: var(--blue); }
+.step p { color: var(--muted); font-size: .97rem; }
+@media (max-width: 960px) { .steps4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .steps4 { grid-template-columns: 1fr; } }
+
+/* FAQ */
+.faq details { border-top: 1.5px solid var(--line); padding: 20px 0; }
+.faq details:last-child { border-bottom: 1.5px solid var(--line); }
+.faq summary { cursor: pointer; font-weight: 600; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; color: var(--blue); font-size: 1.4rem; line-height: 1; }
+.faq details[open] summary::after { content: "–"; }
+.faq details p { color: var(--muted); margin-top: 10px; max-width: 46em; }
+
+.cta { background: var(--sky); padding-block: 112px; }
+.cta .wrap { display: flex; flex-direction: column; gap: 26px; align-items: flex-start; }
+.cta h2 { font-size: clamp(2.6rem, 6.5vw, 5rem); }
+.cta .contact { display: flex; flex-wrap: wrap; gap: 12px; }
+.cta .alt { font-size: .95rem; opacity: .8; }
+.cta .alt code { font-family: var(--sans); font-weight: 600; background: rgba(255,255,255,.55); padding: 2px 8px; border-radius: 6px; }
+@media (max-width: 860px) { .cta { padding-block: 80px; } }
+
+footer { background: var(--navy); color: rgba(255,255,255,.7); font-size: .88rem; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; padding-block: 32px; }
+footer .logo { color: var(--white); font-size: 1.1rem; }
+footer .logo svg { width: 24px; height: 24px; }
+footer .meta { display: flex; flex-direction: column; gap: 4px; text-align: right; }
+footer a { text-decoration: none; }
+footer a:hover { color: var(--sky); }
+@media (max-width: 620px) { footer .meta { text-align: left; } }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="chk" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+</svg>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="../" aria-label="Wild Method home">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M12 34 L31 76 L50 46 L69 76 L88 20" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span><b>wild</b> <span>method</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#make-it-yours">Make it yours</a>
+      <a href="#integrations">Integrations</a>
+      <a href="#included">What's included</a>
+      <a href="#business">Admin panel</a>
+      <a href="#website">Website</a>
+      <a href="#shoots">Content</a>
+      <a href="#plans">Plans</a>
+      <a class="btn btn-white" href="#book">Book a demo</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">White-label · Fully managed · For trainers &amp; nutritionists</span>
+        <h1>Our app.<br><em class="s">Your</em> brand.</h1>
+        <p class="lead">The same training app we run every day at Silvestre, rebuilt with your logo, your colors, your domain and your email. We host it, support it and keep it running. You just coach.</p>
+        <div class="hero-actions">
+          <a class="btn btn-white" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ07Ew69KhLRZXgkC3hHb6BV7yBul44-4eBXWbqmxo7DxIA3uplNNscReqz7l1Gw0ZB9SRdwSWSJ" target="_blank" rel="noopener">Book a live demo →</a>
+          <a class="btn btn-ghost-light" href="#make-it-yours">Design yours now</a>
+        </div>
+        <div class="badges"><span>Your logo & colors</span><span>Domain or subdomain</span><span>Corporate email</span><span>Admin panel with payments</span><span>Trainers &amp; nutritionists</span><span>High-performance integrations</span><span>Hosting & support</span><span>Your own store app</span><span>Your website</span><span>Logo &amp; merch design</span><span>Content creation</span></div>
+      </div>
+      <div>
+        <div class="reelbox"><iframe src="../reel/?embed=1" title="Reel: from Silvestre to your own brand" loading="lazy" allow="autoplay"></iframe></div>
+        <p class="reelcap">Tap the reel to pause · <a href="../reel/" target="_blank" rel="noopener">Open full screen</a> · MP4: <a href="../reel/wildmethod-reel.mp4" download>female voice</a> / <a href="../reel/wildmethod-reel-male-voice.mp4" download>male voice</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec journey">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">From our gym to your brand</span>
+        <h2>One app. <em class="s">Three</em> brands.</h2>
+        <p>Nothing here is a mock-up of a future product. It is the app we already use with our own clients, now available under your name.</p>
+      </div>
+      <div class="steps3">
+        <div class="jcard sil"><span class="n">1</span><span class="chip">SILVESTRE</span><h3>Built inside a real gym</h3><p>Our coaches program, assess and follow clients with it every single day.</p></div>
+        <div class="jcard wm"><span class="n">2</span><span class="chip">wild method</span><h3>Packaged for trainers</h3><p>Wild Method takes that same engine and sets it up, hosts it and supports it for you.</p></div>
+        <div class="jcard you"><span class="n">3</span><span class="chip">Your brand</span><h3>Launched as yours</h3><p>Your logo, colors, domain and email. Your clients only ever see your brand.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec team" id="team" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Trainers &amp; nutritionists</span>
+        <h2>One app for your <em class="s">whole</em> team.</h2>
+        <p>Each professional gets their own panel, whether your team is made up of trainers, nutritionists, or both.</p>
+      </div>
+      <div class="tgrid">
+        <div class="tcard"><span class="ic"><svg viewBox="0 0 24 24"><path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12"/></svg></span><div><h3>Personal trainer panel</h3><p>Build programs, follow every session and keep each client's assessments in one profile.</p></div></div>
+        <div class="tcard"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3c4 3 6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 2-7 6-10z"/></svg></span><div><h3>Nutritionist panel</h3><p>Create nutrition plans and follow up with clients, under the same brand as the training.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec config" id="make-it-yours">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Try it</span>
+        <h2>Make it <em class="s">yours</em> in 30 seconds.</h2>
+        <p>Start from our app, then change the name, logo, color and style. This is how your clients would see it.</p>
+      </div>
+      <div class="cfg">
+        <div class="panel">
+          <div class="lbl">Start from
+            <div class="presets" id="presets">
+              <button data-p="sil">Silvestre</button>
+              <button data-p="wm">Wild Method</button>
+              <button data-p="you" class="on">Your brand</button>
+            </div>
+          </div>
+          <label>Brand name<input type="text" id="f-name" value="Nova Coaching" maxlength="24" autocomplete="off"></label>
+          <div class="lbl">Logo
+            <div class="segs"><label class="btn btn-ghost" style="padding:.6em 1.1em;font-size:.92rem;text-transform:none;letter-spacing:0;color:var(--navy);flex-direction:row">Upload your logo<input type="file" id="f-logo" accept="image/*" hidden></label><button class="btn" id="f-logo-clear" style="padding:.6em 1.1em;font-size:.92rem;background:var(--mist);color:var(--navy)" hidden>Use initial</button></div>
+          </div>
+          <div class="lbl">Brand color<div class="sws" id="f-sws"></div></div>
+          <div class="lbl">Style
+            <div class="segs">
+              <div class="seg" id="f-mode"><button data-v="light" class="on">Light</button><button data-v="dark">Dark</button></div>
+              <div class="seg" id="f-type"><button data-v="clean" class="on">Clean</button><button data-v="editorial" style="font-family:var(--serif);font-style:italic;font-weight:400">Editorial</button></div>
+            </div>
+          </div>
+          <div class="outs">
+            <div class="out"><b>Your domain</b><span id="o-domain">app.novacoaching.com</span></div>
+            <div class="out"><b>Or free subdomain</b><span id="o-sub">nova.wildmethod.app</span></div>
+            <div class="out"><b>Corporate email</b><span id="o-mail">hello@novacoaching.com</span></div>
+            <div class="out"><b>App store name</b><span id="o-store">Nova Coaching</span></div>
+          </div>
+          <a class="btn btn-blue" style="align-self:flex-start" href="#book">I want this for my brand →</a>
+        </div>
+        <div class="phone-wrap">
+          <div class="phone">
+            <div class="screen" id="screen">
+              <div class="st"><span>9:41</span><span class="isl"></span><span class="bat"></span></div>
+              <div class="urlbar"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span id="p-url">app.novacoaching.com</span></div>
+              <div class="apphead"><div class="brand"><span class="mark" id="p-mark">N</span><span class="bname" id="p-name">Nova Coaching</span></div><span class="av">L</span></div>
+              <div class="greet"><div class="d">Tuesday · Week 3</div><div class="h">Hi, Lucy</div></div>
+              <div class="work"><div class="k">Today's session</div><div class="t">Lower body A</div><div class="m">6 exercises · 50 min</div><span class="go">Start session</span></div>
+              <div class="pcard"><div class="k">Your program</div><div class="prog">Strength block <span>Week 3 of 6</span></div><div class="wk"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div>
+              <div class="pcard"><div class="k">Profile · Assessments</div>
+                <div class="tiles">
+                  <div class="tile"><b>Pitchero GPS</b><span>31.4 km/h</span></div>
+                  <div class="tile"><b>My Jump Lab</b><span>CMJ 41 cm</span></div>
+                  <div class="tile"><b>ISAK</b><span>Body comp</span></div>
+                  <div class="tile"><b>Assessment</b><span>Mobility 16</span></div>
+                </div>
+              </div>
+              <nav class="tabbar" aria-hidden="true">
+                <span class="on"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9H3z"/></svg>Today</span>
+                <span><svg viewBox="0 0 24 24"><path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12"/></svg>Programs</span>
+                <span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4.5 4.2-6.5 8-6.5s7 2 8 6.5"/></svg>Profile</span>
+              </nav>
+            </div>
+          </div>
+          <p class="phone-cap">Live preview · sample client data</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="included">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">What's included</span>
+        <h2>Everything set up. <em class="s">Fully</em> managed.</h2>
+        <p>You don't touch servers, DNS or app stores. We handle the technical side so you can keep coaching.</p>
+      </div>
+      <div class="incl">
+        <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18M3 12h18"/></svg></span><h3>Your branding</h3><p>Logo, colors and style applied across the whole app.</p></div>
+        <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span><h3>Domain or subdomain</h3><p>Use your own domain, like app.yourbrand.com, or start on a free yourbrand.wildmethod.app subdomain.</p></div>
+        <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><h3>Corporate email</h3><p>A professional address on your own domain, like hello@yourbrand.com.</p></div>
+        <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span><h3>Hosting & security</h3><p>Hosting, updates, backups and SSL. Always on, always current.</p></div>
+        <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/></svg></span><h3>Support + monthly 1:1</h3><p>Direct support and a monthly call to review how it's going.</p></div>
+        <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17 7h.01"/></svg></span><h3>Launch posts</h3><p>A starter set of Instagram posts to announce your app. You post them.</p></div>
+        <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></span><h3>Your own store app</h3><p>On the App Store and Google Play with your name, your icon and your brand.</p><span class="tag">Quarterly & Annual</span></div>
+        <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></span><h3>Your website</h3><p>We build and host your own website, with SSL, daily backups and business email.</p><span class="tag">Annual</span></div>
+        <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><path d="M8 3l-5 3 2 4 2-1v12h10V9l2 1 2-4-5-3c-.5 1.7-2 3-4 3s-3.5-1.3-4-3z"/></svg></span><h3>Logo &amp; merch design</h3><p>No logo yet? We design it, plus merch with your brand on it.</p><span class="tag">Annual</span></div>
+        <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="15" height="11" rx="2"/><path d="M17 11l5-3v9l-5-3"/></svg></span><h3>Content creation</h3><p>Included with any Annual plan: we film the content you ask for and deliver it edited.</p><span class="tag">Annual</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec inside">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Inside the app</span>
+        <h2>Built for how trainers <em class="s">actually</em> work.</h2>
+        <p>The same tools our trainers and nutritionists use every day, now under your brand.</p>
+      </div>
+      <div class="feat">
+        <div class="fcard"><h3>Programs</h3><p>Build training blocks once, assign them to clients and adjust week by week.</p></div>
+        <div class="fcard"><h3>Nutrition plans</h3><p>Nutritionists build plans and follow up with clients from their own panel.</p></div>
+        <div class="fcard"><h3>Client app</h3><p>Your clients open today's session, follow each exercise and log every set.</p></div>
+        <div class="fcard"><h3>Client profile & assessments</h3><p>Every evaluation in one profile: GPS, jumps, anthropometry, InBody and your own assessments.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec integ" id="integrations">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">4 official integrations</span>
+        <h2>Built for <em class="s">high</em> performance.</h2>
+        <p>Four official integrations for high-performance training. Every reading lands in your client's profile, next to their programs and your own assessments.</p>
+      </div>
+      <div class="igrid">
+        <div class="ig"><div class="lg"><img src="../demo/img/pitchero.png" alt="Pitchero GPS"></div><h3>Pitchero GPS</h3><p>Speed, distance and load from GPS sessions.</p></div>
+        <div class="ig"><div class="lg"><img src="../demo/img/myjumplab.png" alt="My Jump Lab"></div><h3>My Jump Lab</h3><p>Jump height, power and reactive strength tests.</p></div>
+        <div class="ig"><div class="lg"><img src="../demo/img/isak.png" alt="ISAK"></div><h3>ISAK anthropometry</h3><p>Skinfolds, girths and body composition, ISAK protocol.</p></div>
+        <div class="ig"><div class="lg lg-txt">InBody</div><h3>InBody</h3><p>Body composition readings: body fat, muscle mass and more.</p></div>
+      </div>
+      <p class="pnote">Plus your own assessments in the same profile. Third-party subscriptions, like Pitchero GPS and My Jump Lab, are billed at cost.</p>
+    </div>
+  </section>
+
+  <section class="sec biz" id="business">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Admin panel</span>
+        <h2>Your business, in <em class="s">one</em> panel.</h2>
+        <p>Clients, payments, invoicing and taxes, all in your own admin panel. Payments run through Stripe and go straight to your account.</p>
+      </div>
+      <div class="bgrid">
+        <div class="admin-mock" aria-hidden="true">
+          <div class="am-top"><b>Admin panel</b><span>Your brand</span></div>
+          <div class="am-rev"><span>Revenue this month</span><b>AED 18,450</b><em>stripe · payments inside your panel</em></div>
+          <div class="am-row"><span>Clients</span><i>42 active</i></div>
+          <div class="am-row"><span>Payments</span><i class="g">Stripe · 32 paid</i></div>
+          <div class="am-row"><span>Invoicing</span><i>Auto-sent</i></div>
+          <div class="am-row"><span>Taxes</span><i>Report ready</i></div>
+        </div>
+        <div class="blist">
+          <div class="bi"><h3>Payments, inside your panel</h3><p>Connect your Stripe account. Clients pay by card and the money goes to you, not to us.</p></div>
+          <div class="bi"><h3>Clients, invoicing &amp; taxes</h3><p>See who's active, send invoices and keep your tax reports ready, from the same panel.</p></div>
+          <div class="bi"><h3>Freelancer or company</h3><p>Works whether you train under your own name or run a company in a UAE free zone.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec web" id="website">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Website · Annual plan</span>
+        <h2>Your own <em class="s">website</em>, logo and merch.</h2>
+        <p>With any Annual plan we design your website, put it on your domain and keep it running on business-grade hosting. We also design your logo and merch, so your app, site and gear share one brand.</p>
+      </div>
+      <div class="wgrid">
+        <div class="wbrowser" aria-hidden="true">
+          <div class="wb-bar"><span class="dots"><i></i><i></i><i></i></span><span class="wb-url">🔒 yourbrand.com</span></div>
+          <div class="wb-site">
+            <div class="wb-nav"><b>Your Brand</b><span>Coaching · Nutrition · Contact</span></div>
+            <div class="wb-hero"><div><div class="wb-h">Train with a <em class="s">plan.</em></div><span class="wb-btn">Book a session</span></div><div class="wb-img"></div></div>
+          </div>
+        </div>
+        <div class="wlist">
+          <div class="wi"><h3>Your domain + free SSL</h3><p>Secure https on your own domain, renewed automatically.</p></div>
+          <div class="wi"><h3>Fast hosting</h3><p>NVMe storage, LiteSpeed servers and a built-in global CDN.</p></div>
+          <div class="wi"><h3>Daily backups</h3><p>Automatic daily backups, plus on-demand ones before big changes.</p></div>
+          <div class="wi"><h3>Business email</h3><p>Mailboxes on your domain, like hello@yourbrand.com.</p></div>
+          <div class="wi"><h3>Built-in security</h3><p>Web application firewall, DDoS protection and malware scanning.</p></div>
+          <div class="wi"><h3>Logo &amp; merch design</h3><p>No logo yet? We design it, plus merch for your brand: shirts, bottles, bags.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec shoot" id="shoots">
+    <div class="wrap">
+      <div>
+        <div class="sec-head">
+          <span class="eyebrow">Content shoots · Annual plan</span>
+          <h2>We film your <em class="s">content</em>, every quarter.</h2>
+          <p>Content creation is included with any Annual plan. Your app launches with your brand, and your Instagram grows with it.</p>
+        </div>
+        <div class="qrow" aria-label="4 shoots a year"><span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span><b>4 shoots a year, included</b></div>
+        <ul>
+          <li><svg><use href="#chk"/></svg><div>Content you ask for<span>Exercise tips, client sessions, your story. You choose what we film.</span></div></li>
+          <li><svg><use href="#chk"/></svg><div>Simple edit, ready to post<span>Clean cuts and captions, delivered for Reels and Stories.</span></div></li>
+          <li><svg><use href="#chk"/></svg><div>Pro gear<span>Sony ZV-1 II, iPhone and iPad.</span></div></li>
+          <li><svg><use href="#chk"/></svg><div>Included with any Annual plan<span>4 shoots a year, one every quarter. Extra sessions can be booked any time.</span></div></li>
+        </ul>
+      </div>
+      <div class="vf" aria-hidden="true">
+        <div class="top"><span><i></i>REC</span><span>4K · 25p</span></div>
+        <div class="clips">
+          <div class="clip" style="background:linear-gradient(160deg,#9FD3FF,#2453FF)">Exercise tip<small>Reel · 0:24</small></div>
+          <div class="clip" style="background:linear-gradient(160deg,#5C84FF,#0B1B3A)">Client session<small>Reel · 0:31</small></div>
+          <div class="clip" style="background:linear-gradient(160deg,#2453FF,#14286E)">Your story<small>Reel · 0:45</small></div>
+        </div>
+        <div class="gear">Sony ZV-1 II · iPhone · iPad</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec plans" id="plans">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Plans</span>
+        <h2>Choose your <em class="s">plan.</em></h2>
+        <p>Every plan includes your branding, domain or subdomain, corporate email, admin panel with Stripe payments, hosting, support and a monthly 1:1.</p>
+      </div>
+      <div class="pgrid">
+        <div class="plan" data-plan="Monthly" tabindex="0" role="button" aria-pressed="false">
+          <span class="pick"></span><h3>Monthly</h3><p>Your branded web app, live on your domain.</p>
+          <ul>
+            <li><svg><use href="#chk"/></svg>Web app your clients add to their home screen</li>
+            <li><svg><use href="#chk"/></svg>Your logo, colors, domain or subdomain & email</li>
+            <li><svg><use href="#chk"/></svg>Admin panel with Stripe payments</li>
+            <li><svg><use href="#chk"/></svg>Hosting, support & monthly 1:1</li>
+            <li><svg><use href="#chk"/></svg>Launch posts for Instagram</li>
+          </ul>
+        </div>
+        <div class="plan hi on" data-plan="Quarterly" tabindex="0" role="button" aria-pressed="true">
+          <span class="pick"></span><span class="pill">Most popular</span>
+          <h3>Quarterly</h3><p>Everything in Monthly, plus your own app in the stores.</p>
+          <ul>
+            <li><svg><use href="#chk"/></svg>Everything in Monthly</li>
+            <li class="plus"><svg><use href="#chk"/></svg>Your app on the App Store, with your brand</li>
+            <li class="plus"><svg><use href="#chk"/></svg>Your app on Google Play, with your brand</li>
+          </ul>
+        </div>
+        <div class="plan" data-plan="Annual" tabindex="0" role="button" aria-pressed="false">
+          <span class="pick"></span><h3>Annual</h3><p>Everything in Quarterly, plus your website, logo, merch and content made for you.</p>
+          <ul>
+            <li><svg><use href="#chk"/></svg>Everything in Quarterly</li>
+            <li class="plus"><svg><use href="#chk"/></svg>Your own website, built and hosted</li>
+            <li class="plus"><svg><use href="#chk"/></svg>Logo &amp; merch design</li>
+            <li class="plus"><svg><use href="#chk"/></svg>Content creation included: 4 shoots a year</li>
+            <li><svg><use href="#chk"/></svg>Extra shoots available</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pcta"><a class="btn btn-blue" id="plan-cta" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ07Ew69KhLRZXgkC3hHb6BV7yBul44-4eBXWbqmxo7DxIA3uplNNscReqz7l1Gw0ZB9SRdwSWSJ" target="_blank" rel="noopener"><span>Book a demo for the <span id="plan-name">Quarterly</span> plan →</span></a><p class="pnote" style="margin:0">Pricing is shared on your live demo.</p></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">How it works</span>
+        <h2>Live in <em class="s">four</em> steps.</h2>
+      </div>
+      <div class="steps4">
+        <div class="step"><span class="n">1</span><h3>Book a demo</h3><p>30 minutes on Google Meet. We show you the app and answer everything.</p></div>
+        <div class="step"><span class="n">2</span><h3>Send your brand</h3><p>Logo, colors and the style you want. No logo yet? We can design it for you.</p></div>
+        <div class="step"><span class="n">3</span><h3>We set it up</h3><p>Domain, email, hosting and the app itself, all configured by us.</p></div>
+        <div class="step"><span class="n">4</span><h3>Launch</h3><p>Invite your clients and post your launch set on Instagram.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">FAQ</span><h2>Good <em class="s">questions.</em></h2></div>
+      <details><summary>Do I need any technical skills?</summary><p>No. We set up and run everything: domain, email, hosting and the app. You send us your brand and start coaching.</p></details>
+      <details><summary>Can I use a domain I already own?</summary><p>Yes. We connect it for you. If you don't have one yet, you can start on a free yourbrand.wildmethod.app subdomain.</p></details>
+      <details><summary>Will my clients see Wild Method or Silvestre?</summary><p>No. Your clients see your name, logo and colors across the app.</p></details>
+      <details><summary>What's the difference between the web app and the store app?</summary><p>On the Monthly plan your clients use a web app they add to their home screen. From the Quarterly plan, you also get your own app on the App Store and Google Play, listed with your name, icon and brand.</p></details>
+      <details><summary>Is it only for personal trainers?</summary><p>No. It's built for personal trainers and nutritionists. Each professional gets their own panel, so your team can be trainers, nutritionists, or both.</p></details>
+      <details><summary>How do I get paid by my clients?</summary><p>Payments are part of your admin panel. You connect your own Stripe account, clients pay by card and the money goes straight to you. Invoicing and taxes live in the same panel.</p></details>
+      <details><summary>I'm a freelancer. Does it still work?</summary><p>Yes. It works whether you train under your own name or run a company registered in a UAE free zone.</p></details>
+      <details><summary>I don't have a logo. Can you design one?</summary><p>Yes. With the Annual plan we design your logo and merch with your brand. On other plans, we can start from your name and colors.</p></details>
+      <details><summary>Do you build my website too?</summary><p>Yes, with any Annual plan. We design your website, connect your domain and host it with SSL, daily backups, business email and built-in security. We also keep it updated.</p></details>
+      <details><summary>Do you manage my social media?</summary><p>No. We create a launch set of posts and, with any Annual plan, film and edit content for you. Posting stays with you.</p></details>
+      <details><summary>Where are you based?</summary><p>We're based in Dubai, UAE, and work with personal trainers remotely.</p></details>
+    </div>
+  </section>
+
+  <section class="cta" id="book">
+    <div class="wrap">
+      <h2>Make it <em class="s">yours.</em></h2>
+      <p class="lead">Book a 30-minute live demo on Google Meet. No commitment.</p>
+      <div class="contact">
+        <a class="btn btn-blue" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ07Ew69KhLRZXgkC3hHb6BV7yBul44-4eBXWbqmxo7DxIA3uplNNscReqz7l1Gw0ZB9SRdwSWSJ" target="_blank" rel="noopener">Book a live demo →</a>
+        <a class="btn btn-ghost" href="https://wa.me/5491132555326?text=Hi!%20I'd%20like%20the%20Wild%20Method%20app%20with%20my%20own%20brand." target="_blank" rel="noopener">Message us on WhatsApp</a>
+        <a class="btn btn-ghost" href="../demo/">Try the interactive demo</a>
+      </div>
+      <p class="alt">Questions first? DM <code>@wildmethod.app</code> on Instagram</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="../" aria-label="Wild Method home">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M12 34 L31 76 L50 46 L69 76 L88 20" fill="none" stroke="#9FD3FF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span><b>wild</b> <span>method</span></span>
+    </a>
+    <div class="meta">
+      <span>Based in Dubai, UAE · <a href="https://instagram.com/wildmethod.app" target="_blank" rel="noopener">@wildmethod.app</a></span>
+      <span>© 2026 Wild Method. All rights reserved. · Born at Silvestre Fitness</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const SW = ["#FF5A36", "#12B886", "#7C4DFF", "#F2B705", "#E64980", "#2453FF", "#111827"];
+  const hex = (h) => [0, 2, 4].map(i => parseInt(h.replace("#", "").substr(i, 2), 16));
+  const toHex = (c) => "#" + c.map(v => Math.round(v).toString(16).padStart(2, "0")).join("");
+  const mix = (a, b, k) => { const A = hex(a), B = hex(b); return toHex(A.map((v, i) => v + (B[i] - v) * k)); };
+  const lum = (h) => { const [r, g, b] = hex(h).map(v => { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); }); return .2126 * r + .7152 * g + .0722 * b; };
+  const slug = (n) => (n || "yourbrand").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]/g, "") || "yourbrand";
+
+  const state = { preset: "you", name: "Nova Coaching", color: "#FF5A36", mode: "light", type: "clean", logo: null };
+  const PRESETS = {
+    sil: { name: "SILVESTRE", url: "performanceos.silvestrefitness.net", colors: { bg: "#0E0E0E", card: "#1B1B1B", line2: "#2A2A2A", ink: "#FFFFFF", muted: "#9A9A9A", accent: "#FFFFFF", on: "#0E0E0E" } },
+    wm: { name: "wild method", url: "app.wildmethod.app", colors: { bg: "#EEF6FF", card: "#FFFFFF", line2: "#DCE6F5", ink: "#0B1B3A", muted: "#55627D", accent: "#2453FF", on: "#FFFFFF" } }
+  };
+
+  $("f-sws").innerHTML = SW.map(c => `<button style="background:${c}" data-c="${c}" aria-label="Color ${c}"></button>`).join("") +
+    `<label class="custom" style="width:44px;height:44px;border-radius:50%" aria-label="Custom color"><input type="color" id="f-custom" value="#FF5A36"></label>`;
+
+  function render() {
+    const scr = $("screen"), s = slug(state.name);
+    let colors, name, url;
+    if (state.preset !== "you") {
+      const P = PRESETS[state.preset]; colors = P.colors; name = P.name; url = P.url;
+    } else {
+      const c = state.color, on = lum(c) > .45 ? "#0B1B3A" : "#FFFFFF";
+      colors = state.mode === "dark"
+        ? { bg: mix(c, "#0C0C10", .9), card: mix(c, "#17171C", .88), line2: mix(c, "#2A2A31", .85), ink: "#FFFFFF", muted: "#A6A2A8", accent: c, on }
+        : { bg: mix(c, "#FFFFFF", .92), card: "#FFFFFF", line2: mix(c, "#FFFFFF", .8), ink: "#17120F", muted: "#6B625E", accent: c, on };
+      name = state.name || "Your brand"; url = "app." + s + ".com";
+    }
+    for (const k in colors) scr.style.setProperty("--" + k, colors[k]);
+    const editorial = state.preset === "you" && state.type === "editorial";
+    scr.classList.toggle("editorial", editorial);
+    scr.style.setProperty("--hfont", editorial ? "var(--serif)" : "var(--sans)");
+    scr.style.setProperty("--rad", (state.preset === "you" && state.mode === "dark" ? 24 : 20) + "px");
+    $("p-name").textContent = name;
+    $("p-name").style.letterSpacing = state.preset === "sil" ? ".14em" : "";
+    $("p-name").style.fontWeight = state.preset === "sil" ? "800" : "600";
+    $("p-name").style.fontSize = state.preset === "sil" ? "14px" : "";
+    $("p-url").textContent = url;
+    const mark = $("p-mark");
+    if (state.preset === "wm") mark.innerHTML = `<svg viewBox="0 0 100 100" width="20" height="20"><path d="M12 34 L31 76 L50 46 L69 76 L88 20" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    else if (state.preset === "sil") { mark.textContent = "S"; mark.style.fontFamily = "var(--sans)"; mark.style.fontStyle = "normal"; mark.style.fontWeight = "800"; mark.style.fontSize = "17px"; }
+    else if (state.logo) mark.innerHTML = `<img src="${state.logo}" alt="">`;
+    else { mark.textContent = (name.trim()[0] || "Y").toUpperCase(); mark.style.fontFamily = ""; mark.style.fontStyle = ""; mark.style.fontWeight = ""; mark.style.fontSize = ""; }
+    $("o-domain").textContent = "app." + s + ".com";
+    $("o-sub").textContent = s.slice(0, 16) + ".wildmethod.app";
+    $("o-mail").textContent = "hello@" + s + ".com";
+    $("o-store").textContent = state.name || "Your brand";
+    [...$("presets").children].forEach(b => b.classList.toggle("on", b.dataset.p === state.preset));
+    [...$("f-sws").querySelectorAll("button")].forEach(b => b.classList.toggle("on", b.dataset.c === state.color));
+    [...$("f-mode").children].forEach(b => b.classList.toggle("on", b.dataset.v === state.mode));
+    [...$("f-type").children].forEach(b => b.classList.toggle("on", b.dataset.v === state.type));
+    $("f-logo-clear").hidden = !state.logo;
+  }
+  const toYou = () => { state.preset = "you"; };
+  $("presets").addEventListener("click", e => { const p = e.target.dataset.p; if (p) { state.preset = p; render(); } });
+  $("f-name").addEventListener("input", e => { state.name = e.target.value; toYou(); render(); });
+  $("f-sws").addEventListener("click", e => { const c = e.target.dataset.c; if (c) { state.color = c; toYou(); render(); } });
+  $("f-custom").addEventListener("input", e => { state.color = e.target.value.toUpperCase(); toYou(); render(); });
+  $("f-mode").addEventListener("click", e => { const v = e.target.dataset.v; if (v) { state.mode = v; toYou(); render(); } });
+  $("f-type").addEventListener("click", e => { const v = e.target.dataset.v; if (v) { state.type = v; toYou(); render(); } });
+  $("f-logo").addEventListener("change", e => {
+    const f = e.target.files[0]; if (!f) return;
+    const r = new FileReader(); r.onload = () => { state.logo = r.result; toYou(); render(); }; r.readAsDataURL(f);
+  });
+  document.querySelectorAll(".plan[data-plan]").forEach(el => {
+    const choose = () => {
+      document.querySelectorAll(".plan[data-plan]").forEach(x => { x.classList.toggle("on", x === el); x.setAttribute("aria-pressed", x === el); });
+      $("plan-name").textContent = el.dataset.plan;
+    };
+    el.addEventListener("click", choose);
+    el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); choose(); } });
+  });
+  $("f-logo-clear").addEventListener("click", () => { state.logo = null; render(); });
+  render();
+})();
+</script>
+</body>
+</html>
