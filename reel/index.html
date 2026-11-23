@@ -561,7 +561,7 @@ i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-sp
 
   /* Voiceover clips: one per scene, played at scene start + VO_OFFSET. */
   const VO_SRC = "vo/";        // folder with <scene>.mp3 files; empty = no audio
-  const VO_DUR = {"hook": 1.906, "sil": 3.574, "wm": 5.63, "logo": 3.26, "colors": 1.084, "domain": 3.135, "email": 1.828, "style": 3.066, "stores": 6.792, "integ": 7.0, "pay": 7.546, "biz": 4.189, "shoot": 10.719, "incl": 5.876, "plans": 2.901, "cta": 3.228, "team": 4.32, "web": 10.46};          // seconds per clip (longest voice)
+  const VO_DUR = {"hook": 1.906, "sil": 3.574, "wm": 5.63, "logo": 3.26, "colors": 1.084, "domain": 3.135, "email": 1.828, "style": 3.066, "stores": 6.792, "integ": 7.0, "pay": 7.546, "biz": 4.189, "shoot": 10.719, "incl": 5.876, "plans": 2.901, "cta": 3.723, "team": 4.32, "web": 10.46};          // seconds per clip (longest voice)
   const VO_OFFSET = 0.25;
   const SILVESTRE_LOGO = ""; // data URI of the official Silvestre logo, empty = text placeholder
 
@@ -982,7 +982,7 @@ i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-sp
 
   if (params.get("brand")) YOU.name = params.get("brand").slice(0, 20);
   if (params.get("color") && /^[0-9a-f]{6}$/i.test(params.get("color"))) YOU.color = "#" + params.get("color");
-  { const e = params.get("end"); if (e && $("end-" + e)) { $("cta").innerHTML = $("end-" + e).innerHTML; $("cta").classList.add("end-" + e); } }
+  { const e = params.get("end") || "a"; if (e && $("end-" + e)) { $("cta").innerHTML = $("end-" + e).innerHTML; $("cta").classList.add("end-" + e); } }
   buildYou();
   fit();
 
