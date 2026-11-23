@@ -183,6 +183,36 @@ p { margin: 0; }
 .partners img { height: 22px; width: auto; }
 @media (max-width: 860px) { .feat { grid-template-columns: 1fr; } }
 
+/* Integrations */
+.integ { background: var(--mist); }
+.igrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.ig { background: var(--white); border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.ig .lg { height: 64px; border-radius: 16px; border: 1.5px solid var(--line); display: grid; place-items: center; padding: 10px; }
+.ig .lg img { max-height: 40px; width: auto; max-width: 100%; }
+.ig .lg-txt { font-weight: 700; color: var(--blue); letter-spacing: -0.02em; }
+.ig p { color: var(--muted); font-size: .95rem; }
+.integ .pnote { margin-top: 20px; }
+@media (max-width: 960px) { .igrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .igrid { grid-template-columns: 1fr; } }
+
+/* Payments & admin */
+.bgrid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; align-items: center; }
+.admin-mock { background: var(--navy); color: #fff; border-radius: 28px; padding: 26px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.am-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+.am-top b { font-size: 1.4rem; letter-spacing: -0.03em; }
+.am-top span { font-size: .8rem; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,.1); }
+.am-rev { background: var(--blue); border-radius: 18px; padding: 18px; display: flex; flex-direction: column; gap: 2px; }
+.am-rev span { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; opacity: .8; font-weight: 600; }
+.am-rev b { font-size: 2rem; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.am-rev em { font-style: normal; align-self: flex-start; margin-top: 6px; background: #fff; color: #635BFF; font-weight: 700; font-size: .82rem; padding: 4px 10px; border-radius: 999px; }
+.am-row { display: flex; justify-content: space-between; padding: 12px 14px; border-radius: 14px; background: rgba(255,255,255,.06); font-weight: 600; }
+.am-row i { font-style: normal; font-weight: 500; opacity: .7; }
+.am-row i.g { color: #4ADE80; opacity: 1; }
+.blist { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.bi { background: var(--mist); border-radius: 22px; padding: 22px 24px; display: flex; flex-direction: column; gap: 6px; }
+.bi p { color: var(--muted); }
+@media (max-width: 860px) { .bgrid { grid-template-columns: 1fr; gap: 28px; } }
+
 /* Shoots */
 .shoot .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
 .shoot .sec-head { margin-bottom: 0; }
@@ -204,7 +234,13 @@ p { margin: 0; }
 .plans { background: var(--mist); }
 .pgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .plan { background: var(--white); border-radius: 28px; padding: 30px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
-.plan.hi { box-shadow: inset 0 0 0 2px var(--blue); }
+.plan { position: relative; cursor: pointer; box-shadow: inset 0 0 0 1.5px var(--line); transition: box-shadow .15s, transform .15s; }
+.plan:hover { transform: translateY(-2px); }
+.plan:focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; }
+.plan.on { box-shadow: inset 0 0 0 3px var(--blue); }
+.plan .pick { position: absolute; top: 26px; right: 26px; width: 26px; height: 26px; border-radius: 50%; box-shadow: inset 0 0 0 2px var(--line); }
+.plan.on .pick { box-shadow: inset 0 0 0 7px var(--blue); }
+.pcta { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
 .plan .pill { align-self: flex-start; font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; background: var(--blue); color: #fff; padding: 5px 12px; border-radius: 999px; }
 .plan h3 { font-size: 1.6rem; }
 .plan > p { color: var(--muted); }
@@ -265,7 +301,8 @@ footer a:hover { color: var(--sky); }
     <nav class="nav-links" aria-label="Sections">
       <a href="#make-it-yours">Make it yours</a>
       <a href="#included">What's included</a>
-      <a href="#shoots">Content shoots</a>
+      <a href="#business">Payments</a>
+      <a href="#shoots">Content</a>
       <a href="#plans">Plans</a>
       <a class="btn btn-white" href="#book">Book a demo</a>
     </nav>
@@ -283,11 +320,11 @@ footer a:hover { color: var(--sky); }
           <a class="btn btn-white" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ07Ew69KhLRZXgkC3hHb6BV7yBul44-4eBXWbqmxo7DxIA3uplNNscReqz7l1Gw0ZB9SRdwSWSJ" target="_blank" rel="noopener">Book a live demo →</a>
           <a class="btn btn-ghost-light" href="#make-it-yours">Design yours now</a>
         </div>
-        <div class="badges"><span>Your logo & colors</span><span>Your domain</span><span>Corporate email</span><span>Hosting & support</span><span>Your own store app</span><span>Content shoots</span></div>
+        <div class="badges"><span>Your logo & colors</span><span>Domain or subdomain</span><span>Corporate email</span><span>Stripe payments</span><span>Admin panel</span><span>Hosting & support</span><span>Your own store app</span><span>Content creation</span></div>
       </div>
       <div>
         <div class="reelbox"><iframe src="../reel/?embed=1" title="Reel: from Silvestre to your own brand" loading="lazy" allow="autoplay"></iframe></div>
-        <p class="reelcap">Tap the reel to pause · <a href="../reel/" target="_blank" rel="noopener">Open full screen</a> · <a href="../reel/wildmethod-reel.mp4" download>Download MP4</a></p>
+        <p class="reelcap">Tap the reel to pause · <a href="../reel/" target="_blank" rel="noopener">Open full screen</a> · MP4: <a href="../reel/wildmethod-reel.mp4" download>female voice</a> / <a href="../reel/wildmethod-reel-male-voice.mp4" download>male voice</a></p>
       </div>
     </div>
   </section>
@@ -381,13 +418,13 @@ footer a:hover { color: var(--sky); }
       </div>
       <div class="incl">
         <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18M3 12h18"/></svg></span><h3>Your branding</h3><p>Logo, colors and style applied across the whole app.</p></div>
-        <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span><h3>Domain or subdomain</h3><p>Use a domain you own, or start on a free yourbrand.wildmethod.app.</p></div>
+        <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span><h3>Domain or subdomain</h3><p>Use your own domain, like app.yourbrand.com, or start on a free yourbrand.wildmethod.app subdomain.</p></div>
         <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><h3>Corporate email</h3><p>A professional address on your own domain, like hello@yourbrand.com.</p></div>
         <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span><h3>Hosting & security</h3><p>Hosting, updates, backups and SSL. Always on, always current.</p></div>
         <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/></svg></span><h3>Support + monthly 1:1</h3><p>Direct support and a monthly call to review how it's going.</p></div>
         <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17 7h.01"/></svg></span><h3>Launch posts</h3><p>A starter set of Instagram posts to announce your app. You post them.</p></div>
-        <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></span><h3>Your own store app</h3><p>Published on the App Store and Google Play under your name.</p><span class="tag">Quarterly & Annual</span></div>
-        <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="15" height="11" rx="2"/><path d="M17 11l5-3v9l-5-3"/></svg></span><h3>Content shoots</h3><p>We film the content you ask for and deliver it edited.</p><span class="tag">Annual</span></div>
+        <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></span><h3>Your own store app</h3><p>On the App Store and Google Play with your name, your icon and your brand.</p><span class="tag">Quarterly & Annual</span></div>
+        <div class="icard"><span class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="15" height="11" rx="2"/><path d="M17 11l5-3v9l-5-3"/></svg></span><h3>Content creation</h3><p>Included with any Annual plan: we film the content you ask for and deliver it edited.</p><span class="tag">Annual</span></div>
       </div>
     </div>
   </section>
@@ -402,8 +439,48 @@ footer a:hover { color: var(--sky); }
       <div class="feat">
         <div class="fcard"><h3>Programs</h3><p>Build training blocks once, assign them to clients and adjust week by week.</p></div>
         <div class="fcard"><h3>Client app</h3><p>Your clients open today's session, follow each exercise and log every set.</p></div>
-        <div class="fcard"><h3>Client profile & assessments</h3><p>Every evaluation in one profile, including data from the tools you already use.</p>
-          <div class="partners"><span><img src="../demo/img/pitchero.png" alt="">Pitchero GPS</span><span><img src="../demo/img/isak.png" alt="">ISAK</span><span><img src="../demo/img/myjumplab.png" alt="">My Jump Lab</span><span>Assessments</span></div>
+        <div class="fcard"><h3>Client profile & assessments</h3><p>Every evaluation in one profile: GPS, jumps, anthropometry and your own assessments.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec integ" id="integrations">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Integrations</span>
+        <h2>Plug in the tools you <em class="s">already</em> use.</h2>
+        <p>Results land in each client's profile, next to their programs, so you see the whole picture in one place.</p>
+      </div>
+      <div class="igrid">
+        <div class="ig"><div class="lg"><img src="../demo/img/pitchero.png" alt="Pitchero GPS"></div><h3>Pitchero GPS</h3><p>Speed, distance and load from GPS sessions.</p></div>
+        <div class="ig"><div class="lg"><img src="../demo/img/myjumplab.png" alt="My Jump Lab"></div><h3>My Jump Lab</h3><p>Jump height, power and reactive strength tests.</p></div>
+        <div class="ig"><div class="lg"><img src="../demo/img/isak.png" alt="ISAK"></div><h3>ISAK anthropometry</h3><p>Skinfolds, girths and body composition, ISAK protocol.</p></div>
+        <div class="ig"><div class="lg lg-txt">Assessments</div><h3>Your assessments</h3><p>Mobility, strength and any test you run, in the same profile.</p></div>
+      </div>
+      <p class="pnote">Pitchero GPS and My Jump Lab subscriptions are billed at cost.</p>
+    </div>
+  </section>
+
+  <section class="sec biz" id="business">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Payments & admin</span>
+        <h2>Get paid. <em class="s">Run</em> your business.</h2>
+        <p>Connect Stripe and client payments go straight to your account. Then manage everything from your own admin panel.</p>
+      </div>
+      <div class="bgrid">
+        <div class="admin-mock" aria-hidden="true">
+          <div class="am-top"><b>Admin</b><span>Your brand</span></div>
+          <div class="am-rev"><span>Revenue this month</span><b>AED 18,450</b><em>stripe · paid to your account</em></div>
+          <div class="am-row"><span>Payments</span><i class="g">32 paid</i></div>
+          <div class="am-row"><span>Clients</span><i>42 active</i></div>
+          <div class="am-row"><span>Invoicing</span><i>Auto-sent</i></div>
+          <div class="am-row"><span>Taxes</span><i>Report ready</i></div>
+        </div>
+        <div class="blist">
+          <div class="bi"><h3>Stripe payments</h3><p>Clients pay by card. The money goes to your own Stripe account, not ours.</p></div>
+          <div class="bi"><h3>Your admin panel</h3><p>Payments, clients, invoicing and taxes, all from one place.</p></div>
+          <div class="bi"><h3>Freelancer or company</h3><p>Works whether you train under your own name or run a company in a UAE free zone.</p></div>
         </div>
       </div>
     </div>
@@ -415,13 +492,13 @@ footer a:hover { color: var(--sky); }
         <div class="sec-head">
           <span class="eyebrow">Content shoots</span>
           <h2>We film your <em class="s">content</em> too.</h2>
-          <p>Your app launches with your brand. Your Instagram can grow with it.</p>
+          <p>Content creation is included with any Annual plan. Your app launches with your brand, and your Instagram grows with it.</p>
         </div>
         <ul>
           <li><svg><use href="#chk"/></svg><div>Content you ask for<span>Exercise tips, client sessions, your story. You choose what we film.</span></div></li>
           <li><svg><use href="#chk"/></svg><div>Simple edit, ready to post<span>Clean cuts and captions, delivered for Reels and Stories.</span></div></li>
           <li><svg><use href="#chk"/></svg><div>Pro gear<span>Sony ZV-1 II, iPhone and iPad.</span></div></li>
-          <li><svg><use href="#chk"/></svg><div>4 shoots a year on the Annual plan<span>One every quarter. Extra sessions can be booked any time.</span></div></li>
+          <li><svg><use href="#chk"/></svg><div>Included with any Annual plan<span>4 shoots a year, one every quarter. Extra sessions can be booked any time.</span></div></li>
         </ul>
       </div>
       <div class="vf" aria-hidden="true">
@@ -440,38 +517,39 @@ footer a:hover { color: var(--sky); }
     <div class="wrap">
       <div class="sec-head">
         <span class="eyebrow">Plans</span>
-        <h2>Pick how <em class="s">far</em> you want to go.</h2>
-        <p>Every plan includes branding, domain, corporate email, hosting, support and a monthly 1:1.</p>
+        <h2>Choose your <em class="s">plan.</em></h2>
+        <p>Every plan includes your branding, domain or subdomain, corporate email, Stripe payments, admin panel, hosting, support and a monthly 1:1.</p>
       </div>
       <div class="pgrid">
-        <div class="plan">
-          <h3>Monthly</h3><p>Your branded web app, live on your domain.</p>
+        <div class="plan" data-plan="Monthly" tabindex="0" role="button" aria-pressed="false">
+          <span class="pick"></span><h3>Monthly</h3><p>Your branded web app, live on your domain.</p>
           <ul>
             <li><svg><use href="#chk"/></svg>Web app your clients add to their home screen</li>
-            <li><svg><use href="#chk"/></svg>Your logo, colors, domain & email</li>
+            <li><svg><use href="#chk"/></svg>Your logo, colors, domain or subdomain & email</li>
+            <li><svg><use href="#chk"/></svg>Stripe payments & admin panel</li>
             <li><svg><use href="#chk"/></svg>Hosting, support & monthly 1:1</li>
             <li><svg><use href="#chk"/></svg>Launch posts for Instagram</li>
           </ul>
         </div>
-        <div class="plan hi">
-          <span class="pill">Most popular</span>
+        <div class="plan hi on" data-plan="Quarterly" tabindex="0" role="button" aria-pressed="true">
+          <span class="pick"></span><span class="pill">Most popular</span>
           <h3>Quarterly</h3><p>Everything in Monthly, plus your own app in the stores.</p>
           <ul>
             <li><svg><use href="#chk"/></svg>Everything in Monthly</li>
-            <li class="plus"><svg><use href="#chk"/></svg>Your app on the App Store</li>
-            <li class="plus"><svg><use href="#chk"/></svg>Your app on Google Play</li>
+            <li class="plus"><svg><use href="#chk"/></svg>Your app on the App Store, with your brand</li>
+            <li class="plus"><svg><use href="#chk"/></svg>Your app on Google Play, with your brand</li>
           </ul>
         </div>
-        <div class="plan">
-          <h3>Annual</h3><p>Everything in Quarterly, plus content made for you.</p>
+        <div class="plan" data-plan="Annual" tabindex="0" role="button" aria-pressed="false">
+          <span class="pick"></span><h3>Annual</h3><p>Everything in Quarterly, plus content made for you.</p>
           <ul>
             <li><svg><use href="#chk"/></svg>Everything in Quarterly</li>
-            <li class="plus"><svg><use href="#chk"/></svg>4 content shoots a year (one per quarter)</li>
+            <li class="plus"><svg><use href="#chk"/></svg>Content creation included: 4 shoots a year</li>
             <li><svg><use href="#chk"/></svg>Extra shoots available</li>
           </ul>
         </div>
       </div>
-      <p class="pnote">Pricing is shared on your live demo. Add-on subscriptions (Pitchero GPS, My Jump Lab) are billed at cost.</p>
+      <div class="pcta"><a class="btn btn-blue" id="plan-cta" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ07Ew69KhLRZXgkC3hHb6BV7yBul44-4eBXWbqmxo7DxIA3uplNNscReqz7l1Gw0ZB9SRdwSWSJ" target="_blank" rel="noopener"><span>Book a demo for the <span id="plan-name">Quarterly</span> plan →</span></a><p class="pnote" style="margin:0">Pricing is shared on your live demo.</p></div>
     </div>
   </section>
 
@@ -496,8 +574,10 @@ footer a:hover { color: var(--sky); }
       <details><summary>Do I need any technical skills?</summary><p>No. We set up and run everything: domain, email, hosting and the app. You send us your brand and start coaching.</p></details>
       <details><summary>Can I use a domain I already own?</summary><p>Yes. We connect it for you. If you don't have one yet, you can start on a free yourbrand.wildmethod.app subdomain.</p></details>
       <details><summary>Will my clients see Wild Method or Silvestre?</summary><p>No. Your clients see your name, logo and colors across the app.</p></details>
-      <details><summary>What's the difference between the web app and the store app?</summary><p>On the Monthly plan your clients use a web app they add to their home screen. From the Quarterly plan, you also get your own app published on the App Store and Google Play.</p></details>
-      <details><summary>Do you manage my social media?</summary><p>No. We create a launch set of posts and, on the Annual plan, film and edit content for you. Posting stays with you.</p></details>
+      <details><summary>What's the difference between the web app and the store app?</summary><p>On the Monthly plan your clients use a web app they add to their home screen. From the Quarterly plan, you also get your own app on the App Store and Google Play, listed with your name, icon and brand.</p></details>
+      <details><summary>How do I get paid by my clients?</summary><p>You connect your own Stripe account. Clients pay by card and the money goes straight to you. Payments, invoicing and taxes are tracked in your admin panel.</p></details>
+      <details><summary>I'm a freelancer. Does it still work?</summary><p>Yes. It works whether you train under your own name or run a company registered in a UAE free zone.</p></details>
+      <details><summary>Do you manage my social media?</summary><p>No. We create a launch set of posts and, with any Annual plan, film and edit content for you. Posting stays with you.</p></details>
       <details><summary>Where are you based?</summary><p>We're based in Dubai, UAE, and work with personal trainers remotely.</p></details>
     </div>
   </section>
@@ -595,6 +675,14 @@ footer a:hover { color: var(--sky); }
   $("f-logo").addEventListener("change", e => {
     const f = e.target.files[0]; if (!f) return;
     const r = new FileReader(); r.onload = () => { state.logo = r.result; toYou(); render(); }; r.readAsDataURL(f);
+  });
+  document.querySelectorAll(".plan[data-plan]").forEach(el => {
+    const choose = () => {
+      document.querySelectorAll(".plan[data-plan]").forEach(x => { x.classList.toggle("on", x === el); x.setAttribute("aria-pressed", x === el); });
+      $("plan-name").textContent = el.dataset.plan;
+    };
+    el.addEventListener("click", choose);
+    el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); choose(); } });
   });
   $("f-logo-clear").addEventListener("click", () => { state.logo = null; render(); });
   render();
