@@ -275,6 +275,19 @@ i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-sp
 #cta .ji small { font-size: 26px; font-weight: 600; opacity: .9; white-space: nowrap; }
 #cta .ji.big small { font-size: 30px; opacity: 1; }
 #cta .ja { font-size: 54px; opacity: .6; margin-bottom: 44px; }
+#cta.end-a, #cta.end-b { align-items: center; text-align: center; }
+#cta.end-a h2 { font-size: 116px; }
+#cta .appic { display: flex; flex-direction: column; align-items: center; gap: 26px; margin: 30px 0 10px; }
+#cta .appic .ic { width: 340px; height: 340px; border-radius: 82px; display: grid; place-items: center; font-family: var(--serif); font-style: italic; font-size: 210px; box-shadow: 0 0 0 10px rgba(255,255,255,.95), 0 50px 100px -30px rgba(0,0,0,.55); }
+#cta .appic b { font-size: 46px; font-weight: 600; letter-spacing: -0.02em; }
+#cta .pw { display: flex; align-items: center; gap: 16px; font-size: 30px; opacity: .9; }
+#cta .pw .wm-logo { font-size: 36px; } #cta .pw .wm-logo svg { width: 48px; height: 48px; }
+#cta .wm-logo.big { flex-direction: column; font-size: 96px; gap: 24px; margin-bottom: 40px; }
+#cta .wm-logo.big svg { width: 220px; height: 220px; }
+#cta.end-b h2 { font-size: 120px; }
+#cta .recap { display: flex; flex-direction: column; gap: 18px; margin: 10px 0; }
+#cta .recap span { font-size: 50px; font-weight: 600; letter-spacing: -0.03em; display: flex; align-items: center; gap: 22px; }
+#cta .recap span::before { content: "✓"; width: 64px; height: 64px; border-radius: 50%; background: #fff; color: var(--blue); display: grid; place-items: center; font-size: 34px; }
 #cta p { margin: 0; font-size: 32px; opacity: .85; line-height: 1.4; }
 
 /* Player UI (hidden in export) */
@@ -423,9 +436,9 @@ i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-sp
 
   <!-- Team: trainers and nutritionists -->
   <div id="team" class="vis">
-    <div class="bcard" id="tm0"><span class="bi"><svg viewBox="0 0 24 24"><path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12"/></svg></span><div><h3>Trainers</h3><p>Programs, sessions and assessments</p><span class="avs"><i class="t">A</i><i class="t">M</i><i class="t">J</i><i class="more">+</i></span></div><span class="ok" id="tmo0"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
-    <div class="bcard" id="tm1"><span class="bi"><svg viewBox="0 0 24 24"><path d="M12 3c4 3 6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 2-7 6-10z"/></svg></span><div><h3>Nutritionists</h3><p>Nutrition plans and client follow-up</p><span class="avs"><i class="n">L</i><i class="n">S</i><i class="more">+</i></span></div><span class="ok" id="tmo1"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
-    <div class="note" id="tmnote">Add your whole team. Each professional gets their own panel.</div>
+    <div class="bcard" id="tm0"><span class="bi"><svg viewBox="0 0 24 24"><path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12"/></svg></span><div><h3>Trainers</h3><p>Programs, sessions and assessments</p><span class="avs"><i class="t">A</i><i class="t">M</i><i class="t">J</i></span></div><span class="ok" id="tmo0"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
+    <div class="bcard" id="tm1"><span class="bi"><svg viewBox="0 0 24 24"><path d="M12 3c4 3 6 6.5 6 10a6 6 0 0 1-12 0c0-3.5 2-7 6-10z"/></svg></span><div><h3>Nutritionists</h3><p>Nutrition plans and client follow-up</p><span class="avs"><i class="n">L</i><i class="n">S</i><i class="n">R</i></span></div><span class="ok" id="tmo1"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
+    <div class="note" id="tmnote"><b style="color:var(--blue);font-size:34px;display:block;margin-bottom:8px">Up to 3 trainers + 3 nutritionists</b>Each professional gets their own panel.</div>
   </div>
 
   <!-- Business type -->
@@ -500,6 +513,24 @@ i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-sp
     <p>@wildmethod.app<br>Based in Dubai, UAE</p>
   </section>
 
+
+  <template id="end-a">
+    <h2>Launch <i class="s">your own app.</i></h2>
+    <div class="appic"><span class="ic you-mark">N</span><b class="you-name">Nova Coaching</b></div>
+    <div class="pw">Powered by <span class="wm-logo"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M12 34 L31 76 L50 46 L69 76 L88 20" fill="none" stroke="#fff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>wild</b> method</span></span></div>
+    <p>@wildmethod.app · Based in Dubai, UAE</p>
+  </template>
+  <template id="end-b">
+    <div class="wm-logo big"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M12 34 L31 76 L50 46 L69 76 L88 20" fill="none" stroke="#fff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>wild</b> method</span></div>
+    <h2>Your app.<br><i class="s">Your brand.</i></h2>
+    <p>Fully managed, from Dubai to the world.<br>@wildmethod.app · Based in Dubai, UAE</p>
+  </template>
+  <template id="end-c">
+    <div class="wm-logo"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M12 34 L31 76 L50 46 L69 76 L88 20" fill="none" stroke="#fff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>wild</b> method</span></div>
+    <h2>All done <i class="s">for you.</i></h2>
+    <div class="recap"><span>Your app</span><span>Your domain</span><span>Your email</span><span>Your website</span><span>Your content</span></div>
+    <p>@wildmethod.app<br>Based in Dubai, UAE</p>
+  </template>
   <div id="ui">
     <div id="bars"></div>
     <button id="mute" aria-label="Sound"><svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9z"/><path id="wave" d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg><span id="mutetxt">Sound on</span></button>
@@ -951,6 +982,7 @@ i.s { font-family: var(--serif); font-style: italic; font-weight: 400; letter-sp
 
   if (params.get("brand")) YOU.name = params.get("brand").slice(0, 20);
   if (params.get("color") && /^[0-9a-f]{6}$/i.test(params.get("color"))) YOU.color = "#" + params.get("color");
+  { const e = params.get("end"); if (e && $("end-" + e)) { $("cta").innerHTML = $("end-" + e).innerHTML; $("cta").classList.add("end-" + e); } }
   buildYou();
   fit();
 
